@@ -1,4 +1,4 @@
-﻿namespace _4chanscraper
+﻿namespace Scraper
 {
 	partial class frmMain
 	{

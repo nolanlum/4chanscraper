@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace _4chanscraper
+namespace Scraper
 {
 	public partial class frmMain : Form
 	{
