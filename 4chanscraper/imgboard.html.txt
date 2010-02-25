@@ -1,4 +1,4 @@
-<!--http://boards.4chan.org/w/--><html><head>
+<html><head>
 <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=UTF-8">
 <meta name="robots" content="noarchive"/>
 <meta name="description" content="/w/ is 4chan's imageboard for posting anime wallpapers."/>
@@ -13,24 +13,28 @@ function toggle(name){var a=document.getElementById(name); a.style.display = ((a
 <script type="text/javascript">var style_group="ws_style";</script><script type="text/javascript" src="http://static.4chan.org/js/script.js"></script><link rel="next" href="1"></head>
 <body bgcolor="#FFFFEE" text="#800000" link="#0000EE" vlink="#0000EE"><div id="header"><span id="navtop">
 [<a href="http://boards.4chan.org/a/" title="Anime & Manga">a</a> / 
+
 <a href="http://boards.4chan.org/b/" title="Random">b</a> / 
 <a href="http://boards.4chan.org/c/" title="Anime/Cute">c</a> / 
 <a href="http://boards.4chan.org/d/" title="Hentai/Alternative">d</a> / 
 <a href="http://boards.4chan.org/e/" title="Ecchi">e</a> / 
 <a href="http://boards.4chan.org/f/" title="Flash">f</a> / 
 <a href="http://boards.4chan.org/g/" title="Technology">g</a> / 
+
 <a href="http://boards.4chan.org/gif/" title="Animated GIF">gif</a> / 
 <a href="http://boards.4chan.org/h/" title="Hentai">h</a> / 
 <a href="http://boards.4chan.org/hr/" title="High Resolution">hr</a> / 
 <a href="http://boards.4chan.org/k/" title="Weapons">k</a> / 
 <a href="http://boards.4chan.org/m/" title="Mecha">m</a> / 
 <a href="http://boards.4chan.org/o/" title="Auto">o</a> / 
+
 <a href="http://boards.4chan.org/p/" title="Photo">p</a> / 
 <a href="http://boards.4chan.org/r/" title="Request">r</a> / 
 <a href="http://boards.4chan.org/s/" title="Sexy Beautiful Women">s</a> / 
 <a href="http://boards.4chan.org/t/" title="Torrents">t</a> / 
 <a href="http://boards.4chan.org/u/" title="Yuri">u</a> / 
 <a href="http://boards.4chan.org/v/" title="Video Games">v</a> / 
+
 <a href="http://boards.4chan.org/w/" title="Anime/Wallpapers">w</a> / 
 <a href="http://boards.4chan.org/wg/" title="Wallpapers/General">wg</a>]
 
@@ -43,24 +47,28 @@ function toggle(name){var a=document.getElementById(name); a.style.display = ((a
 [<a href="http://boards.4chan.org/r9k/" title="ROBOT9000">r9k</a>]
 
 [<a href="http://boards.4chan.org/3/" title="3DCG">3</a> /
+
 <a href="http://boards.4chan.org/adv/" title="Advice">adv</a> /
 <a href="http://boards.4chan.org/an/" title="Animals & Nature">an</a> /
 <a href="http://boards.4chan.org/cgl/" title="Cosplay & EGL">cgl</a> /
 <a href="http://boards.4chan.org/ck/" title="Food & Cooking">ck</a> /
 <a href="http://boards.4chan.org/co/" title="Comics & Cartoons">co</a> /
 <a href="http://boards.4chan.org/fa/" title="Fashion">fa</a> /
+
 <a href="http://boards.4chan.org/fit/" title="Health & Fitness">fit</a> /
 <a href="http://boards.4chan.org/int/" title="International">int</a> /
 <a href="http://boards.4chan.org/jp/" title="Otaku Culture">jp</a> /
 <a href="http://boards.4chan.org/lit/" title="Literature">lit</a> /
 <a href="http://boards.4chan.org/mu/" title="Music">mu</a> /
 <a href="http://boards.4chan.org/n/" title="Transportation">n</a> /
+
 <a href="http://boards.4chan.org/new/" title="News">new</a> /
 <a href="http://boards.4chan.org/po/" title="Papercraft & Origami">po</a> /
 <a href="http://boards.4chan.org/sci/" title="Science & Math">sci</a> /
 <a href="http://boards.4chan.org/sp/" title="Sports">sp</a> /
 <a href="http://boards.4chan.org/tg/" title="Traditional Games">tg</a> /
 <a href="http://boards.4chan.org/toy/" title="Toys">toy</a> /
+
 <a href="http://boards.4chan.org/trv/" title="Travel">trv</a> /
 <a href="http://boards.4chan.org/tv/" title="Television & Film">tv</a> /
 <a href="http://boards.4chan.org/x/" title="Paranormal">x</a>]
@@ -71,17 +79,19 @@ function toggle(name){var a=document.getElementById(name); a.style.display = ((a
 <span style="font-size: 90%;"><a href="http://formspring.me/4chan" title="4chan Q&A">?</a></span> / 
 <span style="font-size: 90%;"><a href="http://twitter.com/4chan" title="4chan Twitter">@</a></span>]
 
+
 </span><span id="navtopr">[<a href="http://www.4chan.org/" target="_top">Home</a>]</span></div><br/>
 <div class="logo">
-<img width=300 height=100 src="http://static.4chan.org/image/title/asmodeus.gif"><br>
+<img width=300 height=100 src="http://static.4chan.org/image/title/fma02.gif"><br>
 <font size=5>
 <b><SPAN>/w/ - Anime/Wallpapers</SPAN></b></font></div>
 <hr width="90%" size=1>
-<div style="text-align: center"><a href="http://affiliates.jlist.com/click/583?url=http://www.jlist.com/index.html" target="_blank"><img style="border:1px solid black;" src="http://static.4chan.org/support/jlist_leader/728x90_std_bento_1.jpg" width=728 height=90 border=0></a></div><hr><div style='position:relative'></div><div align="center" class="postarea"><form name="post" action="http://sys.4chan.org/w/post" method="POST" enctype="multipart/form-data">
+<div style="text-align: center"><a href="http://affiliates.jlist.com/click/583?url=http://www.jlist.com/index.html" target="_blank"><img style="border:1px solid black;" src="http://static.4chan.org/support/jlist_leader/728x90_std_3.jpg" width=728 height=90 border=0></a></div><hr><div style='position:relative'></div><div align="center" class="postarea"><form name="post" action="http://sys.4chan.org/w/post" method="POST" enctype="multipart/form-data">
 <input type=hidden name="MAX_FILE_SIZE" value="4194304">
 <table cellpadding=1 cellspacing=1>
 <tr><td></td><td class="postblock" align="left"><b>Name</b></td><td><input class=inputtext type=text name=name size="28"><span id="tdname"></span></td></tr>
 <tr><td></td><td class="postblock" align="left"><b>E-mail</b></td><td><input class=inputtext type=text name=email size="28"><span id="tdemail"></span></td></tr>
+
 <tr><td></td><td class="postblock" align="left"><b>Subject</b></td><td><input class=inputtext type=text name=sub size="35"><input type=submit value="Submit" accesskey="s"></td></tr>
 <tr><td valign=bottom></td><td class="postblock" align="left"><b>Comment</b></td><td><textarea class=inputtext name=com cols="48" rows="4" wrap=soft ></textarea></td></tr>
 <tr><td></td><td class="postblock" align="left"><b>File</b></td>
@@ -92,265 +102,272 @@ function toggle(name){var a=document.getElementById(name); a.style.display = ((a
 <LI>Images smaller than 800x600 pixels are not allowed. 
 <LI>Images greater than 250x250 pixels will be thumbnailed. 
 <LI>Read the <a href="http://www.4chan.org/rules#w">rules</a> and <a href="http://www.4chan.org/faq">FAQ</a> before posting. 
+
 <LI><img src="http://static.4chan.org/image/jpn-flag.jpg"> <a href="http://www.4chan.org/japanese">このサイトについて</a> - 
 <a href="http://www.nifty.com/globalgate/">翻訳</a></td><td align="right" valign="center"></td></tr></table></td></tr></table></form></div><hr>
 <script>with(document.post) {name.value=get_cookie("4chan_name"); email.value=get_cookie("4chan_email"); pwd.value=get_pass("4chan_pass"); }</script>
 <center><a href="http://affiliates.jlist.com/click/583?url=http://www.jlist.com/index.html" target="_blank"><img style="border:1px solid black;" src="http://static.4chan.org/support/jlist_top/jlist_adult_04.jpg" width=468 height=60 border=0 /></a></center><hr>
-<form name="delform" action="http://sys.4chan.org/w/imgboard.php" method=POST><span class="filesize">File : <a href="http://images.4chan.org/w/src/1266291874796.jpg" target="_blank">1266291874.jpg</a>-(240 KB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1266291874796.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1266291874796s.jpg border=0 align=left width=251 height=189 hspace=20 alt="240 KB" md5="HSOKe3K1Ur8szujn/6fGBg=="></a><a name="0"></a>
-<input type=checkbox name="955881" value=delete><span class="filetitle"></span> 
-<span class="postername">Anonymous</span> 02/15/10(Mon)22:44 <span id="nothread955881"><a href="res/955881#955881" class="quotejs">No.</a><a href="res/955881#q955881" class="quotejs">955881</a>  &nbsp; [<a href="res/955881">Reply</a>]</span>
-<blockquote>Shimapan Thread *Continued* (maxed reached).<br />lets try to keep out previous wallpapers.</blockquote><span class="omittedposts">118 posts and 84 image replies omitted. Click Reply to view.</span>
-<a name="964166"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="964166" class="reply">
-<input type=checkbox name="964166" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/23/10(Tue)23:21 <span id="norep964166"><a href="res/955881#964166" class="quotejs">No.</a><a href="res/955881#q964166" class="quotejs">964166</a></span><blockquote>PENIS. SO HARD.</blockquote></td></tr></table>
-<a name="964547"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="964547" class="reply">
-<input type=checkbox name="964547" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)08:27 <span id="norep964547"><a href="res/955881#964547" class="quotejs">No.</a><a href="res/955881#q964547" class="quotejs">964547</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267018049587.jpg" target="_blank">1267018049.jpg</a>-(72 KB, 800x600)</span><br><a href="http://images.4chan.org/w/src/1267018049587.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267018049587s.jpg border=0 align=left width=126 height=95 hspace=20 alt="72 KB" md5="kWcyEid51g8x8al14g4WXA=="></a><blockquote></blockquote></td></tr></table>
-<a name="965325"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965325" class="reply">
-<input type=checkbox name="965325" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)21:56 <span id="norep965325"><a href="res/955881#965325" class="quotejs">No.</a><a href="res/955881#q965325" class="quotejs">965325</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267066563669.jpg" target="_blank">1267066563.jpg</a>-(387 KB, 1024x768)</span><br><a href="http://images.4chan.org/w/src/1267066563669.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267066563669s.jpg border=0 align=left width=126 height=95 hspace=20 alt="387 KB" md5="t1eNWFvNqt2Zqmnme48mTQ=="></a><blockquote></blockquote></td></tr></table>
-<a name="965431"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965431" class="reply">
-<input type=checkbox name="965431" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)23:16 <span id="norep965431"><a href="res/955881#965431" class="quotejs">No.</a><a href="res/955881#q965431" class="quotejs">965431</a></span><blockquote>:3!<br /><br />Moar!</blockquote></td></tr></table>
-<a name="965481"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965481" class="reply">
-<input type=checkbox name="965481" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/25/10(Thu)00:16 <span id="norep965481"><a href="res/955881#965481" class="quotejs">No.</a><a href="res/955881#q965481" class="quotejs">965481</a></span><blockquote>I love how this thread never dies&#44; when it maxes out&#44; another simply takes its place.</blockquote></td></tr></table>
+<center><font color="red"><b>Since I've been on a Q&amp;A kick in /a/ and /r9k/ recently, I've decided to set up a formspring account for publicly answering 4chan related questions. You'll find it linked in the navbar as "?", and located here: <a href="http://formspring.me/4chan">formspring.me/4chan</a>. Also, if you use Twitter, please follow @<a href="http://twitter.com/4chan">4chan</a>. As always, I can be contacted via e-mail at <a href="mailto:moot@4chan.org">moot@4chan.org</a> (Despite the common misconception, I check it frequently and read every message I receive. Nobody seems to e-mail me about anything other than being banned though ;_;)<br><small>EDIT: Site went down due to a hardware issue. Should be fixed now.</small></b></font></center>
+
+<hr>
+<form name="delform" action="http://sys.4chan.org/w/imgboard.php" method=POST><span class="filesize">File : <a href="http://images.4chan.org/w/src/1267132885562.jpg" target="_blank">1267132885.jpg</a>-(863 KB, 1920x1200)</span><br><a href="http://images.4chan.org/w/src/1267132885562.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267132885562s.jpg border=0 align=left width=252 height=158 hspace=20 alt="863 KB" md5="82T4vILPBDSZ4D9W8VPMFw=="></a><a name="0"></a>
+<input type=checkbox name="965853" value=delete><span class="filetitle"></span> 
+<span class="postername">Anonymous</span> 02/25/10(Thu)16:21 <span id="nothread965853"><a href="res/965853#965853" class="quotejs">No.</a><a href="res/965853#q965853" class="quotejs">965853</a>  &nbsp; [<a href="res/965853">Reply</a>]</span>
+
+<blockquote>ITT: stuff on plain black backgrounds</blockquote><a name="965868"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965868" class="reply">
+<input type=checkbox name="965868" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:33 <span id="norep965868"><a href="res/965853#965868" class="quotejs">No.</a><a href="res/965853#q965868" class="quotejs">965868</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267133581264.jpg" target="_blank">1267133581.jpg</a>-(193 KB, 1680x1050)</span><br><a href="http://images.4chan.org/w/src/1267133581264.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267133581264s.jpg border=0 align=left width=126 height=80 hspace=20 alt="193 KB" md5="ZB2lo59aWL72/4c6VlIAWw=="></a><blockquote></blockquote></td></tr></table>
 <br clear=left><hr>
-<span class="filesize">File : <a href="http://images.4chan.org/w/src/1266994039132.jpg" target="_blank">1266994039.jpg</a>-(933 KB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1266994039132.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1266994039132s.jpg border=0 align=left width=251 height=189 hspace=20 alt="933 KB" md5="xdjbzsVkzasdsDlmtBsUDw=="></a><a name="0"></a>
-<input type=checkbox name="964250" value=delete><span class="filetitle"></span> 
-<span class="postername">Anonymous</span> 02/24/10(Wed)01:47 <span id="nothread964250"><a href="res/964250#964250" class="quotejs">No.</a><a href="res/964250#q964250" class="quotejs">964250</a>  &nbsp; [<a href="res/964250">Reply</a>]</span>
-<blockquote>boob wallpapers?</blockquote><span class="omittedposts">24 posts and 22 image replies omitted. Click Reply to view.</span>
-<a name="965439"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965439" class="reply">
-<input type=checkbox name="965439" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)23:28 <span id="norep965439"><a href="res/964250#965439" class="quotejs">No.</a><a href="res/964250#q965439" class="quotejs">965439</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267072135057.jpg" target="_blank">1267072135.jpg</a>-(1.02 MB, 1920x1080)</span><br><a href="http://images.4chan.org/w/src/1267072135057.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267072135057s.jpg border=0 align=left width=127 height=72 hspace=20 alt="1.02 MB" md5="s7bDZKbzmOjcqt4OeoY8Ng=="></a><blockquote></blockquote></td></tr></table>
-<a name="965441"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965441" class="reply">
-<input type=checkbox name="965441" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)23:30 <span id="norep965441"><a href="res/964250#965441" class="quotejs">No.</a><a href="res/964250#q965441" class="quotejs">965441</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267072207101.jpg" target="_blank">1267072207.jpg</a>-(795 KB, 1920x1080)</span><br><a href="http://images.4chan.org/w/src/1267072207101.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267072207101s.jpg border=0 align=left width=127 height=72 hspace=20 alt="795 KB" md5="WFh0ommz6nHiA5XvLlOE8Q=="></a><blockquote></blockquote></td></tr></table>
-<a name="965442"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965442" class="reply">
-<input type=checkbox name="965442" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)23:30 <span id="norep965442"><a href="res/964250#965442" class="quotejs">No.</a><a href="res/964250#q965442" class="quotejs">965442</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267072249218.jpg" target="_blank">1267072249.jpg</a>-(1.22 MB, 1920x1079)</span><br><a href="http://images.4chan.org/w/src/1267072249218.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267072249218s.jpg border=0 align=left width=127 height=72 hspace=20 alt="1.22 MB" md5="Wo6k9IQBMkxIsRZapugBNg=="></a><blockquote></blockquote></td></tr></table>
-<a name="965445"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965445" class="reply">
-<input type=checkbox name="965445" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)23:32 <span id="norep965445"><a href="res/964250#965445" class="quotejs">No.</a><a href="res/964250#q965445" class="quotejs">965445</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267072351333.jpg" target="_blank">1267072351.jpg</a>-(984 KB, 1920x1080)</span><br><a href="http://images.4chan.org/w/src/1267072351333.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267072351333s.jpg border=0 align=left width=127 height=72 hspace=20 alt="984 KB" md5="Gr4otv3UQ4/cNHBmtnublw=="></a><blockquote></blockquote></td></tr></table>
-<a name="965480"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965480" class="reply">
-<input type=checkbox name="965480" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/25/10(Thu)00:14 <span id="norep965480"><a href="res/964250#965480" class="quotejs">No.</a><a href="res/964250#q965480" class="quotejs">965480</a></span><blockquote>While not complaining&#44; isn't this suppose to be a work safe board? Unless these are considered work safe. *shrug* carry on.</blockquote></td></tr></table>
+<span class="filesize">File : <a href="http://images.4chan.org/w/src/1267133566761.jpg" target="_blank">1267133566.jpg</a>-(313 KB, 1024x768)</span><br><a href="http://images.4chan.org/w/src/1267133566761.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267133566761s.jpg border=0 align=left width=251 height=189 hspace=20 alt="313 KB" md5="tCLCa24NVCWui1Ftagjh5Q=="></a><a name="0"></a>
+
+<input type=checkbox name="965867" value=delete><span class="filetitle">Moe Moe Kyun</span> 
+<span class="postername">Anonymous</span> 02/25/10(Thu)16:32 <span id="nothread965867"><a href="res/965867#965867" class="quotejs">No.</a><a href="res/965867#q965867" class="quotejs">965867</a>  &nbsp; [<a href="res/965867">Reply</a>]</span>
+<blockquote>Not just Mio&#44; but Moe Moe Kyun! Any more?</blockquote><br clear=left><hr>
+
+<span class="filesize">File : <a href="http://images.4chan.org/w/src/1267098514040.jpg" target="_blank">1267098514.jpg</a>-(754 KB, 1280x1024)</span><br><a href="http://images.4chan.org/w/src/1267098514040.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267098514040s.jpg border=0 align=left width=251 height=201 hspace=20 alt="754 KB" md5="ieQgYYF6B+f13oJqDb6jcg=="></a><a name="0"></a>
+<input type=checkbox name="965741" value=delete><span class="filetitle"></span> 
+<span class="postername">Anonymous</span> 02/25/10(Thu)06:48 <span id="nothread965741"><a href="res/965741#965741" class="quotejs">No.</a><a href="res/965741#q965741" class="quotejs">965741</a>  &nbsp; [<a href="res/965741">Reply</a>]</span>
+<blockquote>TWEWY Anyone?</blockquote><span class="omittedposts">1 post omitted. Click Reply to view.</span>
+
+<a name="965761"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965761" class="reply">
+<input type=checkbox name="965761" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)13:49 <span id="norep965761"><a href="res/965741#965761" class="quotejs">No.</a><a href="res/965741#q965761" class="quotejs">965761</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267123797040.jpg" target="_blank">1267123797.jpg</a>-(1.46 MB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1267123797040.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267123797040s.jpg border=0 align=left width=126 height=95 hspace=20 alt="1.46 MB" md5="nC8ZyirrjM+nDIjZyX/Sdw=="></a><blockquote></blockquote></td></tr></table>
+<a name="965762"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965762" class="reply">
+<input type=checkbox name="965762" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)13:53 <span id="norep965762"><a href="res/965741#965762" class="quotejs">No.</a><a href="res/965741#q965762" class="quotejs">965762</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267124010729.jpg" target="_blank">1267124010.jpg</a>-(456 KB, 1440x900)</span><br><a href="http://images.4chan.org/w/src/1267124010729.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267124010729s.jpg border=0 align=left width=126 height=80 hspace=20 alt="456 KB" md5="ZokJGanSgyvYpuIYodZGXA=="></a><blockquote></blockquote></td></tr></table>
+
+<a name="965793"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965793" class="reply">
+<input type=checkbox name="965793" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)14:45 <span id="norep965793"><a href="res/965741#965793" class="quotejs">No.</a><a href="res/965741#q965793" class="quotejs">965793</a></span><blockquote>one with the symbol of the skull?</blockquote></td></tr></table>
+<a name="965795"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965795" class="reply">
+<input type=checkbox name="965795" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)14:48 <span id="norep965795"><a href="res/965741#965795" class="quotejs">No.</a><a href="res/965741#q965795" class="quotejs">965795</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267127307468.png" target="_blank">1267127307.png</a>-(1.05 MB, 1024x768)</span><br><a href="http://images.4chan.org/w/src/1267127307468.png" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267127307468s.jpg border=0 align=left width=126 height=95 hspace=20 alt="1.05 MB" md5="jssCwVr0ckX4tebzUHhAWw=="></a><blockquote>hell yeah</blockquote></td></tr></table>
+
+<a name="965866"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965866" class="reply">
+<input type=checkbox name="965866" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:32 <span id="norep965866"><a href="res/965741#965866" class="quotejs">No.</a><a href="res/965741#q965866" class="quotejs">965866</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267133542849.jpg" target="_blank">1267133542.jpg</a>-(199 KB, 1280x800)</span><br><a href="http://images.4chan.org/w/src/1267133542849.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267133542849s.jpg border=0 align=left width=126 height=80 hspace=20 alt="199 KB" md5="30qM4oFH4M1BcHgy/ooPkA=="></a><blockquote></blockquote></td></tr></table>
 <br clear=left><hr>
-<span class="filesize">File : <a href="http://images.4chan.org/w/src/1266701843784.jpg" target="_blank">1266701843.jpg</a>-(620 KB, 1920x1200)</span><br><a href="http://images.4chan.org/w/src/1266701843784.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1266701843784s.jpg border=0 align=left width=252 height=158 hspace=20 alt="620 KB" md5="OJoTIu5dtasssWEmzdVXOQ=="></a><a name="0"></a>
-<input type=checkbox name="960577" value=delete><span class="filetitle"></span> 
-<span class="postername">Anonymous</span> 02/20/10(Sat)16:37 <span id="nothread960577"><a href="res/960577#960577" class="quotejs">No.</a><a href="res/960577#q960577" class="quotejs">960577</a>  &nbsp; [<a href="res/960577">Reply</a>]</span>
-<blockquote>Continuation from<br /><font class="unkfunc">&gt;&gt;955885</font></blockquote><span class="omittedposts">136 posts and 92 image replies omitted. Click Reply to view.</span>
-<a name="965027"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965027" class="reply">
-<input type=checkbox name="965027" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)15:52 <span id="norep965027"><a href="res/960577#965027" class="quotejs">No.</a><a href="res/960577#q965027" class="quotejs">965027</a></span><blockquote>idiots or not&#44; im gonna bump this thread</blockquote></td></tr></table>
-<a name="965107"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965107" class="reply">
-<input type=checkbox name="965107" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)16:44 <span id="norep965107"><a href="res/960577#965107" class="quotejs">No.</a><a href="res/960577#q965107" class="quotejs">965107</a></span><blockquote>bump&#44; mf's!</blockquote></td></tr></table>
-<a name="965117"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965117" class="reply">
-<input type=checkbox name="965117" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)16:52 <span id="norep965117"><a href="res/960577#965117" class="quotejs">No.</a><a href="res/960577#q965117" class="quotejs">965117</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267048328600.jpg" target="_blank">1267048328.jpg</a>-(955 KB, 2000x1200)</span><br><a href="http://images.4chan.org/w/src/1267048328600.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267048328600s.jpg border=0 align=left width=126 height=76 hspace=20 alt="955 KB" md5="hMJh7UPiKfy8UlLfX/RxRg=="></a><blockquote></blockquote></td></tr></table>
-<a name="965425"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965425" class="reply">
-<input type=checkbox name="965425" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)23:11 <span id="norep965425"><a href="res/960577#965425" class="quotejs">No.</a><a href="res/960577#q965425" class="quotejs">965425</a></span><blockquote>Penis!?</blockquote></td></tr></table>
-<a name="965479"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965479" class="reply">
-<input type=checkbox name="965479" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/25/10(Thu)00:11 <span id="norep965479"><a href="res/960577#965479" class="quotejs">No.</a><a href="res/960577#q965479" class="quotejs">965479</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267074701694.jpg" target="_blank">1267074701.jpg</a>-(567 KB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1267074701694.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267074701694s.jpg border=0 align=left width=126 height=95 hspace=20 alt="567 KB" md5="x76m5F4FG2hEs+CMvuhZcw=="></a><blockquote>I always seem to switch back to this one at some point.</blockquote></td></tr></table>
+<span class="filesize">File : <a href="http://images.4chan.org/w/src/1266964168095.jpg" target="_blank">1266964168.jpg</a>-(816 KB, 1280x1024)</span><br><a href="http://images.4chan.org/w/src/1266964168095.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1266964168095s.jpg border=0 align=left width=251 height=201 hspace=20 alt="816 KB" md5="pTGnSawBOfkitnz/zHGzsQ=="></a><a name="0"></a>
+
+<input type=checkbox name="963852" value=delete><span class="filetitle"></span> 
+<span class="postername">Anonymous</span> 02/23/10(Tue)17:29 <span id="nothread963852"><a href="res/963852#963852" class="quotejs">No.</a><a href="res/963852#q963852" class="quotejs">963852</a>  &nbsp; [<a href="res/963852">Reply</a>]</span>
+<blockquote>Sup /wg/?<br />I need 2 walls detexted&#44; and unfortunately&#44; I lack the necessary skills&#44; would any of you be so kind to do it for me?</blockquote><span class="omittedposts">15 posts and 5 image replies omitted. Click Reply to view.</span>
+
+<a name="965734"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965734" class="reply">
+<input type=checkbox name="965734" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)06:16 <span id="norep965734"><a href="res/963852#965734" class="quotejs">No.</a><a href="res/963852#q965734" class="quotejs">965734</a></span><blockquote>Anyone got more Tokyo Akazukin walls?</blockquote></td></tr></table>
+<a name="965773"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965773" class="reply">
+<input type=checkbox name="965773" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)14:19 <span id="norep965773"><a href="res/963852#965773" class="quotejs">No.</a><a href="res/963852#q965773" class="quotejs">965773</a></span><blockquote>I fucking love Tokyo Akazukin.</blockquote></td></tr></table>
+
+<a name="965806"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965806" class="reply">
+<input type=checkbox name="965806" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)15:06 <span id="norep965806"><a href="res/963852#965806" class="quotejs">No.</a><a href="res/963852#q965806" class="quotejs">965806</a></span><blockquote>How can you get your background to be an animated gif in Windows 7?</blockquote></td></tr></table>
+<a name="965834"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965834" class="reply">
+<input type=checkbox name="965834" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)15:52 <span id="norep965834"><a href="res/963852#965834" class="quotejs">No.</a><a href="res/963852#q965834" class="quotejs">965834</a></span><blockquote><font class="unkfunc"><a href="res/963852#965806" class="quotelink">&gt;&gt;965806</a></font><br />Vista too&#44; plox.</blockquote></td></tr></table>
+
+<a name="965865"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965865" class="reply">
+<input type=checkbox name="965865" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:30 <span id="norep965865"><a href="res/963852#965865" class="quotejs">No.</a><a href="res/963852#q965865" class="quotejs">965865</a></span><blockquote><font class="unkfunc"><a href="res/962607#963848" class="quotelink">&gt;&gt;963848</a></font><br />We are tired of your spam and bullshit at www. äNon+älk .com. Stop fucking with us. You owe Sysop over $10&#44;000 USD due to your harassments. Pay up by donating.</blockquote></td></tr></table>
 <br clear=left><hr>
-<span class="filesize">File : <a href="http://images.4chan.org/w/src/1267073526088.jpg" target="_blank">1267073526.jpg</a>-(886 KB, 2676x1673)</span><br><a href="http://images.4chan.org/w/src/1267073526088.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267073526088s.jpg border=0 align=left width=251 height=158 hspace=20 alt="886 KB" md5="wYxaaWiUcKwfb+KJ3BwhxQ=="></a><a name="0"></a>
-<input type=checkbox name="965460" value=delete><span class="filetitle"></span> 
-<span class="postername">Anonymous</span> 02/24/10(Wed)23:52 <span id="nothread965460"><a href="res/965460#965460" class="quotejs">No.</a><a href="res/965460#q965460" class="quotejs">965460</a>  &nbsp; [<a href="res/965460">Reply</a>]</span>
-<blockquote>Lucky Star wallpapers?</blockquote><span class="omittedposts">1 post and 1 image reply omitted. Click Reply to view.</span>
-<a name="965463"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965463" class="reply">
-<input type=checkbox name="965463" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)23:55 <span id="norep965463"><a href="res/965460#965463" class="quotejs">No.</a><a href="res/965460#q965463" class="quotejs">965463</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267073715514.jpg" target="_blank">1267073715.jpg</a>-(512 KB, 1680x1050)</span><br><a href="http://images.4chan.org/w/src/1267073715514.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267073715514s.jpg border=0 align=left width=126 height=80 hspace=20 alt="512 KB" md5="HvZbeDlWHppfbypXv6oL9g=="></a><blockquote></blockquote></td></tr></table>
-<a name="965464"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965464" class="reply">
-<input type=checkbox name="965464" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)23:55 <span id="norep965464"><a href="res/965460#965464" class="quotejs">No.</a><a href="res/965460#q965464" class="quotejs">965464</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267073758686.jpg" target="_blank">1267073758.jpg</a>-(338 KB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1267073758686.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267073758686s.jpg border=0 align=left width=126 height=95 hspace=20 alt="338 KB" md5="ifA2Z5RAzaX8MK3e9vNXCQ=="></a><blockquote></blockquote></td></tr></table>
-<a name="965465"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965465" class="reply">
-<input type=checkbox name="965465" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)23:57 <span id="norep965465"><a href="res/965460#965465" class="quotejs">No.</a><a href="res/965460#q965465" class="quotejs">965465</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267073828517.jpg" target="_blank">1267073828.jpg</a>-(1.01 MB, 1920x1200)</span><br><a href="http://images.4chan.org/w/src/1267073828517.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267073828517s.jpg border=0 align=left width=127 height=80 hspace=20 alt="1.01 MB" md5="D24ywUClRZDL2+yhMamogw=="></a><blockquote></blockquote></td></tr></table>
-<a name="965474"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965474" class="reply">
-<input type=checkbox name="965474" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/25/10(Thu)00:03 <span id="norep965474"><a href="res/965460#965474" class="quotejs">No.</a><a href="res/965460#q965474" class="quotejs">965474</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267074223582.jpg" target="_blank">1267074223.jpg</a>-(578 KB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1267074223582.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267074223582s.jpg border=0 align=left width=126 height=95 hspace=20 alt="578 KB" md5="WBr70zWuq1J3Rkuw1pNrsw=="></a><blockquote></blockquote></td></tr></table>
-<a name="965478"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965478" class="reply">
-<input type=checkbox name="965478" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/25/10(Thu)00:09 <span id="norep965478"><a href="res/965460#965478" class="quotejs">No.</a><a href="res/965460#q965478" class="quotejs">965478</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267074561624.jpg" target="_blank">1267074561.jpg</a>-(1.13 MB, 1280x1024)</span><br><a href="http://images.4chan.org/w/src/1267074561624.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267074561624s.jpg border=0 align=left width=126 height=101 hspace=20 alt="1.13 MB" md5="prQoI/m0q+sXtUqJ++lbBA=="></a><blockquote></blockquote></td></tr></table>
+<span class="filesize">File : <a href="http://images.4chan.org/w/src/1266962530058.png" target="_blank">1266962530.png</a>-(3.82 MB, 1024x768)</span><br><a href="http://images.4chan.org/w/src/1266962530058.png" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1266962530058s.jpg border=0 align=left width=251 height=189 hspace=20 alt="3.82 MB" md5="6ZDVkmGFasycUHSIC0q++Q=="></a><a name="0"></a>
+
+<input type=checkbox name="963843" value=delete><span class="filetitle">Nel</span> 
+<span class="postername">Anonymous</span> 02/23/10(Tue)17:02 <span id="nothread963843"><a href="res/963843#963843" class="quotejs">No.</a><a href="res/963843#q963843" class="quotejs">963843</a>  &nbsp; [<a href="res/963843">Reply</a>]</span>
+<blockquote>Need more Nel wallpaper!</blockquote><span class="omittedposts">14 posts and 13 image replies omitted. Click Reply to view.</span>
+<a name="965856"></a>
+
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965856" class="reply">
+<input type=checkbox name="965856" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:24 <span id="norep965856"><a href="res/963843#965856" class="quotejs">No.</a><a href="res/963843#q965856" class="quotejs">965856</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267133076310.jpg" target="_blank">1267133076.jpg</a>-(570 KB, 1280x960)</span><br><a href="http://images.4chan.org/w/src/1267133076310.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267133076310s.jpg border=0 align=left width=126 height=95 hspace=20 alt="570 KB" md5="X4VNkYZm/q3jGprJXxxwsQ=="></a><blockquote></blockquote></td></tr></table>
+<a name="965858"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965858" class="reply">
+<input type=checkbox name="965858" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:25 <span id="norep965858"><a href="res/963843#965858" class="quotejs">No.</a><a href="res/963843#q965858" class="quotejs">965858</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267133151737.jpg" target="_blank">1267133151.jpg</a>-(113 KB, 1280x1024)</span><br><a href="http://images.4chan.org/w/src/1267133151737.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267133151737s.jpg border=0 align=left width=126 height=101 hspace=20 alt="113 KB" md5="JzoOk1usZ1luzHaW1EXMOQ=="></a><blockquote></blockquote></td></tr></table>
+
+<a name="965860"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965860" class="reply">
+<input type=checkbox name="965860" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:26 <span id="norep965860"><a href="res/963843#965860" class="quotejs">No.</a><a href="res/963843#q965860" class="quotejs">965860</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267133199407.jpg" target="_blank">1267133199.jpg</a>-(140 KB, 1280x1024)</span><br><a href="http://images.4chan.org/w/src/1267133199407.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267133199407s.jpg border=0 align=left width=126 height=101 hspace=20 alt="140 KB" md5="voAkgsggVV8ddz0v9uvalQ=="></a><blockquote></blockquote></td></tr></table>
+<a name="965861"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965861" class="reply">
+<input type=checkbox name="965861" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:27 <span id="norep965861"><a href="res/963843#965861" class="quotejs">No.</a><a href="res/963843#q965861" class="quotejs">965861</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267133229765.png" target="_blank">1267133229.png</a>-(523 KB, 1680x1050)</span><br><a href="http://images.4chan.org/w/src/1267133229765.png" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267133229765s.jpg border=0 align=left width=126 height=80 hspace=20 alt="523 KB" md5="gOWSThfxpf6eK6Pf9Izl+Q=="></a><blockquote></blockquote></td></tr></table>
+
+<a name="965864"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965864" class="reply">
+<input type=checkbox name="965864" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:28 <span id="norep965864"><a href="res/963843#965864" class="quotejs">No.</a><a href="res/963843#q965864" class="quotejs">965864</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267133322071.jpg" target="_blank">1267133322.jpg</a>-(469 KB, 1280x1024)</span><br><a href="http://images.4chan.org/w/src/1267133322071.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267133322071s.jpg border=0 align=left width=126 height=101 hspace=20 alt="469 KB" md5="4/GLX3kVSUQc5yBYVfJIiw=="></a><blockquote></blockquote></td></tr></table>
 <br clear=left><hr>
-<span class="filesize">File : <a href="http://images.4chan.org/w/src/1266463743263.jpg" target="_blank">1266463743.jpg</a>-(570 KB, 1920x1200)</span><br><a href="http://images.4chan.org/w/src/1266463743263.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1266463743263s.jpg border=0 align=left width=252 height=158 hspace=20 alt="570 KB" md5="0Qr0uVJsVrFgY2cq5N9g0g=="></a><a name="0"></a>
-<input type=checkbox name="958032" value=delete><span class="filetitle"></span> 
-<span class="postername">Anonymous</span> 02/17/10(Wed)22:29 <span id="nothread958032"><a href="res/958032#958032" class="quotejs">No.</a><a href="res/958032#q958032" class="quotejs">958032</a>  &nbsp; [<a href="res/958032">Reply</a>]</span>
-<blockquote>bleach wallpapers requested.<br /><br />Help me out (:</blockquote><span class="omittedposts">116 posts and 99 image replies omitted. Click Reply to view.</span>
-<a name="964036"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="964036" class="reply">
-<input type=checkbox name="964036" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/23/10(Tue)21:15 <span id="norep964036"><a href="res/958032#964036" class="quotejs">No.</a><a href="res/958032#q964036" class="quotejs">964036</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1266977731725.jpg" target="_blank">1266977731.jpg</a>-(177 KB, 1280x800)</span><br><a href="http://images.4chan.org/w/src/1266977731725.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1266977731725s.jpg border=0 align=left width=126 height=80 hspace=20 alt="177 KB" md5="Gktz1yNu1aqbY7bDIAwaNA=="></a><blockquote></blockquote></td></tr></table>
-<a name="964076"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="964076" class="reply">
-<input type=checkbox name="964076" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/23/10(Tue)21:53 <span id="norep964076"><a href="res/958032#964076" class="quotejs">No.</a><a href="res/958032#q964076" class="quotejs">964076</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1266980020070.jpg" target="_blank">1266980020.jpg</a>-(332 KB, 1280x800)</span><br><a href="http://images.4chan.org/w/src/1266980020070.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1266980020070s.jpg border=0 align=left width=126 height=80 hspace=20 alt="332 KB" md5="CFnweIy+gh6thmH3WUFzHg=="></a><blockquote></blockquote></td></tr></table>
-<a name="965133"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965133" class="reply">
-<input type=checkbox name="965133" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">sum1else</span> <span class="postertrip">!!2RUEA3zPW0J</span> 02/24/10(Wed)17:11 <span id="norep965133"><a href="res/958032#965133" class="quotejs">No.</a><a href="res/958032#q965133" class="quotejs">965133</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267049461881.jpg" target="_blank">1267049461.jpg</a>-(502 KB, 1920x1200)</span><br><a href="http://images.4chan.org/w/src/1267049461881.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267049461881s.jpg border=0 align=left width=127 height=80 hspace=20 alt="502 KB" md5="ofMNxyAvF3tLYbtc6eXXnQ=="></a><blockquote></blockquote></td></tr></table>
-<a name="965243"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965243" class="reply">
-<input type=checkbox name="965243" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)19:38 <span id="norep965243"><a href="res/958032#965243" class="quotejs">No.</a><a href="res/958032#q965243" class="quotejs">965243</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267058311171.jpg" target="_blank">1267058311.jpg</a>-(103 KB, 1024x768)</span><br><a href="http://images.4chan.org/w/src/1267058311171.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267058311171s.jpg border=0 align=left width=126 height=95 hspace=20 alt="103 KB" md5="E2tCv5gbIrmA5I/hUlmbYg=="></a><blockquote></blockquote></td></tr></table>
-<a name="965477"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965477" class="reply">
-<input type=checkbox name="965477" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/25/10(Thu)00:08 <span id="norep965477"><a href="res/958032#965477" class="quotejs">No.</a><a href="res/958032#q965477" class="quotejs">965477</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267074497029.jpg" target="_blank">1267074497.jpg</a>-(236 KB, 1280x800)</span><br><a href="http://images.4chan.org/w/src/1267074497029.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267074497029s.jpg border=0 align=left width=126 height=80 hspace=20 alt="236 KB" md5="UrZX7b60rXIvz7bkzqSyJA=="></a><blockquote></blockquote></td></tr></table>
+<span class="filesize">File : <a href="http://images.4chan.org/w/src/1267130836232.jpg" target="_blank">1267130836.jpg</a>-(933 KB, 1503x992)</span><br><a href="http://images.4chan.org/w/src/1267130836232.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267130836232s.jpg border=0 align=left width=252 height=167 hspace=20 alt="933 KB" md5="WHj3HO0sgs6QRO/xAJ4KKg=="></a><a name="0"></a>
+
+<input type=checkbox name="965830" value=delete><span class="filetitle">/ck/w/</span> 
+<span class="postername">Anonymous</span> 02/25/10(Thu)15:47 <span id="nothread965830"><a href="res/965830#965830" class="quotejs">No.</a><a href="res/965830#q965830" class="quotejs">965830</a>  &nbsp; [<a href="res/965830">Reply</a>]</span>
+<blockquote>ITT Food&#44; for our desktops.</blockquote><a name="965831"></a>
+
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965831" class="reply">
+<input type=checkbox name="965831" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)15:47 <span id="norep965831"><a href="res/965830#965831" class="quotejs">No.</a><a href="res/965830#q965831" class="quotejs">965831</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267130869055.png" target="_blank">1267130869.png</a>-(948 KB, 1280x960)</span><br><a href="http://images.4chan.org/w/src/1267130869055.png" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267130869055s.jpg border=0 align=left width=126 height=95 hspace=20 alt="948 KB" md5="sgnhC1C4tUot6Ymq8BOgYQ=="></a><blockquote></blockquote></td></tr></table>
+<a name="965838"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965838" class="reply">
+<input type=checkbox name="965838" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)15:55 <span id="norep965838"><a href="res/965830#965838" class="quotejs">No.</a><a href="res/965830#q965838" class="quotejs">965838</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267131314079.jpg" target="_blank">1267131314.jpg</a>-(219 KB, 1024x753)</span><br><a href="http://images.4chan.org/w/src/1267131314079.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267131314079s.jpg border=0 align=left width=126 height=93 hspace=20 alt="219 KB" md5="kHRUBij5NkEbJ6U+FmiC4g=="></a><blockquote></blockquote></td></tr></table>
+
+<a name="965839"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965839" class="reply">
+<input type=checkbox name="965839" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)15:55 <span id="norep965839"><a href="res/965830#965839" class="quotejs">No.</a><a href="res/965830#q965839" class="quotejs">965839</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267131349841.jpg" target="_blank">1267131349.jpg</a>-(614 KB, 1100x762)</span><br><a href="http://images.4chan.org/w/src/1267131349841.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267131349841s.jpg border=0 align=left width=126 height=88 hspace=20 alt="614 KB" md5="Zm7fhxOjHPjeFmh+89uoMQ=="></a><blockquote></blockquote></td></tr></table>
+<a name="965842"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965842" class="reply">
+<input type=checkbox name="965842" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)15:56 <span id="norep965842"><a href="res/965830#965842" class="quotejs">No.</a><a href="res/965830#q965842" class="quotejs">965842</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267131407876.jpg" target="_blank">1267131407.jpg</a>-(503 KB, 1000x861)</span><br><a href="http://images.4chan.org/w/src/1267131407876.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267131407876s.jpg border=0 align=left width=126 height=109 hspace=20 alt="503 KB" md5="NmAZmWiJyStB3ocFa8GTVQ=="></a><blockquote><font class="unkfunc"><a href="res/965830#965839" class="quotelink">&gt;&gt;965839</a></font></blockquote></td></tr></table>
+
+<a name="965863"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965863" class="reply">
+<input type=checkbox name="965863" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:27 <span id="norep965863"><a href="res/965830#965863" class="quotejs">No.</a><a href="res/965830#q965863" class="quotejs">965863</a></span><blockquote><font class="unkfunc"><a href="res/965823#965826" class="quotelink">&gt;&gt;965826</a></font><br />We are tired of your spam and bullshit at www. äñoN+a|K .com. Stop fucking with us. You owe Sysop over $10&#44;000 USD due to your harassments. Pay up by donating.</blockquote></td></tr></table>
 <br clear=left><hr>
-<span class="filesize">File : <a href="http://images.4chan.org/w/src/1266861846825.jpg" target="_blank">1266861846.jpg</a>-(1.29 MB, 1680x1050)</span><br><a href="http://images.4chan.org/w/src/1266861846825.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1266861846825s.jpg border=0 align=left width=251 height=158 hspace=20 alt="1.29 MB" md5="koKU3IjLs3S/b8yh8SEHjw=="></a><a name="0"></a>
-<input type=checkbox name="962550" value=delete><span class="filetitle"></span> 
-<span class="postername">Anonymous</span> 02/22/10(Mon)13:04 <span id="nothread962550"><a href="res/962550#962550" class="quotejs">No.</a><a href="res/962550#q962550" class="quotejs">962550</a>  &nbsp; [<a href="res/962550">Reply</a>]</span>
-<blockquote>Final Fantasy Thead&#44; try to focus on XIII and VII but any other is very welcome as well. Have a nice day!</blockquote><span class="omittedposts">38 posts and 31 image replies omitted. Click Reply to view.</span>
-<a name="964420"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="964420" class="reply">
-<input type=checkbox name="964420" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)04:45 <span id="norep964420"><a href="res/962550#964420" class="quotejs">No.</a><a href="res/962550#q964420" class="quotejs">964420</a></span><blockquote>Sorry that I can't contribute but it's good to see that there are still those who know that VII isn't the first in the series and that VI was one of the last true fantasies. VII was only popularized years after its release by prepubescent idiots whose idea of action and fantasy comes from DBZ and Naruto and Evanescence.<br /><br />hurrdurr spiky hair and big sword r da coolz</blockquote></td></tr></table>
-<a name="964490"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="964490" class="reply">
-<input type=checkbox name="964490" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)05:31 <span id="norep964490"><a href="res/962550#964490" class="quotejs">No.</a><a href="res/962550#q964490" class="quotejs">964490</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267007517118.jpg" target="_blank">1267007517.jpg</a>-(669 KB, 1280x1024)</span><br><a href="http://images.4chan.org/w/src/1267007517118.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267007517118s.jpg border=0 align=left width=126 height=101 hspace=20 alt="669 KB" md5="LOnw2efRcoO1Y/DzvYG6TA=="></a><blockquote><font class="unkfunc"><a href="res/962550#964108" class="quotelink">&gt;&gt;964108</a></font><br /><font class="unkfunc">&gt;implying.</font><br />though I agree.</blockquote></td></tr></table>
-<a name="964749"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="964749" class="reply">
-<input type=checkbox name="964749" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)11:38 <span id="norep964749"><a href="res/962550#964749" class="quotejs">No.</a><a href="res/962550#q964749" class="quotejs">964749</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267029481086.jpg" target="_blank">1267029481.jpg</a>-(190 KB, 1400x900)</span><br><a href="http://images.4chan.org/w/src/1267029481086.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267029481086s.jpg border=0 align=left width=126 height=82 hspace=20 alt="190 KB" md5="GvksidZpGCVPqnQqb+UmtA=="></a><blockquote><font class="unkfunc"><a href="res/962550#964420" class="quotelink">&gt;&gt;964420</a></font><br /><br />One of the only things more annoying than FF7 fanboys&#44; are FF6 fanboys. Do you really think you sound any different?<br /><br />That said&#44; I think they are both awesome.</blockquote></td></tr></table>
-<a name="965308"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965308" class="reply">
-<input type=checkbox name="965308" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)21:38 <span id="norep965308"><a href="res/962550#965308" class="quotejs">No.</a><a href="res/962550#q965308" class="quotejs">965308</a></span><blockquote><font class="unkfunc"><a href="res/962550#964749" class="quotelink">&gt;&gt;964749</a></font><br />I see no Vincent in your picture.</blockquote></td></tr></table>
-<a name="965476"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965476" class="reply">
-<input type=checkbox name="965476" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/25/10(Thu)00:06 <span id="norep965476"><a href="res/962550#965476" class="quotejs">No.</a><a href="res/962550#q965476" class="quotejs">965476</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267074415498.jpg" target="_blank">1267074415.jpg</a>-(166 KB, 1280x887)</span><br><a href="http://images.4chan.org/w/src/1267074415498.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267074415498s.jpg border=0 align=left width=126 height=88 hspace=20 alt="166 KB" md5="/ektGKpB/58xsfZIHvDfAA=="></a><blockquote></blockquote></td></tr></table>
+<span class="filesize">File : <a href="http://images.4chan.org/w/src/1266984429139.jpg" target="_blank">1266984429.jpg</a>-(522 KB, 1680x1050)</span><br><a href="http://images.4chan.org/w/src/1266984429139.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1266984429139s.jpg border=0 align=left width=251 height=158 hspace=20 alt="522 KB" md5="95nFVsLoT7ELmawSZDHIIA=="></a><a name="0"></a>
+
+<input type=checkbox name="964147" value=delete><span class="filetitle"></span> 
+<span class="postername">Anonymous</span> 02/23/10(Tue)23:07 <span id="nothread964147"><a href="res/964147#964147" class="quotejs">No.</a><a href="res/964147#q964147" class="quotejs">964147</a>  &nbsp; [<a href="res/964147">Reply</a>]</span>
+<blockquote>Lets get a Melancholy of Haruhi Suzumiya thread going. Commencing dump.</blockquote><span class="omittedposts">42 posts and 37 image replies omitted. Click Reply to view.</span>
+<a name="965796"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965796" class="reply">
+
+<input type=checkbox name="965796" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">⑨⑨⑨⑨⑨⑨⑨⑨⑨</span> <span class="postertrip">!zumy5mh3M.</span> 02/25/10(Thu)14:48 <span id="norep965796"><a href="res/964147#965796" class="quotejs">No.</a><a href="res/964147#q965796" class="quotejs">965796</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267127325416.png" target="_blank">1267127325.png</a>-(1.43 MB, 1024x768)</span><br><a href="http://images.4chan.org/w/src/1267127325416.png" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267127325416s.jpg border=0 align=left width=126 height=95 hspace=20 alt="1.43 MB" md5="Obrd0uUliUyGZrdd6SiF6w=="></a><blockquote>and im back with a newly organized /w/ folder &amp; clean desktop ;D<br /><br />continuing dump<br /><br />11/?</blockquote></td></tr></table>
+
+<a name="965797"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965797" class="reply">
+<input type=checkbox name="965797" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">⑨⑨⑨⑨⑨⑨⑨⑨⑨</span> <span class="postertrip">!zumy5mh3M.</span> 02/25/10(Thu)14:49 <span id="norep965797"><a href="res/964147#965797" class="quotejs">No.</a><a href="res/964147#q965797" class="quotejs">965797</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267127398093.jpg" target="_blank">1267127398.jpg</a>-(606 KB, 1680x1050)</span><br><a href="http://images.4chan.org/w/src/1267127398093.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267127398093s.jpg border=0 align=left width=126 height=80 hspace=20 alt="606 KB" md5="8Zr9JA9ybWTREFgrNyyYQg=="></a><blockquote>12/?</blockquote></td></tr></table>
+<a name="965798"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965798" class="reply">
+
+<input type=checkbox name="965798" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">⑨⑨⑨⑨⑨⑨⑨⑨⑨</span> <span class="postertrip">!zumy5mh3M.</span> 02/25/10(Thu)14:53 <span id="norep965798"><a href="res/964147#965798" class="quotejs">No.</a><a href="res/964147#q965798" class="quotejs">965798</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267127612984.jpg" target="_blank">1267127612.jpg</a>-(342 KB, 1024x768)</span><br><a href="http://images.4chan.org/w/src/1267127612984.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267127612984s.jpg border=0 align=left width=126 height=95 hspace=20 alt="342 KB" md5="05ekD7EeqvMnpDEeyyvOWQ=="></a><blockquote>13/?</blockquote></td></tr></table>
+<a name="965803"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965803" class="reply">
+<input type=checkbox name="965803" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">⑨⑨⑨⑨⑨⑨⑨⑨⑨</span> <span class="postertrip">!zumy5mh3M.</span> 02/25/10(Thu)15:04 <span id="norep965803"><a href="res/964147#965803" class="quotejs">No.</a><a href="res/964147#q965803" class="quotejs">965803</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267128247160.jpg" target="_blank">1267128247.jpg</a>-(362 KB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1267128247160.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267128247160s.jpg border=0 align=left width=126 height=95 hspace=20 alt="362 KB" md5="jMLsMx40L51BVz/X1D9OdQ=="></a><blockquote>14/?</blockquote></td></tr></table>
+
+<a name="965862"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965862" class="reply">
+<input type=checkbox name="965862" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">⑨⑨⑨⑨⑨⑨⑨⑨⑨</span> <span class="postertrip">!zumy5mh3M.</span> 02/25/10(Thu)16:27 <span id="norep965862"><a href="res/964147#965862" class="quotejs">No.</a><a href="res/964147#q965862" class="quotejs">965862</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267133252873.jpg" target="_blank">1267133252.jpg</a>-(731 KB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1267133252873.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267133252873s.jpg border=0 align=left width=126 height=95 hspace=20 alt="731 KB" md5="sEZxU8SzPRAzlExKk+s8xw=="></a><blockquote>15/?</blockquote></td></tr></table>
 <br clear=left><hr>
-<span class="filesize">File : <a href="http://images.4chan.org/w/src/1267059875765.jpg" target="_blank">1267059875.jpg</a>-(201 KB, 925x653)</span><br><a href="http://images.4chan.org/w/src/1267059875765.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267059875765s.jpg border=0 align=left width=251 height=178 hspace=20 alt="201 KB" md5="uF5yfUJR4jHY5hCbVwnPwQ=="></a><a name="0"></a>
-<input type=checkbox name="965257" value=delete><span class="filetitle"></span> 
-<span class="postername">Anonymous</span> 02/24/10(Wed)20:04 <span id="nothread965257"><a href="res/965257#965257" class="quotejs">No.</a><a href="res/965257#q965257" class="quotejs">965257</a>  &nbsp; [<a href="res/965257">Reply</a>]</span>
-<blockquote>anyone have any widescreen(16:9) Chii wallpapers other than this one?</blockquote><a name="965475"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965475" class="reply">
-<input type=checkbox name="965475" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Makoto</span> 02/25/10(Thu)00:04 <span id="norep965475"><a href="res/965257#965475" class="quotejs">No.</a><a href="res/965257#q965475" class="quotejs">965475</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267074276418.jpg" target="_blank">1267074276.jpg</a>-(224 KB, 800x1802)</span><br><a href="http://images.4chan.org/w/src/1267074276418.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267074276418s.jpg border=0 align=left width=57 height=126 hspace=20 alt="224 KB" md5="iQYP+cXrLnXpNKR5unwV0A=="></a><blockquote>bump <br />Chobits makes me smile</blockquote></td></tr></table>
+<span class="filesize">File : <a href="http://images.4chan.org/w/src/1267126329850.jpg" target="_blank">1267126329.jpg</a>-(174 KB, 1024x768)</span><br><a href="http://images.4chan.org/w/src/1267126329850.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267126329850s.jpg border=0 align=left width=251 height=189 hspace=20 alt="174 KB" md5="1Z7leYy9I8NWzQ7vnYenDQ=="></a><a name="0"></a>
+
+<input type=checkbox name="965777" value=delete><span class="filetitle"></span> 
+<span class="postername">Anonymous</span> 02/25/10(Thu)14:32 <span id="nothread965777"><a href="res/965777#965777" class="quotejs">No.</a><a href="res/965777#q965777" class="quotejs">965777</a>  &nbsp; [<a href="res/965777">Reply</a>]</span>
+<blockquote>Someone post any wallpapers with Hoshina Utau</blockquote><a name="965849"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965849" class="reply">
+<input type=checkbox name="965849" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:17 <span id="norep965849"><a href="res/965777#965849" class="quotejs">No.</a><a href="res/965777#q965849" class="quotejs">965849</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267132677807.jpg" target="_blank">1267132677.jpg</a>-(98 KB, 1280x1024)</span><br><a href="http://images.4chan.org/w/src/1267132677807.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267132677807s.jpg border=0 align=left width=126 height=101 hspace=20 alt="98 KB" md5="CtNrnq08Hpu9gkMl+N+V4w=="></a><blockquote></blockquote></td></tr></table>
+
+<a name="965859"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965859" class="reply">
+<input type=checkbox name="965859" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:25 <span id="norep965859"><a href="res/965777#965859" class="quotejs">No.</a><a href="res/965777#q965859" class="quotejs">965859</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267133153568.jpg" target="_blank">1267133153.jpg</a>-(955 KB, 1920x1200)</span><br><a href="http://images.4chan.org/w/src/1267133153568.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267133153568s.jpg border=0 align=left width=127 height=80 hspace=20 alt="955 KB" md5="jgi8XoSQz1/10jj2H1VAhQ=="></a><blockquote></blockquote></td></tr></table>
 <br clear=left><hr>
-<span class="filesize">File : <a href="http://images.4chan.org/w/src/1267028105056.jpg" target="_blank">1267028105.jpg</a>-(397 KB, 1024x768)</span><br><a href="http://images.4chan.org/w/src/1267028105056.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267028105056s.jpg border=0 align=left width=251 height=189 hspace=20 alt="397 KB" md5="GxnjgvawoxObSHBRCIoz0Q=="></a><a name="0"></a>
+<span class="filesize">File : <a href="http://images.4chan.org/w/src/1267028105056.jpg" target="_blank">1267028105.jpg</a>-(397 KB, 1024x768)</span><br><a href="http://images.4chan.org/w/src/1267028105056.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267028105056s.jpg border=0 align=left width=251 height=189 hspace=20 alt="397 KB" md5="GxnjgvawoxObSHBRCIoz0Q=="></a><a name="0"></a>
+
 <input type=checkbox name="964716" value=delete><span class="filetitle">/w/ donation</span> 
 <span class="postername">Aquaphire</span> 02/24/10(Wed)11:15 <span id="nothread964716"><a href="res/964716#964716" class="quotejs">No.</a><a href="res/964716#q964716" class="quotejs">964716</a>  &nbsp; [<a href="res/964716">Reply</a>]</span>
-<blockquote>taste the perfection.</blockquote><span class="omittedposts">34 posts and 32 image replies omitted. Click Reply to view.</span>
-<a name="965315"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965315" class="reply">
-<input type=checkbox name="965315" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Aquaphire</span> 02/24/10(Wed)21:41 <span id="norep965315"><a href="res/964716#965315" class="quotejs">No.</a><a href="res/964716#q965315" class="quotejs">965315</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267065687341.jpg" target="_blank">1267065687.jpg</a>-(306 KB, 1680x1050)</span><br><a href="http://images.4chan.org/w/src/1267065687341.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267065687341s.jpg border=0 align=left width=126 height=80 hspace=20 alt="306 KB" md5="cF0hI3e1dM59ZHfEekfA0Q=="></a><blockquote></blockquote></td></tr></table>
-<a name="965451"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965451" class="reply">
-<input type=checkbox name="965451" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Aquaphire</span> 02/24/10(Wed)23:36 <span id="norep965451"><a href="res/964716#965451" class="quotejs">No.</a><a href="res/964716#q965451" class="quotejs">965451</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267072619826.jpg" target="_blank">1267072619.jpg</a>-(498 KB, 1280x1024)</span><br><a href="http://images.4chan.org/w/src/1267072619826.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267072619826s.jpg border=0 align=left width=126 height=101 hspace=20 alt="498 KB" md5="GcT254IMOGfrTlcU0D9w3A=="></a><blockquote></blockquote></td></tr></table>
-<a name="965454"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965454" class="reply">
-<input type=checkbox name="965454" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Aquaphire</span> 02/24/10(Wed)23:38 <span id="norep965454"><a href="res/964716#965454" class="quotejs">No.</a><a href="res/964716#q965454" class="quotejs">965454</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267072706090.jpg" target="_blank">1267072706.jpg</a>-(275 KB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1267072706090.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267072706090s.jpg border=0 align=left width=126 height=95 hspace=20 alt="275 KB" md5="e2SOceKY8niRsc2XrNeXMg=="></a><blockquote></blockquote></td></tr></table>
-<a name="965456"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965456" class="reply">
-<input type=checkbox name="965456" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Aquaphire</span> 02/24/10(Wed)23:39 <span id="norep965456"><a href="res/964716#965456" class="quotejs">No.</a><a href="res/964716#q965456" class="quotejs">965456</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267072782906.jpg" target="_blank">1267072782.jpg</a>-(710 KB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1267072782906.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267072782906s.jpg border=0 align=left width=126 height=95 hspace=20 alt="710 KB" md5="sZHSTrMghLfNVElHUoyUaw=="></a><blockquote></blockquote></td></tr></table>
-<a name="965473"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965473" class="reply">
-<input type=checkbox name="965473" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Aquaphire</span> 02/25/10(Thu)00:03 <span id="norep965473"><a href="res/964716#965473" class="quotejs">No.</a><a href="res/964716#q965473" class="quotejs">965473</a></span><blockquote>does /w/ want more?</blockquote></td></tr></table>
+<blockquote>taste the perfection.</blockquote><span class="omittedposts">102 posts and 92 image replies omitted. Click Reply to view.</span>
+<a name="965836"></a>
+
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965836" class="reply">
+<input type=checkbox name="965836" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Aquaphire</span> 02/25/10(Thu)15:54 <span id="norep965836"><a href="res/964716#965836" class="quotejs">No.</a><a href="res/964716#q965836" class="quotejs">965836</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267131280106.jpg" target="_blank">1267131280.jpg</a>-(357 KB, 1280x1024)</span><br><a href="http://images.4chan.org/w/src/1267131280106.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267131280106s.jpg border=0 align=left width=126 height=101 hspace=20 alt="357 KB" md5="vZdAXiK7EBxXWBa6oNnp/A=="></a><blockquote></blockquote></td></tr></table>
+<a name="965840"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965840" class="reply">
+<input type=checkbox name="965840" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Aquaphire</span> 02/25/10(Thu)15:56 <span id="norep965840"><a href="res/964716#965840" class="quotejs">No.</a><a href="res/964716#q965840" class="quotejs">965840</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267131387752.jpg" target="_blank">1267131387.jpg</a>-(308 KB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1267131387752.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267131387752s.jpg border=0 align=left width=126 height=95 hspace=20 alt="308 KB" md5="w71bSHF/A3G46NG8k8d5cw=="></a><blockquote></blockquote></td></tr></table>
+
+<a name="965845"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965845" class="reply">
+<input type=checkbox name="965845" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Aquaphire</span> 02/25/10(Thu)16:00 <span id="norep965845"><a href="res/964716#965845" class="quotejs">No.</a><a href="res/964716#q965845" class="quotejs">965845</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267131623462.jpg" target="_blank">1267131623.jpg</a>-(1.45 MB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1267131623462.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267131623462s.jpg border=0 align=left width=126 height=95 hspace=20 alt="1.45 MB" md5="llesZxi3bc6HIC+z1CHaBA=="></a><blockquote></blockquote></td></tr></table>
+<a name="965848"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965848" class="reply">
+<input type=checkbox name="965848" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Aquaphire</span> 02/25/10(Thu)16:09 <span id="norep965848"><a href="res/964716#965848" class="quotejs">No.</a><a href="res/964716#q965848" class="quotejs">965848</a></span><blockquote>check out my /wg/ thread <a href="http://sys.4chan.org/wg/imgboard.php?res=2714756" class="quotelink">&gt;&gt;&gt;/wg/2714756</a></blockquote></td></tr></table>
+
+<a name="965857"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965857" class="reply">
+<input type=checkbox name="965857" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Aquaphire</span> 02/25/10(Thu)16:25 <span id="norep965857"><a href="res/964716#965857" class="quotejs">No.</a><a href="res/964716#q965857" class="quotejs">965857</a></span><blockquote>What does /w/ think of my thread?</blockquote></td></tr></table>
 <br clear=left><hr>
-<span class="filesize">File : <a href="http://images.4chan.org/w/src/1267048301260.jpg" target="_blank">1267048301.jpg</a>-(420 KB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1267048301260.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267048301260s.jpg border=0 align=left width=251 height=189 hspace=20 alt="420 KB" md5="/aJiIu98GkNcvlTbrIeTCA=="></a><a name="0"></a>
-<input type=checkbox name="965116" value=delete><span class="filetitle"></span> 
-<span class="postername">Anonymous</span> 02/24/10(Wed)16:51 <span id="nothread965116"><a href="res/965116#965116" class="quotejs">No.</a><a href="res/965116#q965116" class="quotejs">965116</a>  &nbsp; [<a href="res/965116">Reply</a>]</span>
-<blockquote>Beck anyone?</blockquote><span class="omittedposts">4 posts and 3 image replies omitted. Click Reply to view.</span>
-<a name="965467"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965467" class="reply">
-<input type=checkbox name="965467" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)23:59 <span id="norep965467"><a href="res/965116#965467" class="quotejs">No.</a><a href="res/965116#q965467" class="quotejs">965467</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267073987638.jpg" target="_blank">1267073987.jpg</a>-(138 KB, 1024x768)</span><br><a href="http://images.4chan.org/w/src/1267073987638.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267073987638s.jpg border=0 align=left width=126 height=95 hspace=20 alt="138 KB" md5="ltO9AQC5WXoviU71oU/TRw=="></a><blockquote></blockquote></td></tr></table>
-<a name="965468"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965468" class="reply">
-<input type=checkbox name="965468" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/25/10(Thu)00:00 <span id="norep965468"><a href="res/965116#965468" class="quotejs">No.</a><a href="res/965116#q965468" class="quotejs">965468</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267074028487.jpg" target="_blank">1267074028.jpg</a>-(422 KB, 1280x960)</span><br><a href="http://images.4chan.org/w/src/1267074028487.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267074028487s.jpg border=0 align=left width=126 height=95 hspace=20 alt="422 KB" md5="DQ/cFvJ2ZMdYiL3+3lWwuQ=="></a><blockquote></blockquote></td></tr></table>
-<a name="965470"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965470" class="reply">
-<input type=checkbox name="965470" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/25/10(Thu)00:01 <span id="norep965470"><a href="res/965116#965470" class="quotejs">No.</a><a href="res/965116#q965470" class="quotejs">965470</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267074072659.jpg" target="_blank">1267074072.jpg</a>-(168 KB, 1920x1200)</span><br><a href="http://images.4chan.org/w/src/1267074072659.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267074072659s.jpg border=0 align=left width=127 height=80 hspace=20 alt="168 KB" md5="esGFoa9uMWl839cLtkhB8Q=="></a><blockquote></blockquote></td></tr></table>
-<a name="965471"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965471" class="reply">
-<input type=checkbox name="965471" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/25/10(Thu)00:01 <span id="norep965471"><a href="res/965116#965471" class="quotejs">No.</a><a href="res/965116#q965471" class="quotejs">965471</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267074111812.jpg" target="_blank">1267074111.jpg</a>-(908 KB, 1280x768)</span><br><a href="http://images.4chan.org/w/src/1267074111812.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267074111812s.jpg border=0 align=left width=126 height=76 hspace=20 alt="908 KB" md5="8soY11sUYyG6swz/HRsNfg=="></a><blockquote></blockquote></td></tr></table>
-<a name="965472"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965472" class="reply">
-<input type=checkbox name="965472" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/25/10(Thu)00:02 <span id="norep965472"><a href="res/965116#965472" class="quotejs">No.</a><a href="res/965116#q965472" class="quotejs">965472</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267074179630.jpg" target="_blank">1267074179.jpg</a>-(293 KB, 1600x1200)</span><br><a href="http://images.4chan.org/w/src/1267074179630.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267074179630s.jpg border=0 align=left width=126 height=95 hspace=20 alt="293 KB" md5="mCt+XhUeC2TtklIw+I2jUQ=="></a><blockquote></blockquote></td></tr></table>
+<span class="filesize">File : <a href="http://images.4chan.org/w/src/1267131297396.jpg" target="_blank">1267131297.jpg</a>-(552 KB, 1000x704)</span><br><a href="http://images.4chan.org/w/src/1267131297396.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267131297396s.jpg border=0 align=left width=251 height=177 hspace=20 alt="552 KB" md5="5Ck31HhUL9EL0j4GWbj1/A=="></a><a name="0"></a>
+<input type=checkbox name="965837" value=delete><span class="filetitle"></span> 
+<span class="postername">Anonymous</span> 02/25/10(Thu)15:54 <span id="nothread965837"><a href="res/965837#965837" class="quotejs">No.</a><a href="res/965837#q965837" class="quotejs">965837</a>  &nbsp; [<a href="res/965837">Reply</a>]</span>
+
+<blockquote>Hey /w/&#44; <br />I'm humbling requesting help finding some good wallpapers that'd work for a 1280 x 800 resolution. Will post what little I have in return&#44; thanks!</blockquote><span class="omittedposts">3 posts and 3 image replies omitted. Click Reply to view.</span>
+<a name="965847"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965847" class="reply">
+<input type=checkbox name="965847" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:09 <span id="norep965847"><a href="res/965837#965847" class="quotejs">No.</a><a href="res/965837#q965847" class="quotejs">965847</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267132177083.jpg" target="_blank">1267132177.jpg</a>-(924 KB, 1280x1024)</span><br><a href="http://images.4chan.org/w/src/1267132177083.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267132177083s.jpg border=0 align=left width=126 height=101 hspace=20 alt="924 KB" md5="luWHN3sUUAnG50NJyvrqaw=="></a><blockquote>Not to hijack&#44; but does anyone have that Dollars logo wallpaper?</blockquote></td></tr></table>
+
+<a name="965850"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965850" class="reply">
+<input type=checkbox name="965850" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:18 <span id="norep965850"><a href="res/965837#965850" class="quotejs">No.</a><a href="res/965837#q965850" class="quotejs">965850</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267132683914.png" target="_blank">1267132683.png</a>-(1.72 MB, 1920x1200)</span><br><a href="http://images.4chan.org/w/src/1267132683914.png" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267132683914s.jpg border=0 align=left width=127 height=80 hspace=20 alt="1.72 MB" md5="zUnoASfuH5JR9A5FwmwJdA=="></a><blockquote><font class="unkfunc"><a href="res/965837#965847" class="quotelink">&gt;&gt;965847</a></font><br />Shit&#44; I know the one you're talking about&#44; I really want it</blockquote></td></tr></table>
+
+<a name="965851"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965851" class="reply">
+<input type=checkbox name="965851" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:18 <span id="norep965851"><a href="res/965837#965851" class="quotejs">No.</a><a href="res/965837#q965851" class="quotejs">965851</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267132736342.png" target="_blank">1267132736.png</a>-(103 KB, 1920x1200)</span><br><a href="http://images.4chan.org/w/src/1267132736342.png" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267132736342s.jpg border=0 align=left width=127 height=80 hspace=20 alt="103 KB" md5="zamUiWEAxptAusVJ5cDhUA=="></a><blockquote>/delivered</blockquote></td></tr></table>
+<a name="965852"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965852" class="reply">
+<input type=checkbox name="965852" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:20 <span id="norep965852"><a href="res/965837#965852" class="quotejs">No.</a><a href="res/965837#q965852" class="quotejs">965852</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267132859143.jpg" target="_blank">1267132859.jpg</a>-(80 KB, 850x680)</span><br><a href="http://images.4chan.org/w/src/1267132859143.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267132859143s.jpg border=0 align=left width=126 height=101 hspace=20 alt="80 KB" md5="JwS8C5VRiKR91opPCUgD4A=="></a><blockquote><font class="unkfunc"><a href="res/965837#965851" class="quotelink">&gt;&gt;965851</a></font><br />Thanks. I thought it wasn't on that site&#44; but I guess I got the tag wrong.</blockquote></td></tr></table>
+
+<a name="965854"></a>
+<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965854" class="reply">
+<input type=checkbox name="965854" value=delete><span class="replytitle"></span> 
+<span class="commentpostername">Anonymous</span> 02/25/10(Thu)16:22 <span id="norep965854"><a href="res/965837#965854" class="quotejs">No.</a><a href="res/965837#q965854" class="quotejs">965854</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267132938985.jpg" target="_blank">1267132938.jpg</a>-(631 KB, 1920x1200)</span><br><a href="http://images.4chan.org/w/src/1267132938985.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267132938985s.jpg border=0 align=left width=127 height=80 hspace=20 alt="631 KB" md5="Fz+K0to27RNFP7H0B3o/gg=="></a><blockquote><font class="unkfunc"><a href="res/965837#965852" class="quotelink">&gt;&gt;965852</a></font><br />It's on like the second page or soemthing&#44; there's another version with out the password stuff below it</blockquote></td></tr></table>
 <br clear=left><hr>
-<span class="filesize">File : <a href="http://images.4chan.org/w/src/1266828779666.jpg" target="_blank">1266828779.jpg</a>-(398 KB, 1366x769)</span><br><a href="http://images.4chan.org/w/src/1266828779666.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1266828779666s.jpg border=0 align=left width=251 height=142 hspace=20 alt="398 KB" md5="CFCJGAsg1Sdq6poVfLLR/w=="></a><a name="0"></a>
-<input type=checkbox name="962300" value=delete><span class="filetitle">Desktop tyme!</span> 
-<span class="postername">Anonymous</span> 02/22/10(Mon)03:52 <span id="nothread962300"><a href="res/962300#962300" class="quotejs">No.</a><a href="res/962300#q962300" class="quotejs">962300</a>  &nbsp; [<a href="res/962300">Reply</a>]</span>
-<blockquote>Post your Desktops!</blockquote><span class="omittedposts">170 posts and 74 image replies omitted. Click Reply to view.</span>
-<a name="965345"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965345" class="reply">
-<input type=checkbox name="965345" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)22:15 <span id="norep965345"><a href="res/962300#965345" class="quotejs">No.</a><a href="res/962300#q965345" class="quotejs">965345</a></span><blockquote><font class="unkfunc"><a href="res/962300#962468" class="quotelink">&gt;&gt;962468</a></font><br />the fuck you got stop zilla on there?</blockquote></td></tr></table>
-<a name="965363"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965363" class="reply">
-<input type=checkbox name="965363" value=delete><span class="replytitle"></span> 
-<span class="commentpostername"><a href="mailto:sage" class="linkmail">Anonymous</a></span> 02/24/10(Wed)22:28 <span id="norep965363"><a href="res/962300#965363" class="quotejs">No.</a><a href="res/962300#q965363" class="quotejs">965363</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267068503805.jpg" target="_blank">1267068503.jpg</a>-(450 KB, 1920x1200)</span><br><a href="http://images.4chan.org/w/src/1267068503805.jpg" target=_blank><img src=http://2.thumbs.4chan.org/w/thumb/1267068503805s.jpg border=0 align=left width=127 height=80 hspace=20 alt="450 KB" md5="LGWCNE7kxWI5UzFug9sp9A=="></a><blockquote>Here's mine.</blockquote></td></tr></table>
-<a name="965459"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965459" class="reply">
-<input type=checkbox name="965459" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)23:46 <span id="norep965459"><a href="res/962300#965459" class="quotejs">No.</a><a href="res/962300#q965459" class="quotejs">965459</a></span><blockquote><font class="unkfunc"><a href="res/962300#962827" class="quotelink">&gt;&gt;962827</a></font><br />Original please :3</blockquote></td></tr></table>
-<a name="965466"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965466" class="reply">
-<input type=checkbox name="965466" value=delete><span class="replytitle">I will show you...</span> 
-<span class="commentpostername">Anonymous</span> 02/24/10(Wed)23:57 <span id="norep965466"><a href="res/962300#965466" class="quotejs">No.</a><a href="res/962300#q965466" class="quotejs">965466</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267073856446.jpg" target="_blank">1267073856.jpg</a>-(186 KB, 1280x960)</span><br><a href="http://images.4chan.org/w/src/1267073856446.jpg" target=_blank><img src=http://0.thumbs.4chan.org/w/thumb/1267073856446s.jpg border=0 align=left width=126 height=95 hspace=20 alt="186 KB" md5="Tw10Kl2nSRdgWf19M5mcxw=="></a><blockquote>THE GREATEST NIGHTMARE!</blockquote></td></tr></table>
-<a name="965469"></a>
-<table><tr><td nowrap class="doubledash">&gt;&gt;</td><td id="965469" class="reply">
-<input type=checkbox name="965469" value=delete><span class="replytitle"></span> 
-<span class="commentpostername">Legacy</span> 02/25/10(Thu)00:00 <span id="norep965469"><a href="res/962300#965469" class="quotejs">No.</a><a href="res/962300#q965469" class="quotejs">965469</a></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="filesize">File<a href="http://images.4chan.org/w/src/1267074030628.jpg" target="_blank">1267074030.jpg</a>-(100 KB, 1366x768)</span><br><a href="http://images.4chan.org/w/src/1267074030628.jpg" target=_blank><img src=http://1.thumbs.4chan.org/w/thumb/1267074030628s.jpg border=0 align=left width=126 height=72 hspace=20 alt="100 KB" md5="S/oGAnalhAPHe0x7s7QUBg=="></a><blockquote>Background set to shuffle&#44; changes pretty often. Snapped the current one.</blockquote></td></tr></table>
-<br clear=left><hr>
+
 <center><a href="http://affiliates.jlist.com/click/583?url=http://www.jlist.com/index.html" target="_blank"><img style="border:1px solid black;" src="http://static.4chan.org/support/jlist_leader/728x90_std_2.jpg" width=728 height=90 border=0 /></a></center><hr><table align=right><tr><td nowrap align=center class=deletebuttons>
 <input type=hidden name=mode value=usrdel>Delete Post [<input class=checkbox type=checkbox name=onlyimgdel value=on>File Only]<br>
 Password <input class=inputtext type=password name="pwd" size=8 maxlength=8 value="">
 <input type=submit value="Delete"><input type="button" value="Report" onclick="var o=document.getElementsByTagName('INPUT');for(var i=0;i<o.length;i++)if(o[i].type=='checkbox' && o[i].checked && o[i].value=='delete') return reppop('http://sys.4chan.org/w/imgboard.php?mode=report&no='+o[i].name+'');"></form><script>document.delform.pwd.value=get_pass("4chan_pass");</script></td></tr><tr><td align="right">Style [<a href="#" onclick="setActiveStyleSheet('Yotsuba'); return false;">Yotsuba</a> | <a href="#" onclick="setActiveStyleSheet('Yotsuba B'); return false;">Yotsuba B</a> | <a href="#" onclick="setActiveStyleSheet('Futaba'); return false;">Futaba</a> | <a href="#" onclick="setActiveStyleSheet('Burichan'); return false;">Burichan</a>]</td></tr></table><table class=pages align=left border=1><tr><td>Previous</td><td>[<b>0</b>] [<a href="1">1</a>] [<a href="2">2</a>] [<a href="3">3</a>] [<a href="4">4</a>] [<a href="5">5</a>] [<a href="6">6</a>] [<a href="7">7</a>] [<a href="8">8</a>] [<a href="9">9</a>] [<a href="10">10</a>] </td><form action="1" onsubmit='location=this.action;return false' method=get><td><input type=submit value="Next" accesskey="x"></td></form></tr></table><br clear=all>
+
 <div id="footer"><span id="navbot">
 [<a href="http://boards.4chan.org/a/" title="Anime & Manga">a</a> / 
 <a href="http://boards.4chan.org/b/" title="Random">b</a> / 
 <a href="http://boards.4chan.org/c/" title="Anime/Cute">c</a> / 
 <a href="http://boards.4chan.org/d/" title="Hentai/Alternative">d</a> / 
 <a href="http://boards.4chan.org/e/" title="Ecchi">e</a> / 
+
 <a href="http://boards.4chan.org/f/" title="Flash">f</a> / 
 <a href="http://boards.4chan.org/g/" title="Technology">g</a> / 
 <a href="http://boards.4chan.org/gif/" title="Animated GIF">gif</a> / 
 <a href="http://boards.4chan.org/h/" title="Hentai">h</a> / 
 <a href="http://boards.4chan.org/hr/" title="High Resolution">hr</a> / 
 <a href="http://boards.4chan.org/k/" title="Weapons">k</a> / 
+
 <a href="http://boards.4chan.org/m/" title="Mecha">m</a> / 
 <a href="http://boards.4chan.org/o/" title="Auto">o</a> / 
 <a href="http://boards.4chan.org/p/" title="Photo">p</a> / 
 <a href="http://boards.4chan.org/r/" title="Request">r</a> / 
 <a href="http://boards.4chan.org/s/" title="Sexy Beautiful Women">s</a> / 
 <a href="http://boards.4chan.org/t/" title="Torrents">t</a> / 
+
 <a href="http://boards.4chan.org/u/" title="Yuri">u</a> / 
 <a href="http://boards.4chan.org/v/" title="Video Games">v</a> / 
 <a href="http://boards.4chan.org/w/" title="Anime/Wallpapers">w</a> / 
@@ -360,6 +377,7 @@ Password <input class=inputtext type=password name="pwd" size=8 maxlength=8 valu
 <a href="http://boards.4chan.org/ic/" title="Artwork/Critique">ic</a>]
 
 [<a href="http://boards.4chan.org/cm/" title="Cute/Male">cm</a> / 
+
 <a href="http://boards.4chan.org/y/" title="Yaoi">y</a>]
 
 [<a href="http://boards.4chan.org/r9k/" title="ROBOT9000">r9k</a>]
@@ -369,18 +387,21 @@ Password <input class=inputtext type=password name="pwd" size=8 maxlength=8 valu
 <a href="http://boards.4chan.org/an/" title="Animals & Nature">an</a> /
 <a href="http://boards.4chan.org/cgl/" title="Cosplay & EGL">cgl</a> /
 <a href="http://boards.4chan.org/ck/" title="Food & Cooking">ck</a> /
+
 <a href="http://boards.4chan.org/co/" title="Comics & Cartoons">co</a> /
 <a href="http://boards.4chan.org/fa/" title="Fashion">fa</a> /
 <a href="http://boards.4chan.org/fit/" title="Health & Fitness">fit</a> /
 <a href="http://boards.4chan.org/int/" title="International">int</a> /
 <a href="http://boards.4chan.org/jp/" title="Otaku Culture">jp</a> /
 <a href="http://boards.4chan.org/lit/" title="Literature">lit</a> /
+
 <a href="http://boards.4chan.org/mu/" title="Music">mu</a> /
 <a href="http://boards.4chan.org/n/" title="Transportation">n</a> /
 <a href="http://boards.4chan.org/new/" title="News">new</a> /
 <a href="http://boards.4chan.org/po/" title="Papercraft & Origami">po</a> /
 <a href="http://boards.4chan.org/sci/" title="Science & Math">sci</a> /
 <a href="http://boards.4chan.org/sp/" title="Sports">sp</a> /
+
 <a href="http://boards.4chan.org/tg/" title="Traditional Games">tg</a> /
 <a href="http://boards.4chan.org/toy/" title="Toys">toy</a> /
 <a href="http://boards.4chan.org/trv/" title="Travel">trv</a> /
@@ -390,11 +411,13 @@ Password <input class=inputtext type=password name="pwd" size=8 maxlength=8 valu
 [<a href="http://rs.4chan.org/" title="Rapidshares">rs</a>]
 
 [<a href="http://status.4chan.org/" title="4chan Status">status</a> / 
+
 <span style="font-size: 90%;"><a href="http://formspring.me/4chan" title="4chan Q&A">?</a></span> / 
 <span style="font-size: 90%;"><a href="http://twitter.com/4chan" title="4chan Twitter">@</a></span>]
 
 </span><span id="navbotr">[<a href="http://www.4chan.org/" target="_top">Home</a>]</span><br><br>
 <center><font size="2">- <a href="http://www.2chan.net/" target="_top" rel="nofollow">futaba</a> + <a href="http://www.4chan.org/" target="_top">yotsuba</a> -<br>
+
 All trademarks and copyrights on this page are owned by their respective parties. Images uploaded are the responsibility of the Poster. Comments are owned by the Poster.</font></center>
 </div>
 <!-- Start Quantcast tag -->
@@ -416,36 +439,5 @@ pageTracker._initData();
 pageTracker._trackPageview();
 </script>
 <!-- End Google Analytics tag -->
-</body></html>ed are the responsibility of the Poster. Comments are owned by the Poster.</font></center>
-</div>
-<!-- Start Quantcast tag -->
-<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
-<script type="text/javascript">_qacct="p-0bq3T16a3nFeM";quantserve();</script>
-<noscript>
-<img src="http://pixel.quantserve.com/pixel/p-0bq3T16a3nFeM.gif" style="display: none;" height="1" width="1" alt="Quantcast"/>
-</noscript>
-<!-- End Quantcast tag -->
-<!-- Start Google Analytics tag -->
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-166538-1");
-pageTracker._setDomainName("4chan.org");
-pageTracker._initData();
-pageTracker._trackPageview();
-</script>
-<!-- End Google Analytics tag -->
-</body></html>ed are the responsibility of the Poster. Comments are owned by the Poster.</font></center>
-</div>
-<!-- Start Quantcast tag -->
-<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
-<script type="text/javascript">_qacct="p-0bq3T16a3nFeM";quantserve();</script>
-<noscript>
-<img src="http://pixel.quantserve.com/pixel/p-0bq3T16a3nFeM.gif" style="display: none;" height="1" width="1" alt="Quantcast"/>
-</noscript>
-<!-- End Quantcast tag -->
-<!-- Start Google Analytics tag -->
-<script type="text/javascript">
-var gaJsHost = (("https:" 
+
+</body></html>

@@ -13,6 +13,8 @@ namespace Scraper
 		[STAThread]
 		static void Main()
 		{
+			new Scraper.Html.BoardParser("").Parse();
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new frmMain());

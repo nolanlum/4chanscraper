@@ -15,5 +15,17 @@ namespace Scraper
 		{
 			InitializeComponent();
 		}
+
+		#region Event Listeners
+		private void mnuMain_HelpDebug_Click(object sender, EventArgs e)
+		{
+			if (this.mnuMain_HelpDebug.Checked)
+				DebugConsole.HideConsole();
+			else
+				DebugConsole.ShowConsole();
+
+			this.mnuMain_HelpDebug.Checked = !this.mnuMain_HelpDebug.Checked;
+		}
+		#endregion
 	}
 }
