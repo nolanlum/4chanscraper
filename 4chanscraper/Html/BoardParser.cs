@@ -10,7 +10,7 @@ using System.Globalization;
 
 namespace Scraper.Html
 {
-	class BoardParser
+	public class BoardParser
 	{
 		#region Private Members
 		private string url, page;
@@ -63,10 +63,10 @@ namespace Scraper.Html
 			return max;
 		}
 
-		public void Parse()
+		public Thread[] Parse()
 		{
 			if (!getPage())
-				return;
+				return null;
 
 			// Extract thread information.
 			DebugConsole.ShowInfo("Parsing board page:", " ");
@@ -85,9 +85,18 @@ namespace Scraper.Html
 
 			// Now crawl each individual thread for images.
 			foreach (Thread t in threads)
-				crawlThread(t);
+				//System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(this.crawlThread), t);
+				this.crawlThread(t);
+
+			Thread[] ta = new Thread[threads.Count];
+			threads.CopyTo(ta);
+			return ta;
 		}
 
+		private void crawlThread(object t)
+		{
+			if (t.GetType() == typeof(Thread)) crawlThread((Thread) t);
+		}
 		private void crawlThread(Thread t)
 		{
 			string page = null, url = this.url.TrimEnd("1234567890".ToCharArray()) + "res/" + t.Id;
@@ -123,16 +132,17 @@ namespace Scraper.Html
 					break;
 				}
 			}
-			List<Post> posts = new List<Post>();
 			for (int i = 0; i < parts.Length; i++)
 			{
 				Match m = (i == 0 ? postOP : postRE).Match(parts[i]);
 				if (m.Success)
 				{
-					posts.Add(new Post(int.Parse(m.Groups["id"].Value), m.Groups["text"].Value, m.Groups["url"].Value, this.parse4chanDate(m.Groups["date"].Value.Trim())));
+					t.AddPost(new Post(int.Parse(m.Groups["id"].Value), m.Groups["text"].Value, m.Groups["url"].Value, this.parse4chanDate(m.Groups["date"].Value.Trim())));
 				}
 			}
-			DebugConsole.WriteParseANSI("found " + posts.Count + " images/posts.\n");
+			DebugConsole.WriteParseANSI("found " + t.Count + " images/posts.\n");
+
+			
 		}
 
 		private bool getPage()

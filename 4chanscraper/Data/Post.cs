@@ -8,7 +8,7 @@ using System.IO;
 namespace Scraper.Data
 {
 	[Serializable]
-	class Post
+	public class Post
 	{
 		#region Private Members
 		private int id;

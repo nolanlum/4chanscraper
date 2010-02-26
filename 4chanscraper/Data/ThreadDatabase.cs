@@ -11,7 +11,7 @@ using System.Collections;
 namespace Scraper.Data
 {
 	[Serializable]
-	class ThreadDatabase : IDisposable, IEnumerable<KeyValuePair<int, Thread>>
+	public class ThreadDatabase : IDisposable, IEnumerable<KeyValuePair<int, Thread>>
 	{
 		public delegate void __ThreadAdd(Thread newThread);
 		public event __ThreadAdd ThreadAdded;
@@ -32,6 +32,10 @@ namespace Scraper.Data
 		{
 			get { return this.url; }
 			set { this.url = value; }
+		}
+		public string Filename
+		{
+			get { return this.filename; }
 		}
 		public int ThreadCount
 		{
@@ -80,6 +84,11 @@ namespace Scraper.Data
 
 			if (this.ThreadAdded != null)
 				this.ThreadAdded(thread);
+		}
+		public void AddThreads(Thread[] threads)
+		{
+			foreach (Thread t in threads)
+				AddThread(t);
 		}
 
 		public void Save()

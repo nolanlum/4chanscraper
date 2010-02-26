@@ -6,9 +6,10 @@ using System.Text;
 namespace Scraper.Data
 {
 	[Serializable]
-	class Thread
+	public class Thread
 	{
 		private int id;
+		private string name;
 		private List<Post> posts;
 
 		public int Id
@@ -23,12 +24,19 @@ namespace Scraper.Data
 		{
 			get { return this.posts.Count; }
 		}
+		public string Name
+		{
+			get { return this.Name; }
+			set { this.Name = value; }
+		}
 
-		public Thread(int id)
+		public Thread(int id, string name)
 		{
 			this.id = id;
+			this.name = name;
 			this.posts = new List<Post>();
 		}
+		public Thread(int id) : this(id, null) { }
 
 		public void AddPost(Post post)
 		{

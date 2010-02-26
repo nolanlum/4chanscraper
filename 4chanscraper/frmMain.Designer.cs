@@ -29,16 +29,16 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node1");
-			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node2");
-			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node3");
-			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
-			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
-			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Node1");
+			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Node2");
+			System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Node3");
+			System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode8,
+            treeNode9});
+			System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Node5");
+			System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
+            treeNode11});
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
 			this.mnuMain = new System.Windows.Forms.MenuStrip();
 			this.mnuMain_File = new System.Windows.Forms.ToolStripMenuItem();
@@ -167,6 +167,7 @@
 			this.mnuMain_FileMinimize.Name = "mnuMain_FileMinimize";
 			this.mnuMain_FileMinimize.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileMinimize.Text = "Minimize to Tray";
+			this.mnuMain_FileMinimize.Click += new System.EventHandler(this.mnuMain_FileMinimize_Click);
 			// 
 			// mnuMain_FileExit
 			// 
@@ -231,6 +232,7 @@
 			this.mnuMain_ScraperNow.Name = "mnuMain_ScraperNow";
 			this.mnuMain_ScraperNow.Size = new System.Drawing.Size(210, 22);
 			this.mnuMain_ScraperNow.Text = "Manual Scrape Now";
+			this.mnuMain_ScraperNow.Click += new System.EventHandler(this.mnuMain_ScraperNow_Click);
 			// 
 			// mnuMain_Help
 			// 
@@ -259,21 +261,21 @@
 			// 
 			this.treePostWindow.Location = new System.Drawing.Point(12, 27);
 			this.treePostWindow.Name = "treePostWindow";
-			treeNode1.Name = "Node1";
-			treeNode1.Text = "Node1";
-			treeNode2.Name = "Node2";
-			treeNode2.Text = "Node2";
-			treeNode3.Name = "Node3";
-			treeNode3.Text = "Node3";
-			treeNode4.Name = "Node0";
-			treeNode4.Text = "Node0";
-			treeNode5.Name = "Node5";
-			treeNode5.Text = "Node5";
-			treeNode6.Name = "Node4";
-			treeNode6.Text = "Node4";
+			treeNode7.Name = "Node1";
+			treeNode7.Text = "Node1";
+			treeNode8.Name = "Node2";
+			treeNode8.Text = "Node2";
+			treeNode9.Name = "Node3";
+			treeNode9.Text = "Node3";
+			treeNode10.Name = "Node0";
+			treeNode10.Text = "Node0";
+			treeNode11.Name = "Node5";
+			treeNode11.Text = "Node5";
+			treeNode12.Name = "Node4";
+			treeNode12.Text = "Node4";
 			this.treePostWindow.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode6});
+            treeNode10,
+            treeNode12});
 			this.treePostWindow.Size = new System.Drawing.Size(227, 352);
 			this.treePostWindow.TabIndex = 1;
 			// 
