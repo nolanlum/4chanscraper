@@ -19,8 +19,7 @@ namespace Scraper
 			DebugConsole.ShowConsole();
 #endif
 
-			new Scraper.Html.BoardParser("").Parse();
-
+			DebugConsole.ShowStatus("Program startup...showing main form.");
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(mainForm = new frmMain());

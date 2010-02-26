@@ -37,6 +37,10 @@ namespace Scraper.Data
 		{
 			get { return this.threads.Count; }
 		}
+		public int PostCount
+		{
+			get { int c = 0; foreach (Thread t in this.threads.Values) c += t.Count; return c; }
+		}
 		public Thread this[int id]
 		{
 			get
@@ -80,15 +84,15 @@ namespace Scraper.Data
 
 		public void Save()
 		{
-			Stream stream = null;
+			DebugConsole.ShowInfo("Saving database to file: " + filename);
 			try
 			{
 				IFormatter formatter = new BinaryFormatter();
 
-				stream.SetLength(0);
-				stream.Seek(0, SeekOrigin.Begin);
-				formatter.Serialize(stream, ThreadDatabase.VERSION);
-				formatter.Serialize(stream, this);
+				this.fileHandle.SetLength(0);
+				this.fileHandle.Seek(0, SeekOrigin.Begin);
+				formatter.Serialize(this.fileHandle, ThreadDatabase.VERSION);
+				formatter.Serialize(this.fileHandle, this);
 			}
 			catch (Exception e)
 			{
@@ -96,9 +100,9 @@ namespace Scraper.Data
 			}
 			finally
 			{
-				if (stream != null)
-					stream.Flush();
+				this.fileHandle.Flush();
 			}
+			DebugConsole.ShowInfo("Serialized " + this.ThreadCount + " threads.");
 		}
 
 		#region Enumerator Methods
@@ -117,6 +121,7 @@ namespace Scraper.Data
 		{
 			Stream stream = null;
 			ThreadDatabase db = null;
+			DebugConsole.ShowInfo("Loading database from file: " + filename);
 			try
 			{
 				IFormatter formatter = new BinaryFormatter();

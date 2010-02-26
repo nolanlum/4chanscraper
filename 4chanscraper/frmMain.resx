@@ -1017,12 +1017,6 @@
         MFyAgTpcgIFyXMCAblzBADpc8QFwXPn/Olz/n29ngIdtIACDbGUAgSh4gYApXIGBdFyDgWQ7589cUA==
 </value>
   </data>
-  <metadata name="cmPost.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>532, 39</value>
-  </metadata>
-  <metadata name="cmThread.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>533, 13</value>
-  </metadata>
   <metadata name="timerAutoScrape.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>333, 20</value>
   </metadata>

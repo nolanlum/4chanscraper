@@ -29,16 +29,16 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Node1");
-			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Node2");
-			System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Node3");
-			System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode8,
-            treeNode9});
-			System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Node5");
-			System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
-            treeNode11});
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node1");
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node2");
+			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node3");
+			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
+			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
+			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
+            treeNode5});
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
 			this.mnuMain = new System.Windows.Forms.MenuStrip();
 			this.mnuMain_File = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +54,8 @@
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuMain_ScraperConf = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_ScraperThreads = new System.Windows.Forms.ToolStripComboBox();
+			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+			this.mnuMain_ScraperNow = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_Help = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_HelpDebug = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +63,8 @@
 			this.grpStatus = new System.Windows.Forms.GroupBox();
 			this.pnlDetails = new System.Windows.Forms.Panel();
 			this.grpPostStats = new System.Windows.Forms.GroupBox();
+			this.lblPostImgInfo = new System.Windows.Forms.Label();
+			this.lblPostImgPath = new System.Windows.Forms.Label();
 			this.lblPostDate = new System.Windows.Forms.Label();
 			this.picPostImg = new System.Windows.Forms.PictureBox();
 			this.label11 = new System.Windows.Forms.Label();
@@ -89,12 +93,6 @@
 			this.cmTaskTray_Enabled = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.cmTaskTray_Close = new System.Windows.Forms.ToolStripMenuItem();
-			this.cmPost = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.cmThread = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.lblPostImgPath = new System.Windows.Forms.Label();
-			this.lblPostImgInfo = new System.Windows.Forms.Label();
-			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-			this.mnuMain_ScraperNow = new System.Windows.Forms.ToolStripMenuItem();
 			this.timerAutoScrape = new System.Windows.Forms.Timer(this.components);
 			this.mnuMain.SuspendLayout();
 			this.grpStatus.SuspendLayout();
@@ -223,6 +221,17 @@
 			this.mnuMain_ScraperThreads.Size = new System.Drawing.Size(150, 23);
 			this.mnuMain_ScraperThreads.SelectedIndexChanged += new System.EventHandler(this.mnuMain_ScraperThreads_SelectedIndexChanged);
 			// 
+			// toolStripSeparator6
+			// 
+			this.toolStripSeparator6.Name = "toolStripSeparator6";
+			this.toolStripSeparator6.Size = new System.Drawing.Size(207, 6);
+			// 
+			// mnuMain_ScraperNow
+			// 
+			this.mnuMain_ScraperNow.Name = "mnuMain_ScraperNow";
+			this.mnuMain_ScraperNow.Size = new System.Drawing.Size(210, 22);
+			this.mnuMain_ScraperNow.Text = "Manual Scrape Now";
+			// 
 			// mnuMain_Help
 			// 
 			this.mnuMain_Help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -250,21 +259,21 @@
 			// 
 			this.treePostWindow.Location = new System.Drawing.Point(12, 27);
 			this.treePostWindow.Name = "treePostWindow";
-			treeNode7.Name = "Node1";
-			treeNode7.Text = "Node1";
-			treeNode8.Name = "Node2";
-			treeNode8.Text = "Node2";
-			treeNode9.Name = "Node3";
-			treeNode9.Text = "Node3";
-			treeNode10.Name = "Node0";
-			treeNode10.Text = "Node0";
-			treeNode11.Name = "Node5";
-			treeNode11.Text = "Node5";
-			treeNode12.Name = "Node4";
-			treeNode12.Text = "Node4";
+			treeNode1.Name = "Node1";
+			treeNode1.Text = "Node1";
+			treeNode2.Name = "Node2";
+			treeNode2.Text = "Node2";
+			treeNode3.Name = "Node3";
+			treeNode3.Text = "Node3";
+			treeNode4.Name = "Node0";
+			treeNode4.Text = "Node0";
+			treeNode5.Name = "Node5";
+			treeNode5.Text = "Node5";
+			treeNode6.Name = "Node4";
+			treeNode6.Text = "Node4";
 			this.treePostWindow.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode12});
+            treeNode4,
+            treeNode6});
 			this.treePostWindow.Size = new System.Drawing.Size(227, 352);
 			this.treePostWindow.TabIndex = 1;
 			// 
@@ -304,6 +313,24 @@
 			this.grpPostStats.TabIndex = 2;
 			this.grpPostStats.TabStop = false;
 			this.grpPostStats.Text = "Post Info";
+			// 
+			// lblPostImgInfo
+			// 
+			this.lblPostImgInfo.AutoSize = true;
+			this.lblPostImgInfo.Location = new System.Drawing.Point(62, 42);
+			this.lblPostImgInfo.Name = "lblPostImgInfo";
+			this.lblPostImgInfo.Size = new System.Drawing.Size(104, 13);
+			this.lblPostImgInfo.TabIndex = 6;
+			this.lblPostImgInfo.Text = "1337 KB (1024x768)";
+			// 
+			// lblPostImgPath
+			// 
+			this.lblPostImgPath.AutoSize = true;
+			this.lblPostImgPath.Location = new System.Drawing.Point(62, 29);
+			this.lblPostImgPath.Name = "lblPostImgPath";
+			this.lblPostImgPath.Size = new System.Drawing.Size(89, 13);
+			this.lblPostImgPath.TabIndex = 5;
+			this.lblPostImgPath.Text = "123456\\3463.jpg";
 			// 
 			// lblPostDate
 			// 
@@ -559,45 +586,6 @@
 			this.cmTaskTray_Close.Text = "Close 4chanscraper";
 			this.cmTaskTray_Close.Click += new System.EventHandler(this.cmTaskTray_Close_Click);
 			// 
-			// cmPost
-			// 
-			this.cmPost.Name = "cmPost";
-			this.cmPost.Size = new System.Drawing.Size(61, 4);
-			// 
-			// cmThread
-			// 
-			this.cmThread.Name = "cmPost";
-			this.cmThread.Size = new System.Drawing.Size(61, 4);
-			// 
-			// lblPostImgPath
-			// 
-			this.lblPostImgPath.AutoSize = true;
-			this.lblPostImgPath.Location = new System.Drawing.Point(62, 29);
-			this.lblPostImgPath.Name = "lblPostImgPath";
-			this.lblPostImgPath.Size = new System.Drawing.Size(89, 13);
-			this.lblPostImgPath.TabIndex = 5;
-			this.lblPostImgPath.Text = "123456\\3463.jpg";
-			// 
-			// lblPostImgInfo
-			// 
-			this.lblPostImgInfo.AutoSize = true;
-			this.lblPostImgInfo.Location = new System.Drawing.Point(62, 42);
-			this.lblPostImgInfo.Name = "lblPostImgInfo";
-			this.lblPostImgInfo.Size = new System.Drawing.Size(104, 13);
-			this.lblPostImgInfo.TabIndex = 6;
-			this.lblPostImgInfo.Text = "1337 KB (1024x768)";
-			// 
-			// toolStripSeparator6
-			// 
-			this.toolStripSeparator6.Name = "toolStripSeparator6";
-			this.toolStripSeparator6.Size = new System.Drawing.Size(207, 6);
-			// 
-			// mnuMain_ScraperNow
-			// 
-			this.mnuMain_ScraperNow.Name = "mnuMain_ScraperNow";
-			this.mnuMain_ScraperNow.Size = new System.Drawing.Size(210, 22);
-			this.mnuMain_ScraperNow.Text = "Manual Scrape Now";
-			// 
 			// timerAutoScrape
 			// 
 			this.timerAutoScrape.Interval = 120000;
@@ -677,8 +665,6 @@
 		private System.Windows.Forms.Label lblDataImg;
 		private System.Windows.Forms.Label lblDataText;
 		private System.Windows.Forms.GroupBox grpPostStats;
-		private System.Windows.Forms.ContextMenuStrip cmPost;
-		private System.Windows.Forms.ContextMenuStrip cmThread;
 		private System.Windows.Forms.PictureBox picPostImg;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label label10;
