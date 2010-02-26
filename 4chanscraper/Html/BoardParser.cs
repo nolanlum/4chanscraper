@@ -6,6 +6,7 @@ using Scraper.Data;
 using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace Scraper.Html
 {
@@ -55,7 +56,7 @@ namespace Scraper.Html
 				using (WebClient client = new WebClient())
 				{
 					//using (StreamReader reader = new StreamReader(client.OpenRead(url)))
-					using (StreamReader reader = new StreamReader("Examples\\imgboard.html.txt"))
+					using (StreamReader reader = new StreamReader("..\\..\\Examples\\imgboard.html.txt"))
 					{
 						page = reader.ReadToEnd().Replace("\n", "").Replace("\r", "");
 					}
@@ -83,15 +84,19 @@ namespace Scraper.Html
 						posts.Add(new Thread(int.Parse(m.Groups[1].Value)));
 				}
 			}
-			DebugConsole.WriteParseANSI(posts.Count + " posts detected.");
+			DebugConsole.WriteParseANSI(posts.Count + " posts detected.\n");
 
 			// Now crawl each individual thread for images.
 
 		}
 
-		private void CrawlThread(Thread t)
+		private void crawlThread(Thread t)
 		{
 
+		}
+
+		private DateTime parse4chanDate(string date) {
+			return DateTime.ParseExact(date, "MM/dd/yy(ddd)HH:mm", CultureInfo.InvariantCulture);
 		}
 	}
 }

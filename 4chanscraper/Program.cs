@@ -15,6 +15,10 @@ namespace Scraper
 		[STAThread]
 		static void Main()
 		{
+#if DEBUG
+			DebugConsole.ShowConsole();
+#endif
+
 			new Scraper.Html.BoardParser("").Parse();
 
 			Application.EnableVisualStyles();

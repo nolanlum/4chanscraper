@@ -42,9 +42,8 @@ namespace Scraper
 			InitializeComponent();
 
 #if DEBUG
-			this.mnuMain_HelpDebug_Click(null, null);
+			this.mnuMain_HelpDebug.Checked = true;
 #endif
-
 			this.mnuMain_ScraperThreads.SelectedIndex = 0;
 			this.FormClosing += new FormClosingEventHandler(frmMain_FormClosing);
 		}
@@ -57,7 +56,7 @@ namespace Scraper
 		#region Event Listeners
 		#region Menu Items
 		#region File
-		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		private void mnuMain_FileExit_Click(object sender, EventArgs e)
 		{
 			Application.Exit();
 		}

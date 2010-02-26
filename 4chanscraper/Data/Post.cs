@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Drawing;
+using System.IO;
 
 namespace Scraper.Data
 {
@@ -13,6 +14,7 @@ namespace Scraper.Data
 		private int id;
 		private string body;
 		private string imgName;
+		private DateTime time;
 		[NonSerialized] private Bitmap imgBmap;
 		#endregion
 
@@ -28,6 +30,11 @@ namespace Scraper.Data
 		public string ImagePath
 		{
 			get { return this.imgName; }
+			set { if (File.Exists(value)) this.imgName = value; }
+		}
+		public DateTime PostTime
+		{
+			get { return this.time; }
 		}
 		public Bitmap ImageBitmap
 		{
@@ -49,11 +56,12 @@ namespace Scraper.Data
 		}
 		#endregion
 
-		public Post(int id, string body, string imgPath)
+		public Post(int id, string body, string imgPath, DateTime time)
 		{
 			this.id = id;
 			this.body = body;
 			this.imgName = imgPath;
+			this.time = time;
 		}
 
 		public void PreloadBitmap()

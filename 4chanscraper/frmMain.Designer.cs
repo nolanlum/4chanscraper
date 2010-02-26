@@ -29,47 +29,76 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node1");
-			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node2");
-			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node3");
-			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
-			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
-			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Node1");
+			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Node2");
+			System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Node3");
+			System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode8,
+            treeNode9});
+			System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Node5");
+			System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
+            treeNode11});
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
 			this.mnuMain = new System.Windows.Forms.MenuStrip();
 			this.mnuMain_File = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_FileNew = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuMain_FileLoad = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_FileSave = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuMain_FileMinimize = new System.Windows.Forms.ToolStripMenuItem();
-			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuMain_FileExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_Scraper = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_ScraperEnabled = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuMain_ScraperConf = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_ScraperThreads = new System.Windows.Forms.ToolStripComboBox();
 			this.mnuMain_Help = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_HelpDebug = new System.Windows.Forms.ToolStripMenuItem();
-			this.treeView1 = new System.Windows.Forms.TreeView();
+			this.treePostWindow = new System.Windows.Forms.TreeView();
 			this.grpStatus = new System.Windows.Forms.GroupBox();
 			this.pnlDetails = new System.Windows.Forms.Panel();
+			this.grpPostStats = new System.Windows.Forms.GroupBox();
+			this.lblPostDate = new System.Windows.Forms.Label();
+			this.picPostImg = new System.Windows.Forms.PictureBox();
+			this.label11 = new System.Windows.Forms.Label();
+			this.label10 = new System.Windows.Forms.Label();
+			this.label9 = new System.Windows.Forms.Label();
+			this.grpDbStats = new System.Windows.Forms.GroupBox();
+			this.lblDataImg = new System.Windows.Forms.Label();
+			this.lblDataText = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.lblPostCount_Downloaded = new System.Windows.Forms.Label();
+			this.lblPostCount_Metadata = new System.Windows.Forms.Label();
+			this.label7 = new System.Windows.Forms.Label();
+			this.label8 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.lblThreadCount_Downloaded = new System.Windows.Forms.Label();
+			this.lblThreadCount_Metadata = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
 			this.lblStatus = new System.Windows.Forms.Label();
 			this.taskTrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.cmTaskTray = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.cmTaskTray_Show = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.cmTaskTray_Enabled = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.cmTaskTray_Close = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmPost = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.cmThread = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.lblPostImgPath = new System.Windows.Forms.Label();
+			this.lblPostImgInfo = new System.Windows.Forms.Label();
 			this.mnuMain.SuspendLayout();
 			this.grpStatus.SuspendLayout();
+			this.pnlDetails.SuspendLayout();
+			this.grpPostStats.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize) (this.picPostImg)).BeginInit();
+			this.grpDbStats.SuspendLayout();
 			this.cmTaskTray.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -89,12 +118,12 @@
 			// 
 			this.mnuMain_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuMain_FileNew,
-            this.toolStripMenuItem1,
+            this.toolStripSeparator2,
             this.mnuMain_FileLoad,
             this.mnuMain_FileSave,
-            this.toolStripMenuItem2,
+            this.toolStripSeparator3,
             this.mnuMain_FileMinimize,
-            this.exitToolStripMenuItem});
+            this.mnuMain_FileExit});
 			this.mnuMain_File.Name = "mnuMain_File";
 			this.mnuMain_File.Size = new System.Drawing.Size(37, 20);
 			this.mnuMain_File.Text = "File";
@@ -106,10 +135,10 @@
 			this.mnuMain_FileNew.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileNew.Text = "New Database";
 			// 
-			// toolStripMenuItem1
+			// toolStripSeparator2
 			// 
-			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(189, 6);
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(189, 6);
 			// 
 			// mnuMain_FileLoad
 			// 
@@ -125,10 +154,10 @@
 			this.mnuMain_FileSave.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileSave.Text = "Save Database";
 			// 
-			// toolStripMenuItem2
+			// toolStripSeparator3
 			// 
-			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(189, 6);
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(189, 6);
 			// 
 			// mnuMain_FileMinimize
 			// 
@@ -138,19 +167,19 @@
 			this.mnuMain_FileMinimize.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileMinimize.Text = "Minimize to Tray";
 			// 
-			// exitToolStripMenuItem
+			// mnuMain_FileExit
 			// 
-			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-			this.exitToolStripMenuItem.Text = "Exit";
-			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+			this.mnuMain_FileExit.Name = "mnuMain_FileExit";
+			this.mnuMain_FileExit.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+			this.mnuMain_FileExit.Size = new System.Drawing.Size(192, 22);
+			this.mnuMain_FileExit.Text = "Exit";
+			this.mnuMain_FileExit.Click += new System.EventHandler(this.mnuMain_FileExit_Click);
 			// 
 			// mnuMain_Scraper
 			// 
 			this.mnuMain_Scraper.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuMain_ScraperEnabled,
-            this.toolStripMenuItem3,
+            this.toolStripSeparator4,
             this.mnuMain_ScraperConf,
             this.mnuMain_ScraperThreads});
 			this.mnuMain_Scraper.Name = "mnuMain_Scraper";
@@ -163,10 +192,10 @@
 			this.mnuMain_ScraperEnabled.Size = new System.Drawing.Size(210, 22);
 			this.mnuMain_ScraperEnabled.Text = "Enable Auto-Scrape";
 			// 
-			// toolStripMenuItem3
+			// toolStripSeparator4
 			// 
-			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(207, 6);
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			this.toolStripSeparator4.Size = new System.Drawing.Size(207, 6);
 			// 
 			// mnuMain_ScraperConf
 			// 
@@ -200,38 +229,38 @@
 			// mnuMain_HelpAbout
 			// 
 			this.mnuMain_HelpAbout.Name = "mnuMain_HelpAbout";
-			this.mnuMain_HelpAbout.Size = new System.Drawing.Size(152, 22);
+			this.mnuMain_HelpAbout.Size = new System.Drawing.Size(149, 22);
 			this.mnuMain_HelpAbout.Text = "About";
 			this.mnuMain_HelpAbout.Click += new System.EventHandler(this.mnuMain_HelpAbout_Click);
 			// 
 			// mnuMain_HelpDebug
 			// 
 			this.mnuMain_HelpDebug.Name = "mnuMain_HelpDebug";
-			this.mnuMain_HelpDebug.Size = new System.Drawing.Size(152, 22);
+			this.mnuMain_HelpDebug.Size = new System.Drawing.Size(149, 22);
 			this.mnuMain_HelpDebug.Text = "Show Console";
 			this.mnuMain_HelpDebug.Click += new System.EventHandler(this.mnuMain_HelpDebug_Click);
 			// 
-			// treeView1
+			// treePostWindow
 			// 
-			this.treeView1.Location = new System.Drawing.Point(12, 27);
-			this.treeView1.Name = "treeView1";
-			treeNode1.Name = "Node1";
-			treeNode1.Text = "Node1";
-			treeNode2.Name = "Node2";
-			treeNode2.Text = "Node2";
-			treeNode3.Name = "Node3";
-			treeNode3.Text = "Node3";
-			treeNode4.Name = "Node0";
-			treeNode4.Text = "Node0";
-			treeNode5.Name = "Node5";
-			treeNode5.Text = "Node5";
-			treeNode6.Name = "Node4";
-			treeNode6.Text = "Node4";
-			this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode6});
-			this.treeView1.Size = new System.Drawing.Size(227, 352);
-			this.treeView1.TabIndex = 1;
+			this.treePostWindow.Location = new System.Drawing.Point(12, 27);
+			this.treePostWindow.Name = "treePostWindow";
+			treeNode7.Name = "Node1";
+			treeNode7.Text = "Node1";
+			treeNode8.Name = "Node2";
+			treeNode8.Text = "Node2";
+			treeNode9.Name = "Node3";
+			treeNode9.Text = "Node3";
+			treeNode10.Name = "Node0";
+			treeNode10.Text = "Node0";
+			treeNode11.Name = "Node5";
+			treeNode11.Text = "Node5";
+			treeNode12.Name = "Node4";
+			treeNode12.Text = "Node4";
+			this.treePostWindow.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode10,
+            treeNode12});
+			this.treePostWindow.Size = new System.Drawing.Size(227, 352);
+			this.treePostWindow.TabIndex = 1;
 			// 
 			// grpStatus
 			// 
@@ -246,11 +275,224 @@
 			// 
 			// pnlDetails
 			// 
+			this.pnlDetails.Controls.Add(this.grpPostStats);
+			this.pnlDetails.Controls.Add(this.grpDbStats);
 			this.pnlDetails.Location = new System.Drawing.Point(9, 32);
 			this.pnlDetails.Name = "pnlDetails";
 			this.pnlDetails.Size = new System.Drawing.Size(304, 314);
 			this.pnlDetails.TabIndex = 1;
 			this.pnlDetails.Visible = false;
+			// 
+			// grpPostStats
+			// 
+			this.grpPostStats.Controls.Add(this.lblPostImgInfo);
+			this.grpPostStats.Controls.Add(this.lblPostImgPath);
+			this.grpPostStats.Controls.Add(this.lblPostDate);
+			this.grpPostStats.Controls.Add(this.picPostImg);
+			this.grpPostStats.Controls.Add(this.label11);
+			this.grpPostStats.Controls.Add(this.label10);
+			this.grpPostStats.Controls.Add(this.label9);
+			this.grpPostStats.Location = new System.Drawing.Point(0, 69);
+			this.grpPostStats.Name = "grpPostStats";
+			this.grpPostStats.Size = new System.Drawing.Size(304, 245);
+			this.grpPostStats.TabIndex = 2;
+			this.grpPostStats.TabStop = false;
+			this.grpPostStats.Text = "Post Info";
+			// 
+			// lblPostDate
+			// 
+			this.lblPostDate.AutoSize = true;
+			this.lblPostDate.Location = new System.Drawing.Point(62, 16);
+			this.lblPostDate.Name = "lblPostDate";
+			this.lblPostDate.Size = new System.Drawing.Size(109, 13);
+			this.lblPostDate.TabIndex = 4;
+			this.lblPostDate.Text = "Jan 1, 1970 12:00AM";
+			// 
+			// picPostImg
+			// 
+			this.picPostImg.Location = new System.Drawing.Point(3, 59);
+			this.picPostImg.Name = "picPostImg";
+			this.picPostImg.Size = new System.Drawing.Size(298, 180);
+			this.picPostImg.TabIndex = 3;
+			this.picPostImg.TabStop = false;
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(2, 29);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(63, 13);
+			this.label11.TabIndex = 2;
+			this.label11.Text = "Image path:";
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(6, 42);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(59, 13);
+			this.label10.TabIndex = 1;
+			this.label10.Text = "Image info:";
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(32, 16);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(33, 13);
+			this.label9.TabIndex = 0;
+			this.label9.Text = "Date:";
+			// 
+			// grpDbStats
+			// 
+			this.grpDbStats.Controls.Add(this.lblDataImg);
+			this.grpDbStats.Controls.Add(this.lblDataText);
+			this.grpDbStats.Controls.Add(this.label6);
+			this.grpDbStats.Controls.Add(this.label5);
+			this.grpDbStats.Controls.Add(this.lblPostCount_Downloaded);
+			this.grpDbStats.Controls.Add(this.lblPostCount_Metadata);
+			this.grpDbStats.Controls.Add(this.label7);
+			this.grpDbStats.Controls.Add(this.label8);
+			this.grpDbStats.Controls.Add(this.label4);
+			this.grpDbStats.Controls.Add(this.lblThreadCount_Downloaded);
+			this.grpDbStats.Controls.Add(this.lblThreadCount_Metadata);
+			this.grpDbStats.Controls.Add(this.label3);
+			this.grpDbStats.Controls.Add(this.label2);
+			this.grpDbStats.Controls.Add(this.label1);
+			this.grpDbStats.Location = new System.Drawing.Point(0, 0);
+			this.grpDbStats.Name = "grpDbStats";
+			this.grpDbStats.Size = new System.Drawing.Size(304, 70);
+			this.grpDbStats.TabIndex = 1;
+			this.grpDbStats.TabStop = false;
+			this.grpDbStats.Text = "Database Statistics";
+			// 
+			// lblDataImg
+			// 
+			this.lblDataImg.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblDataImg.Location = new System.Drawing.Point(156, 53);
+			this.lblDataImg.Name = "lblDataImg";
+			this.lblDataImg.Size = new System.Drawing.Size(56, 13);
+			this.lblDataImg.TabIndex = 13;
+			this.lblDataImg.Text = "00000000";
+			this.lblDataImg.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// lblDataText
+			// 
+			this.lblDataText.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblDataText.Location = new System.Drawing.Point(18, 53);
+			this.lblDataText.Name = "lblDataText";
+			this.lblDataText.Size = new System.Drawing.Size(56, 13);
+			this.lblDataText.TabIndex = 12;
+			this.lblDataText.Text = "00000000";
+			this.lblDataText.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(208, 53);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(81, 13);
+			this.label6.TabIndex = 11;
+			this.label6.Text = "MB Image Data";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(70, 53);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(73, 13);
+			this.label5.TabIndex = 10;
+			this.label5.Text = "MB Text Data";
+			// 
+			// lblPostCount_Downloaded
+			// 
+			this.lblPostCount_Downloaded.AutoSize = true;
+			this.lblPostCount_Downloaded.Location = new System.Drawing.Point(246, 29);
+			this.lblPostCount_Downloaded.Name = "lblPostCount_Downloaded";
+			this.lblPostCount_Downloaded.Size = new System.Drawing.Size(37, 13);
+			this.lblPostCount_Downloaded.TabIndex = 9;
+			this.lblPostCount_Downloaded.Text = "00000";
+			// 
+			// lblPostCount_Metadata
+			// 
+			this.lblPostCount_Metadata.AutoSize = true;
+			this.lblPostCount_Metadata.Location = new System.Drawing.Point(138, 29);
+			this.lblPostCount_Metadata.Name = "lblPostCount_Metadata";
+			this.lblPostCount_Metadata.Size = new System.Drawing.Size(37, 13);
+			this.lblPostCount_Metadata.TabIndex = 8;
+			this.lblPostCount_Metadata.Text = "00000";
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(180, 29);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(70, 13);
+			this.label7.TabIndex = 7;
+			this.label7.Text = "Downloaded:";
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(87, 29);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(55, 13);
+			this.label8.TabIndex = 6;
+			this.label8.Text = "Metadata:";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(19, 29);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(62, 13);
+			this.label4.TabIndex = 5;
+			this.label4.Text = "Post Count:";
+			// 
+			// lblThreadCount_Downloaded
+			// 
+			this.lblThreadCount_Downloaded.AutoSize = true;
+			this.lblThreadCount_Downloaded.Location = new System.Drawing.Point(246, 16);
+			this.lblThreadCount_Downloaded.Name = "lblThreadCount_Downloaded";
+			this.lblThreadCount_Downloaded.Size = new System.Drawing.Size(37, 13);
+			this.lblThreadCount_Downloaded.TabIndex = 4;
+			this.lblThreadCount_Downloaded.Text = "00000";
+			// 
+			// lblThreadCount_Metadata
+			// 
+			this.lblThreadCount_Metadata.AutoSize = true;
+			this.lblThreadCount_Metadata.Location = new System.Drawing.Point(138, 16);
+			this.lblThreadCount_Metadata.Name = "lblThreadCount_Metadata";
+			this.lblThreadCount_Metadata.Size = new System.Drawing.Size(37, 13);
+			this.lblThreadCount_Metadata.TabIndex = 3;
+			this.lblThreadCount_Metadata.Text = "00000";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(180, 16);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(70, 13);
+			this.label3.TabIndex = 2;
+			this.label3.Text = "Downloaded:";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(87, 16);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(55, 13);
+			this.label2.TabIndex = 1;
+			this.label2.Text = "Metadata:";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(6, 16);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(75, 13);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Thread Count:";
 			// 
 			// lblStatus
 			// 
@@ -275,7 +517,7 @@
             this.cmTaskTray_Show,
             this.toolStripSeparator1,
             this.cmTaskTray_Enabled,
-            this.toolStripMenuItem4,
+            this.toolStripSeparator5,
             this.cmTaskTray_Close});
 			this.cmTaskTray.Name = "cmTaskTray";
 			this.cmTaskTray.Size = new System.Drawing.Size(200, 82);
@@ -299,10 +541,10 @@
 			this.cmTaskTray_Enabled.Text = "Enable Auto-Scrape";
 			this.cmTaskTray_Enabled.Click += new System.EventHandler(this.cmTaskTray_Enabled_Click);
 			// 
-			// toolStripMenuItem4
+			// toolStripSeparator5
 			// 
-			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-			this.toolStripMenuItem4.Size = new System.Drawing.Size(196, 6);
+			this.toolStripSeparator5.Name = "toolStripSeparator5";
+			this.toolStripSeparator5.Size = new System.Drawing.Size(196, 6);
 			// 
 			// cmTaskTray_Close
 			// 
@@ -311,13 +553,41 @@
 			this.cmTaskTray_Close.Text = "Close 4chanscraper";
 			this.cmTaskTray_Close.Click += new System.EventHandler(this.cmTaskTray_Close_Click);
 			// 
+			// cmPost
+			// 
+			this.cmPost.Name = "cmPost";
+			this.cmPost.Size = new System.Drawing.Size(61, 4);
+			// 
+			// cmThread
+			// 
+			this.cmThread.Name = "cmPost";
+			this.cmThread.Size = new System.Drawing.Size(61, 4);
+			// 
+			// lblPostImgPath
+			// 
+			this.lblPostImgPath.AutoSize = true;
+			this.lblPostImgPath.Location = new System.Drawing.Point(62, 29);
+			this.lblPostImgPath.Name = "lblPostImgPath";
+			this.lblPostImgPath.Size = new System.Drawing.Size(89, 13);
+			this.lblPostImgPath.TabIndex = 5;
+			this.lblPostImgPath.Text = "123456\\3463.jpg";
+			// 
+			// lblPostImgInfo
+			// 
+			this.lblPostImgInfo.AutoSize = true;
+			this.lblPostImgInfo.Location = new System.Drawing.Point(62, 42);
+			this.lblPostImgInfo.Name = "lblPostImgInfo";
+			this.lblPostImgInfo.Size = new System.Drawing.Size(104, 13);
+			this.lblPostImgInfo.TabIndex = 6;
+			this.lblPostImgInfo.Text = "1337 KB (1024x768)";
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(580, 391);
 			this.Controls.Add(this.grpStatus);
-			this.Controls.Add(this.treeView1);
+			this.Controls.Add(this.treePostWindow);
 			this.Controls.Add(this.mnuMain);
 			this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.mnuMain;
@@ -328,6 +598,12 @@
 			this.mnuMain.PerformLayout();
 			this.grpStatus.ResumeLayout(false);
 			this.grpStatus.PerformLayout();
+			this.pnlDetails.ResumeLayout(false);
+			this.grpPostStats.ResumeLayout(false);
+			this.grpPostStats.PerformLayout();
+			((System.ComponentModel.ISupportInitialize) (this.picPostImg)).EndInit();
+			this.grpDbStats.ResumeLayout(false);
+			this.grpDbStats.PerformLayout();
 			this.cmTaskTray.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -339,18 +615,18 @@
 		private System.Windows.Forms.MenuStrip mnuMain;
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_File;
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_FileNew;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_FileLoad;
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_FileSave;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_FileMinimize;
-		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mnuMain_FileExit;
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_Scraper;
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_ScraperEnabled;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_ScraperConf;
 		private System.Windows.Forms.ToolStripComboBox mnuMain_ScraperThreads;
-		private System.Windows.Forms.TreeView treeView1;
+		private System.Windows.Forms.TreeView treePostWindow;
 		private System.Windows.Forms.GroupBox grpStatus;
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_Help;
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_HelpAbout;
@@ -360,10 +636,35 @@
 		private System.Windows.Forms.NotifyIcon taskTrayIcon;
 		private System.Windows.Forms.ContextMenuStrip cmTaskTray;
 		private System.Windows.Forms.ToolStripMenuItem cmTaskTray_Enabled;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private System.Windows.Forms.ToolStripMenuItem cmTaskTray_Show;
 		private System.Windows.Forms.ToolStripMenuItem cmTaskTray_Close;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.GroupBox grpDbStats;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label lblThreadCount_Metadata;
+		private System.Windows.Forms.Label lblThreadCount_Downloaded;
+		private System.Windows.Forms.Label lblPostCount_Downloaded;
+		private System.Windows.Forms.Label lblPostCount_Metadata;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label lblDataImg;
+		private System.Windows.Forms.Label lblDataText;
+		private System.Windows.Forms.GroupBox grpPostStats;
+		private System.Windows.Forms.ContextMenuStrip cmPost;
+		private System.Windows.Forms.ContextMenuStrip cmThread;
+		private System.Windows.Forms.PictureBox picPostImg;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Label lblPostDate;
+		private System.Windows.Forms.Label lblPostImgInfo;
+		private System.Windows.Forms.Label lblPostImgPath;
 	}
 }
 

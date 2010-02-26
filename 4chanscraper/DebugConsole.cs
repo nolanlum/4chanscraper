@@ -14,7 +14,7 @@ namespace Scraper
 		private static extern bool FreeConsole();
 
 		#region Public Static Properties
-		public static string TimestampFormat = "[hh:mm:ss] ";
+		public static string TimestampFormat = "[HH:mm:ss] ";
 		#endregion
 
 		#region Public Methods
