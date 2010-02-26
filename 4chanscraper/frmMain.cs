@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Scraper
 {
@@ -40,7 +41,6 @@ namespace Scraper
 		public frmMain()
 		{
 			InitializeComponent();
-
 #if DEBUG
 			this.mnuMain_HelpDebug.Checked = true;
 #endif
@@ -62,7 +62,34 @@ namespace Scraper
 		}
 		#endregion
 		#region Scraper Config
-		void mnuMain_ScraperThreads_SelectedIndexChanged(object sender, System.EventArgs e)
+		private void mnuMain_ScraperConf_Click(object sender, EventArgs e)
+		{
+			Dialogs.frmInputDialog input = new Scraper.Dialogs.frmInputDialog("Enter the amount of time between automatic scrapes, with a time unit following the number. (h=hour,m=minute,s=second)\nYou may choose any combination of the units.\nEx: 30s = 30 seconds; 5m30s = 5 minutes, 30 seconds");
+			TimeSpan sp = new TimeSpan(this.timerAutoScrape.Interval * 10000);
+			input.InputText = string.Format("{0}h{1}m{2}s", sp.Hours, sp.Minutes, sp.Seconds).Replace("0h", "").Replace("0m","").Replace("0s","");
+			input.ShowDialog();
+
+			string timestring = input.InputText.Trim();
+			if (timestring == "")
+				return;
+
+			Regex h = new Regex("([0-9]*)h", RegexOptions.IgnoreCase), m = new Regex("([0-9]*)m", RegexOptions.IgnoreCase), s = new Regex("([0-9]*)s", RegexOptions.IgnoreCase);
+			Match hm = h.Match(timestring), mm = m.Match(timestring), sm = s.Match(timestring);
+			int newInterval = 0;
+
+			if(hm.Success)
+				newInterval += int.Parse(hm.Groups[1].Value) * 3600000;
+			if(mm.Success)
+				newInterval += int.Parse(mm.Groups[1].Value) * 60000;
+			if (sm.Success)
+				newInterval += int.Parse(sm.Groups[1].Value) * 1000;
+
+			if (newInterval == 0)
+				MessageBox.Show("There was an error parsing your input; ensure you specified a valid time string.", "4chanscraper", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			else
+				this.timerAutoScrape.Interval = newInterval;
+		}
+		private void mnuMain_ScraperThreads_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			this._downloaderThreads = this.mnuMain_ScraperThreads.SelectedIndex - 1;
 		}

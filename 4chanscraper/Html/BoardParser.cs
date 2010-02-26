@@ -40,7 +40,7 @@ namespace Scraper.Html
 
 		public BoardParser(string url)
 		{
-			this.url = url;
+			this.url = url.Replace('\\', '/').Replace("/imgboard.html", "");
 			this.threadList = new List<Thread>();
 		}
 

@@ -13,6 +13,10 @@ namespace Scraper.Data
 	[Serializable]
 	class ThreadDatabase : IDisposable, IEnumerable<KeyValuePair<int, Thread>>
 	{
+		public delegate void __ThreadAdd(Thread newThread);
+		public event __ThreadAdd ThreadAdded;
+
+		#region Private Members
 		[NonSerialized]
 		private static readonly long VERSION = -1L;
 
@@ -21,7 +25,9 @@ namespace Scraper.Data
 
 		[NonSerialized]
 		private FileStream fileHandle;
+		#endregion
 
+		#region Public Properties
 		public string URL
 		{
 			get { return this.url; }
@@ -41,6 +47,7 @@ namespace Scraper.Data
 					return threads[id];
 			}
 		}
+		#endregion
 
 		#region Constructor & Dispose
 		public ThreadDatabase(string name, string filename, string url)
@@ -66,6 +73,9 @@ namespace Scraper.Data
 		public void AddThread(Thread thread)
 		{
 			this.threads.Add(thread.Id, thread);
+
+			if (this.ThreadAdded != null)
+				this.ThreadAdded(thread);
 		}
 
 		public void Save()

@@ -93,6 +93,9 @@
 			this.cmThread = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.lblPostImgPath = new System.Windows.Forms.Label();
 			this.lblPostImgInfo = new System.Windows.Forms.Label();
+			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+			this.mnuMain_ScraperNow = new System.Windows.Forms.ToolStripMenuItem();
+			this.timerAutoScrape = new System.Windows.Forms.Timer(this.components);
 			this.mnuMain.SuspendLayout();
 			this.grpStatus.SuspendLayout();
 			this.pnlDetails.SuspendLayout();
@@ -181,7 +184,9 @@
             this.mnuMain_ScraperEnabled,
             this.toolStripSeparator4,
             this.mnuMain_ScraperConf,
-            this.mnuMain_ScraperThreads});
+            this.mnuMain_ScraperThreads,
+            this.toolStripSeparator6,
+            this.mnuMain_ScraperNow});
 			this.mnuMain_Scraper.Name = "mnuMain_Scraper";
 			this.mnuMain_Scraper.Size = new System.Drawing.Size(101, 20);
 			this.mnuMain_Scraper.Text = "Scraper Control";
@@ -202,6 +207,7 @@
 			this.mnuMain_ScraperConf.Name = "mnuMain_ScraperConf";
 			this.mnuMain_ScraperConf.Size = new System.Drawing.Size(210, 22);
 			this.mnuMain_ScraperConf.Text = "Configure Scrape Interval";
+			this.mnuMain_ScraperConf.Click += new System.EventHandler(this.mnuMain_ScraperConf_Click);
 			// 
 			// mnuMain_ScraperThreads
 			// 
@@ -581,6 +587,21 @@
 			this.lblPostImgInfo.TabIndex = 6;
 			this.lblPostImgInfo.Text = "1337 KB (1024x768)";
 			// 
+			// toolStripSeparator6
+			// 
+			this.toolStripSeparator6.Name = "toolStripSeparator6";
+			this.toolStripSeparator6.Size = new System.Drawing.Size(207, 6);
+			// 
+			// mnuMain_ScraperNow
+			// 
+			this.mnuMain_ScraperNow.Name = "mnuMain_ScraperNow";
+			this.mnuMain_ScraperNow.Size = new System.Drawing.Size(210, 22);
+			this.mnuMain_ScraperNow.Text = "Manual Scrape Now";
+			// 
+			// timerAutoScrape
+			// 
+			this.timerAutoScrape.Interval = 120000;
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -665,6 +686,9 @@
 		private System.Windows.Forms.Label lblPostDate;
 		private System.Windows.Forms.Label lblPostImgInfo;
 		private System.Windows.Forms.Label lblPostImgPath;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+		private System.Windows.Forms.ToolStripMenuItem mnuMain_ScraperNow;
+		private System.Windows.Forms.Timer timerAutoScrape;
 	}
 }
 
