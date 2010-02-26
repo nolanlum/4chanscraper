@@ -7,6 +7,8 @@ namespace Scraper
 {
 	static class Program
 	{
+		public static frmMain mainForm;
+
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
@@ -17,7 +19,7 @@ namespace Scraper
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new frmMain());
+			Application.Run(mainForm = new frmMain());
 		}
 	}
 }

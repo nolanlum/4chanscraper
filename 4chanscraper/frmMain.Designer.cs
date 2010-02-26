@@ -29,16 +29,16 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Node1");
-			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Node2");
-			System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Node3");
-			System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode8,
-            treeNode9});
-			System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Node5");
-			System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
-            treeNode11});
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node1");
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node2");
+			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node3");
+			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
+			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
+			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
+            treeNode5});
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
 			this.mnuMain = new System.Windows.Forms.MenuStrip();
 			this.mnuMain_File = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,16 +54,23 @@
 			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuMain_ScraperConf = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_ScraperThreads = new System.Windows.Forms.ToolStripComboBox();
-			this.treeView1 = new System.Windows.Forms.TreeView();
-			this.grpStatus = new System.Windows.Forms.GroupBox();
 			this.mnuMain_Help = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_HelpDebug = new System.Windows.Forms.ToolStripMenuItem();
-			this.lblStatus = new System.Windows.Forms.Label();
+			this.treeView1 = new System.Windows.Forms.TreeView();
+			this.grpStatus = new System.Windows.Forms.GroupBox();
 			this.pnlDetails = new System.Windows.Forms.Panel();
+			this.lblStatus = new System.Windows.Forms.Label();
 			this.taskTrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+			this.cmTaskTray = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.cmTaskTray_Show = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.cmTaskTray_Enabled = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+			this.cmTaskTray_Close = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain.SuspendLayout();
 			this.grpStatus.SuspendLayout();
+			this.cmTaskTray.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// mnuMain
@@ -137,6 +144,7 @@
 			this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
 			this.exitToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
+			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
 			// mnuMain_Scraper
 			// 
@@ -168,6 +176,9 @@
 			// 
 			// mnuMain_ScraperThreads
 			// 
+			this.mnuMain_ScraperThreads.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+			this.mnuMain_ScraperThreads.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+			this.mnuMain_ScraperThreads.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.mnuMain_ScraperThreads.Items.AddRange(new object[] {
             "Download Threads: 1",
             "Download Threads: 2",
@@ -175,40 +186,7 @@
             "Download Threads: 4"});
 			this.mnuMain_ScraperThreads.Name = "mnuMain_ScraperThreads";
 			this.mnuMain_ScraperThreads.Size = new System.Drawing.Size(150, 23);
-			this.mnuMain_ScraperThreads.Text = "Download Threads: 1";
-			// 
-			// treeView1
-			// 
-			this.treeView1.Location = new System.Drawing.Point(12, 27);
-			this.treeView1.Name = "treeView1";
-			treeNode7.Name = "Node1";
-			treeNode7.Text = "Node1";
-			treeNode8.Name = "Node2";
-			treeNode8.Text = "Node2";
-			treeNode9.Name = "Node3";
-			treeNode9.Text = "Node3";
-			treeNode10.Name = "Node0";
-			treeNode10.Text = "Node0";
-			treeNode11.Name = "Node5";
-			treeNode11.Text = "Node5";
-			treeNode12.Name = "Node4";
-			treeNode12.Text = "Node4";
-			this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode12});
-			this.treeView1.Size = new System.Drawing.Size(227, 352);
-			this.treeView1.TabIndex = 1;
-			// 
-			// grpStatus
-			// 
-			this.grpStatus.Controls.Add(this.pnlDetails);
-			this.grpStatus.Controls.Add(this.lblStatus);
-			this.grpStatus.Location = new System.Drawing.Point(247, 21);
-			this.grpStatus.Name = "grpStatus";
-			this.grpStatus.Size = new System.Drawing.Size(323, 359);
-			this.grpStatus.TabIndex = 2;
-			this.grpStatus.TabStop = false;
-			this.grpStatus.Text = "Status";
+			this.mnuMain_ScraperThreads.SelectedIndexChanged += new System.EventHandler(this.mnuMain_ScraperThreads_SelectedIndexChanged);
 			// 
 			// mnuMain_Help
 			// 
@@ -224,6 +202,7 @@
 			this.mnuMain_HelpAbout.Name = "mnuMain_HelpAbout";
 			this.mnuMain_HelpAbout.Size = new System.Drawing.Size(152, 22);
 			this.mnuMain_HelpAbout.Text = "About";
+			this.mnuMain_HelpAbout.Click += new System.EventHandler(this.mnuMain_HelpAbout_Click);
 			// 
 			// mnuMain_HelpDebug
 			// 
@@ -231,6 +210,47 @@
 			this.mnuMain_HelpDebug.Size = new System.Drawing.Size(152, 22);
 			this.mnuMain_HelpDebug.Text = "Show Console";
 			this.mnuMain_HelpDebug.Click += new System.EventHandler(this.mnuMain_HelpDebug_Click);
+			// 
+			// treeView1
+			// 
+			this.treeView1.Location = new System.Drawing.Point(12, 27);
+			this.treeView1.Name = "treeView1";
+			treeNode1.Name = "Node1";
+			treeNode1.Text = "Node1";
+			treeNode2.Name = "Node2";
+			treeNode2.Text = "Node2";
+			treeNode3.Name = "Node3";
+			treeNode3.Text = "Node3";
+			treeNode4.Name = "Node0";
+			treeNode4.Text = "Node0";
+			treeNode5.Name = "Node5";
+			treeNode5.Text = "Node5";
+			treeNode6.Name = "Node4";
+			treeNode6.Text = "Node4";
+			this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode6});
+			this.treeView1.Size = new System.Drawing.Size(227, 352);
+			this.treeView1.TabIndex = 1;
+			// 
+			// grpStatus
+			// 
+			this.grpStatus.Controls.Add(this.pnlDetails);
+			this.grpStatus.Controls.Add(this.lblStatus);
+			this.grpStatus.Location = new System.Drawing.Point(247, 21);
+			this.grpStatus.Name = "grpStatus";
+			this.grpStatus.Size = new System.Drawing.Size(323, 359);
+			this.grpStatus.TabIndex = 2;
+			this.grpStatus.TabStop = false;
+			this.grpStatus.Text = "Status";
+			// 
+			// pnlDetails
+			// 
+			this.pnlDetails.Location = new System.Drawing.Point(9, 32);
+			this.pnlDetails.Name = "pnlDetails";
+			this.pnlDetails.Size = new System.Drawing.Size(304, 314);
+			this.pnlDetails.TabIndex = 1;
+			this.pnlDetails.Visible = false;
 			// 
 			// lblStatus
 			// 
@@ -241,19 +261,55 @@
 			this.lblStatus.TabIndex = 0;
 			this.lblStatus.Text = "Please create or load a database to begin.";
 			// 
-			// pnlDetails
-			// 
-			this.pnlDetails.Location = new System.Drawing.Point(9, 32);
-			this.pnlDetails.Name = "pnlDetails";
-			this.pnlDetails.Size = new System.Drawing.Size(304, 314);
-			this.pnlDetails.TabIndex = 1;
-			this.pnlDetails.Visible = false;
-			// 
 			// taskTrayIcon
 			// 
+			this.taskTrayIcon.ContextMenuStrip = this.cmTaskTray;
 			this.taskTrayIcon.Icon = ((System.Drawing.Icon) (resources.GetObject("taskTrayIcon.Icon")));
 			this.taskTrayIcon.Text = "4chanscraper";
 			this.taskTrayIcon.Visible = true;
+			this.taskTrayIcon.DoubleClick += new System.EventHandler(this.taskTrayIcon_DoubleClick);
+			// 
+			// cmTaskTray
+			// 
+			this.cmTaskTray.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmTaskTray_Show,
+            this.toolStripSeparator1,
+            this.cmTaskTray_Enabled,
+            this.toolStripMenuItem4,
+            this.cmTaskTray_Close});
+			this.cmTaskTray.Name = "cmTaskTray";
+			this.cmTaskTray.Size = new System.Drawing.Size(200, 82);
+			// 
+			// cmTaskTray_Show
+			// 
+			this.cmTaskTray_Show.Name = "cmTaskTray_Show";
+			this.cmTaskTray_Show.Size = new System.Drawing.Size(199, 22);
+			this.cmTaskTray_Show.Text = "Show Program Window";
+			this.cmTaskTray_Show.Click += new System.EventHandler(this.cmTaskTray_Show_Click);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(196, 6);
+			// 
+			// cmTaskTray_Enabled
+			// 
+			this.cmTaskTray_Enabled.Name = "cmTaskTray_Enabled";
+			this.cmTaskTray_Enabled.Size = new System.Drawing.Size(199, 22);
+			this.cmTaskTray_Enabled.Text = "Enable Auto-Scrape";
+			this.cmTaskTray_Enabled.Click += new System.EventHandler(this.cmTaskTray_Enabled_Click);
+			// 
+			// toolStripMenuItem4
+			// 
+			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+			this.toolStripMenuItem4.Size = new System.Drawing.Size(196, 6);
+			// 
+			// cmTaskTray_Close
+			// 
+			this.cmTaskTray_Close.Name = "cmTaskTray_Close";
+			this.cmTaskTray_Close.Size = new System.Drawing.Size(199, 22);
+			this.cmTaskTray_Close.Text = "Close 4chanscraper";
+			this.cmTaskTray_Close.Click += new System.EventHandler(this.cmTaskTray_Close_Click);
 			// 
 			// frmMain
 			// 
@@ -263,13 +319,16 @@
 			this.Controls.Add(this.grpStatus);
 			this.Controls.Add(this.treeView1);
 			this.Controls.Add(this.mnuMain);
+			this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.mnuMain;
 			this.Name = "frmMain";
 			this.Text = "4chanscraper";
+			this.Resize += new System.EventHandler(this.frmMain_Resize);
 			this.mnuMain.ResumeLayout(false);
 			this.mnuMain.PerformLayout();
 			this.grpStatus.ResumeLayout(false);
 			this.grpStatus.PerformLayout();
+			this.cmTaskTray.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -299,6 +358,12 @@
 		private System.Windows.Forms.Panel pnlDetails;
 		private System.Windows.Forms.Label lblStatus;
 		private System.Windows.Forms.NotifyIcon taskTrayIcon;
+		private System.Windows.Forms.ContextMenuStrip cmTaskTray;
+		private System.Windows.Forms.ToolStripMenuItem cmTaskTray_Enabled;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+		private System.Windows.Forms.ToolStripMenuItem cmTaskTray_Show;
+		private System.Windows.Forms.ToolStripMenuItem cmTaskTray_Close;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 	}
 }
 
