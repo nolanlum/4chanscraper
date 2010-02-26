@@ -47,6 +47,7 @@ namespace Scraper.Html
 		{
 			string page;
 			Regex r = new Regex("<span id=\"nothread([0-9]*)\">", RegexOptions.IgnoreCase);
+			DebugConsole.ShowInfo("Retrieving URL: " + this.url);
 
 			// Get page as a string, replacing all newlines.
 			try
@@ -54,7 +55,7 @@ namespace Scraper.Html
 				using (WebClient client = new WebClient())
 				{
 					//using (StreamReader reader = new StreamReader(client.OpenRead(url)))
-					using (StreamReader reader = new StreamReader("imgboard.html.txt"))
+					using (StreamReader reader = new StreamReader("Examples\\imgboard.html.txt"))
 					{
 						page = reader.ReadToEnd().Replace("\n", "").Replace("\r", "");
 					}
@@ -70,6 +71,7 @@ namespace Scraper.Html
 				return;
 
 			// Extract thread information.
+			DebugConsole.ShowInfo("Parsing webpage:", " ");
 			string[] parts = page.Split(new string[] { "<hr>" }, StringSplitOptions.RemoveEmptyEntries);
 			List<Thread> posts = new List<Thread>();
 			for (int i = 0; i < parts.Length; i++)
@@ -81,8 +83,10 @@ namespace Scraper.Html
 						posts.Add(new Thread(int.Parse(m.Groups[1].Value)));
 				}
 			}
+			DebugConsole.WriteParseANSI(posts.Count + " posts detected.");
 
 			// Now crawl each individual thread for images.
+
 		}
 
 		private void CrawlThread(Thread t)

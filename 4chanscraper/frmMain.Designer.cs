@@ -28,16 +28,18 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node1");
-			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node2");
-			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node3");
-			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
-			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
-			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+			this.components = new System.ComponentModel.Container();
+			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Node1");
+			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Node2");
+			System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Node3");
+			System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode8,
+            treeNode9});
+			System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Node5");
+			System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
+            treeNode11});
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
 			this.mnuMain = new System.Windows.Forms.MenuStrip();
 			this.mnuMain_File = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_FileNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,13 +54,14 @@
 			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuMain_ScraperConf = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_ScraperThreads = new System.Windows.Forms.ToolStripComboBox();
+			this.treeView1 = new System.Windows.Forms.TreeView();
+			this.grpStatus = new System.Windows.Forms.GroupBox();
 			this.mnuMain_Help = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_HelpDebug = new System.Windows.Forms.ToolStripMenuItem();
-			this.treeView1 = new System.Windows.Forms.TreeView();
-			this.grpStatus = new System.Windows.Forms.GroupBox();
-			this.pnlDetails = new System.Windows.Forms.Panel();
 			this.lblStatus = new System.Windows.Forms.Label();
+			this.pnlDetails = new System.Windows.Forms.Panel();
+			this.taskTrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.mnuMain.SuspendLayout();
 			this.grpStatus.SuspendLayout();
 			this.SuspendLayout();
@@ -86,53 +89,53 @@
             this.mnuMain_FileMinimize,
             this.exitToolStripMenuItem});
 			this.mnuMain_File.Name = "mnuMain_File";
-			this.mnuMain_File.Size = new System.Drawing.Size(35, 20);
+			this.mnuMain_File.Size = new System.Drawing.Size(37, 20);
 			this.mnuMain_File.Text = "File";
 			// 
 			// mnuMain_FileNew
 			// 
 			this.mnuMain_FileNew.Name = "mnuMain_FileNew";
 			this.mnuMain_FileNew.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-			this.mnuMain_FileNew.Size = new System.Drawing.Size(185, 22);
+			this.mnuMain_FileNew.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileNew.Text = "New Database";
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(182, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(189, 6);
 			// 
 			// mnuMain_FileLoad
 			// 
 			this.mnuMain_FileLoad.Name = "mnuMain_FileLoad";
 			this.mnuMain_FileLoad.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-			this.mnuMain_FileLoad.Size = new System.Drawing.Size(185, 22);
+			this.mnuMain_FileLoad.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileLoad.Text = "Load Database";
 			// 
 			// mnuMain_FileSave
 			// 
 			this.mnuMain_FileSave.Name = "mnuMain_FileSave";
 			this.mnuMain_FileSave.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.mnuMain_FileSave.Size = new System.Drawing.Size(185, 22);
+			this.mnuMain_FileSave.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileSave.Text = "Save Database";
 			// 
 			// toolStripMenuItem2
 			// 
 			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(182, 6);
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(189, 6);
 			// 
 			// mnuMain_FileMinimize
 			// 
 			this.mnuMain_FileMinimize.Checked = true;
 			this.mnuMain_FileMinimize.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.mnuMain_FileMinimize.Name = "mnuMain_FileMinimize";
-			this.mnuMain_FileMinimize.Size = new System.Drawing.Size(185, 22);
+			this.mnuMain_FileMinimize.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileMinimize.Text = "Minimize to Tray";
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
 			this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			// 
 			// mnuMain_Scraper
@@ -143,7 +146,7 @@
             this.mnuMain_ScraperConf,
             this.mnuMain_ScraperThreads});
 			this.mnuMain_Scraper.Name = "mnuMain_Scraper";
-			this.mnuMain_Scraper.Size = new System.Drawing.Size(94, 20);
+			this.mnuMain_Scraper.Size = new System.Drawing.Size(101, 20);
 			this.mnuMain_Scraper.Text = "Scraper Control";
 			// 
 			// mnuMain_ScraperEnabled
@@ -171,50 +174,28 @@
             "Download Threads: 3",
             "Download Threads: 4"});
 			this.mnuMain_ScraperThreads.Name = "mnuMain_ScraperThreads";
-			this.mnuMain_ScraperThreads.Size = new System.Drawing.Size(150, 21);
+			this.mnuMain_ScraperThreads.Size = new System.Drawing.Size(150, 23);
 			this.mnuMain_ScraperThreads.Text = "Download Threads: 1";
-			// 
-			// mnuMain_Help
-			// 
-			this.mnuMain_Help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuMain_HelpAbout,
-            this.mnuMain_HelpDebug});
-			this.mnuMain_Help.Name = "mnuMain_Help";
-			this.mnuMain_Help.Size = new System.Drawing.Size(40, 20);
-			this.mnuMain_Help.Text = "Help";
-			// 
-			// mnuMain_HelpAbout
-			// 
-			this.mnuMain_HelpAbout.Name = "mnuMain_HelpAbout";
-			this.mnuMain_HelpAbout.Size = new System.Drawing.Size(141, 22);
-			this.mnuMain_HelpAbout.Text = "About";
-			// 
-			// mnuMain_HelpDebug
-			// 
-			this.mnuMain_HelpDebug.Name = "mnuMain_HelpDebug";
-			this.mnuMain_HelpDebug.Size = new System.Drawing.Size(141, 22);
-			this.mnuMain_HelpDebug.Text = "Show Console";
-			this.mnuMain_HelpDebug.Click += new System.EventHandler(this.mnuMain_HelpDebug_Click);
 			// 
 			// treeView1
 			// 
 			this.treeView1.Location = new System.Drawing.Point(12, 27);
 			this.treeView1.Name = "treeView1";
-			treeNode1.Name = "Node1";
-			treeNode1.Text = "Node1";
-			treeNode2.Name = "Node2";
-			treeNode2.Text = "Node2";
-			treeNode3.Name = "Node3";
-			treeNode3.Text = "Node3";
-			treeNode4.Name = "Node0";
-			treeNode4.Text = "Node0";
-			treeNode5.Name = "Node5";
-			treeNode5.Text = "Node5";
-			treeNode6.Name = "Node4";
-			treeNode6.Text = "Node4";
+			treeNode7.Name = "Node1";
+			treeNode7.Text = "Node1";
+			treeNode8.Name = "Node2";
+			treeNode8.Text = "Node2";
+			treeNode9.Name = "Node3";
+			treeNode9.Text = "Node3";
+			treeNode10.Name = "Node0";
+			treeNode10.Text = "Node0";
+			treeNode11.Name = "Node5";
+			treeNode11.Text = "Node5";
+			treeNode12.Name = "Node4";
+			treeNode12.Text = "Node4";
 			this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode6});
+            treeNode10,
+            treeNode12});
 			this.treeView1.Size = new System.Drawing.Size(227, 352);
 			this.treeView1.TabIndex = 1;
 			// 
@@ -222,20 +203,34 @@
 			// 
 			this.grpStatus.Controls.Add(this.pnlDetails);
 			this.grpStatus.Controls.Add(this.lblStatus);
-			this.grpStatus.Location = new System.Drawing.Point(247, 27);
+			this.grpStatus.Location = new System.Drawing.Point(247, 21);
 			this.grpStatus.Name = "grpStatus";
-			this.grpStatus.Size = new System.Drawing.Size(323, 353);
+			this.grpStatus.Size = new System.Drawing.Size(323, 359);
 			this.grpStatus.TabIndex = 2;
 			this.grpStatus.TabStop = false;
 			this.grpStatus.Text = "Status";
 			// 
-			// pnlDetails
+			// mnuMain_Help
 			// 
-			this.pnlDetails.Location = new System.Drawing.Point(9, 32);
-			this.pnlDetails.Name = "pnlDetails";
-			this.pnlDetails.Size = new System.Drawing.Size(304, 315);
-			this.pnlDetails.TabIndex = 1;
-			this.pnlDetails.Visible = false;
+			this.mnuMain_Help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuMain_HelpAbout,
+            this.mnuMain_HelpDebug});
+			this.mnuMain_Help.Name = "mnuMain_Help";
+			this.mnuMain_Help.Size = new System.Drawing.Size(44, 20);
+			this.mnuMain_Help.Text = "Help";
+			// 
+			// mnuMain_HelpAbout
+			// 
+			this.mnuMain_HelpAbout.Name = "mnuMain_HelpAbout";
+			this.mnuMain_HelpAbout.Size = new System.Drawing.Size(152, 22);
+			this.mnuMain_HelpAbout.Text = "About";
+			// 
+			// mnuMain_HelpDebug
+			// 
+			this.mnuMain_HelpDebug.Name = "mnuMain_HelpDebug";
+			this.mnuMain_HelpDebug.Size = new System.Drawing.Size(152, 22);
+			this.mnuMain_HelpDebug.Text = "Show Console";
+			this.mnuMain_HelpDebug.Click += new System.EventHandler(this.mnuMain_HelpDebug_Click);
 			// 
 			// lblStatus
 			// 
@@ -245,6 +240,20 @@
 			this.lblStatus.Size = new System.Drawing.Size(207, 13);
 			this.lblStatus.TabIndex = 0;
 			this.lblStatus.Text = "Please create or load a database to begin.";
+			// 
+			// pnlDetails
+			// 
+			this.pnlDetails.Location = new System.Drawing.Point(9, 32);
+			this.pnlDetails.Name = "pnlDetails";
+			this.pnlDetails.Size = new System.Drawing.Size(304, 314);
+			this.pnlDetails.TabIndex = 1;
+			this.pnlDetails.Visible = false;
+			// 
+			// taskTrayIcon
+			// 
+			this.taskTrayIcon.Icon = ((System.Drawing.Icon) (resources.GetObject("taskTrayIcon.Icon")));
+			this.taskTrayIcon.Text = "4chanscraper";
+			this.taskTrayIcon.Visible = true;
 			// 
 			// frmMain
 			// 
@@ -289,6 +298,7 @@
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_HelpDebug;
 		private System.Windows.Forms.Panel pnlDetails;
 		private System.Windows.Forms.Label lblStatus;
+		private System.Windows.Forms.NotifyIcon taskTrayIcon;
 	}
 }
 

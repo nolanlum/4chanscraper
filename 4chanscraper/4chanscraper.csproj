@@ -13,6 +13,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <StartupObject>Scraper.Program</StartupObject>
+    <ApplicationIcon>Properties\4chan.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -87,7 +88,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="imgboard.html.txt" />
+    <Content Include="Properties\4chan.ico" />
+    <Content Include="Examples\957853.html.txt" />
+    <Content Include="Examples\imgboard.html.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
