@@ -166,7 +166,7 @@ namespace Scraper.Data
 			{
 				if (null != stream)
 					stream.Close();
-				if(null != db)
+				if (null != db)
 					db.fileHandle = new FileStream(db.filename, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
 			}
 

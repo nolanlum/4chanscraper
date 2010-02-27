@@ -10,8 +10,12 @@ namespace Scraper
 		[DllImport("kernel32.dll")]
 		private static extern bool AllocConsole();
 
-		[DllImport("kernel32.dll")]
-		private static extern bool FreeConsole();
+		[DllImport("user32.dll")]
+		private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+		[DllImport("user32.dll")]
+		private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+		private static IntPtr console = IntPtr.Zero;
 
 		#region Public Static Properties
 		public static string TimestampFormat = "[HH:mm:ss] ";
@@ -20,13 +24,21 @@ namespace Scraper
 		#region Public Methods
 		public static void ShowConsole()
 		{
-			AllocConsole();
-			Console.Title = "4chanscraper - Console";
+			if (console == IntPtr.Zero)
+			{
+				AllocConsole();
+				Console.Title = "4chanscraper - Console";
+
+				console = FindWindow(null, "4chanscraper - Console");
+			}
+
+			ShowWindow(DebugConsole.console, 1);
 		}
 
 		public static void HideConsole()
 		{
-			FreeConsole();
+			if (console != IntPtr.Zero)
+				ShowWindow(DebugConsole.console, 0);
 		}
 
 		public static void ShowInfo(string Text, string LineTerminator)

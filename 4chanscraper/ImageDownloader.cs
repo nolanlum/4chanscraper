@@ -83,16 +83,19 @@ namespace Scraper
 
 		public void Dispose()
 		{
-			if (this.disposing)
-				return;
-			else
+			lock (this.workers)
+			{
+				if (this.disposing)
+					return;
+
+				for (int i = 0; i < this.workers.Length; i++)
+					this.workers[i].Abort();
+
 				this.disposing = true;
 
-			for (int i = 0; i < this.workers.Length; i++)
-				this.workers[i].Abort();
-
-			this.workers = null;
-			this.work = null;
+				this.workers = null;
+				this.work = null;
+			}
 		}
 
 		private void _downloadPostImage(object o)

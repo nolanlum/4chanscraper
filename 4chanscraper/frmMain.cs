@@ -22,6 +22,7 @@ namespace Scraper
 		
 		private static Regex imgnameR = new Regex("[0-9]+\\.[a-z]{3,4}", RegexOptions.IgnoreCase);
 
+		private bool _running = true;
 		private bool _enableAutoScrape;
 		private int _downloaderThreads;
 
@@ -68,6 +69,7 @@ namespace Scraper
 		{
 			// Put stuff to interrupt downloads, save databases, etc.
 			DebugConsole.ShowStatus("Main form received close request; terminating all background tasks.");
+			this._running = false;
 
 			if (this._threadParse != null && this._threadParse.IsAlive)
 				try { this._threadParse.Abort(); }
@@ -108,13 +110,21 @@ namespace Scraper
 				this.treePostWindow.PerformLayout();
 			}
 			catch (InvalidOperationException) { }
+
+			Application.DoEvents();
 		}
 
 		public void LoadDatabase(string filename)
 		{
 			this.UpdateStatusText("Loading database...");
 			this._db = ThreadDatabase.LoadFromFile(filename);
-			DrawDatabaseTree(this._db);
+			if (this._db == null)
+				MessageBox.Show("An error occurred loading the database. Ensure you have specified a valid database. Check the Debug Console for more information.", "4chanscraper", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			else
+			{
+				DrawDatabaseTree(this._db);
+			}
+
 			this.UpdateStatusText("Ready.");
 		}
 
@@ -218,7 +228,7 @@ namespace Scraper
 							this._downloader.QueuePost(foldername + "\\" + imgnameR.Match(t[i].ImagePath).Value, t[i]);
 				}
 
-				while (this._downloader.QueueLength > 0)
+				while (this._running && this._downloader.QueueLength > 0)
 				{
 					this.Invoke(ust, "Waiting for " + this._downloader.QueueLength + " file downloads to complete (" + this._downloader.DownloadSpeed + ").");
 					Application.DoEvents();

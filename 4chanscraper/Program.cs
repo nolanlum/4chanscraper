@@ -24,7 +24,11 @@ namespace Scraper
 			DebugConsole.ShowStatus("Program startup...showing main form.");
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(mainForm = new frmMain());
+			try
+			{
+				Application.Run(mainForm = new frmMain());
+			}
+			catch (ObjectDisposedException) { }
 		}
 	}
 }
