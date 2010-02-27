@@ -10,11 +10,12 @@ using System.Globalization;
 
 namespace Scraper.Html
 {
-	public class BoardParser
+	public class BoardParser : IDisposable
 	{
 		#region Private Members
 		private string url, page;
 		private List<Thread> threadList;
+		private bool disposing = false;
 
 		private static Regex pageNum = new Regex("\\[<a href=\"([0-9]*)\">[0-9]*</a>\\]", RegexOptions.IgnoreCase);
 		private static Regex threadID = new Regex("<span id=\"nothread([0-9]*)\">", RegexOptions.IgnoreCase);
@@ -48,9 +49,18 @@ namespace Scraper.Html
 			this.url = url.Replace('\\', '/').Replace("/imgboard.html", "");
 			this.threadList = new List<Thread>();
 		}
+		public void Dispose()
+		{
+			if (this.disposing) return;
+
+			this.page = this.url = null;
+			this.threadList.Clear();
+			this.threadList = null;
+		}
 
 		public int DetectPageCount()
 		{
+			if (this.disposing) throw new ObjectDisposedException("BoardParser");
 			if (!getPage())
 				return 10;
 
@@ -65,6 +75,7 @@ namespace Scraper.Html
 
 		public Thread[] Parse()
 		{
+			if (this.disposing) throw new ObjectDisposedException("BoardParser");
 			if (!getPage())
 				return null;
 
@@ -99,6 +110,7 @@ namespace Scraper.Html
 		}
 		private void crawlThread(Thread t)
 		{
+			if (this.disposing) throw new ObjectDisposedException("BoardParser");
 			string page = null, url = this.url.TrimEnd("1234567890".ToCharArray()) + "res/" + t.Id;
 			DebugConsole.ShowDebug("Retrieving thread page: " + url);
 			try

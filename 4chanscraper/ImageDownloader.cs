@@ -14,6 +14,8 @@ namespace Scraper
 		private Thread[] workers;
 		private Queue<Pair<WaitCallback, object>> work;
 		private ManualResetEvent mre = new ManualResetEvent(false);
+		private DateTime start;
+		private long bytesDownloaded;
 
 		private bool disposing = false;
 
@@ -39,6 +41,16 @@ namespace Scraper
 			}
 		}
 
+		public string DownloadSpeed
+		{
+			get { return Math.Round((bytesDownloaded / 1024.0) / ((DateTime.Now - this.start).TotalSeconds), 2) + " KB/s"; }
+		}
+
+		public int QueueLength
+		{
+			get { return this.work.Count; }
+		}
+
 		public ImageDownloader(int size)
 		{
 			this.work = new Queue<Pair<WaitCallback, object>>();
@@ -47,6 +59,9 @@ namespace Scraper
 			for (int i = 0; i < size; i++){
 				this.workers[i] = _createWorker();
 			}
+
+			this.start = DateTime.Now;
+			this.bytesDownloaded = 0;
 		}
 
 		public void QueuePost(string name, Data.Post p)
@@ -59,6 +74,7 @@ namespace Scraper
 
 			lock (this.work)
 			{
+				if(this.work.Count == 0) this.start = DateTime.Now;
 				this.work.Enqueue(pair);
 			}
 
@@ -88,26 +104,75 @@ namespace Scraper
 			}
 
 			Pair<string, Data.Post> p = (Pair<string, Data.Post>) o;
-			using (WebClient wc = new WebClient())
+			p.Left = Path.GetFullPath(p.Left);
+			try
 			{
-				if (File.Exists(p.Left))
-				{ // Assume already downloaded.
-					DebugConsole.ShowDebug("Download skipped: URL " + p.Right.ImagePath + ": file already exists.");
-				}
-				else
+				using (WebClient wc = new WebClient())
 				{
-					DebugConsole.ShowDebug("Download start: URL " + p.Right.ImagePath + " to " + p.Left);
+					frmMain.__UpdateProgessCallback upc = new frmMain.__UpdateProgessCallback(Program.mainForm.UpdateStatusStripProgress);
+					frmMain.__UpdateStatusText ust = new frmMain.__UpdateStatusText(Program.mainForm.UpdateStatusStripText);
+					this.bytesDownloaded = 0; this.start = DateTime.Now;
 
-
-					DateTime start = DateTime.Now;
-					wc.DownloadFile(p.Right.ImagePath, p.Left);
 					if (File.Exists(p.Left))
-						DebugConsole.ShowInfo("Downloaded " + _humanReadableFileSize(new FileInfo(p.Left).Length) + " from " + p.Right.ImagePath + " in " + Math.Round((DateTime.Now - start).TotalMilliseconds / 1000.0, 2) + " seconds.");
+					{ // Assume already downloaded.
+						DebugConsole.ShowDebug("Download skipped: URL " + p.Right.ImagePath + ": file already exists.");
+					}
 					else
-						DebugConsole.ShowWarning("Download of URL " + p.Right.ImagePath + " failed.");
+					{
+						Program.mainForm.Invoke(upc, 0);
+						Program.mainForm.Invoke(new System.Windows.Forms.MethodInvoker(Program.mainForm.ShowProgress));
+
+						Stream sResp = null, sLocal = null;
+						DateTime start = DateTime.Now;
+						try
+						{
+							HttpWebRequest req = (HttpWebRequest) WebRequest.Create(p.Right.ImagePath);
+							req.Credentials = CredentialCache.DefaultCredentials;
+							HttpWebResponse resp = (HttpWebResponse) req.GetResponse();
+							long fileSize = resp.ContentLength;
+							resp.Close();
+							Program.mainForm.Invoke(ust, "Downloading file: 0/" + fileSize + " bytes downloaded");
+							DebugConsole.ShowDebug("Download start: URL " + p.Right.ImagePath + " to " + p.Left);
+
+							if (File.Exists(p.Left))
+							{ // Assume already downloaded.
+								DebugConsole.ShowDebug("Download skipped: URL " + p.Right.ImagePath + ": file already exists.");
+							}
+							else
+							{
+								sResp = wc.OpenRead(p.Right.ImagePath);
+								sLocal = new FileStream(p.Left, FileMode.Create, FileAccess.Write, FileShare.None);
+
+								int bytesSize = 0;
+								byte[] buffer = new byte[1024];
+
+								while ((bytesSize = sResp.Read(buffer, 0, buffer.Length)) > 0)
+								{
+									sLocal.Write(buffer, 0, bytesSize);
+									this.bytesDownloaded += bytesSize;
+
+									Program.mainForm.Invoke(upc, (int) ((double) sLocal.Length / fileSize * 100));
+									Program.mainForm.Invoke(ust, "Downloading file: " + sLocal.Length + "/" + fileSize + " bytes downloaded");
+								}
+							}
+						}
+						catch (Exception e) { System.Windows.Forms.MessageBox.Show(e.ToString()); }
+						finally
+						{
+							if (sResp != null) sResp.Close(); if (sLocal != null) sLocal.Close();
+							Program.mainForm.Invoke(ust, "Download complete.");
+							Program.mainForm.Invoke(new System.Windows.Forms.MethodInvoker(Program.mainForm.HideProgress));
+
+							if (File.Exists(p.Left))
+								DebugConsole.ShowInfo("Downloaded " + _humanReadableFileSize(new FileInfo(p.Left).Length) + " from " + p.Right.ImagePath + " in " + Math.Round((DateTime.Now - start).TotalMilliseconds / 1000.0, 2) + " seconds.");
+							else
+								DebugConsole.ShowWarning("Download of URL " + p.Right.ImagePath + " failed.");
+						}
+					}
+					p.Right.ImagePath = p.Left;
 				}
 			}
-			p.Right.ImagePath = Path.GetFullPath(p.Left);
+			catch { }
 		}
 
 		private Thread _createWorker()
@@ -118,7 +183,6 @@ namespace Scraper
 
 			return t;
 		}
-
 		private void _worker()
 		{
 			try {

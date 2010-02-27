@@ -29,16 +29,16 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Node1");
-			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Node2");
-			System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Node3");
-			System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode8,
-            treeNode9});
-			System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Node5");
-			System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
-            treeNode11});
+			System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Node1");
+			System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Node2");
+			System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("Node3");
+			System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
+            treeNode43,
+            treeNode44,
+            treeNode45});
+			System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("Node5");
+			System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
+            treeNode47});
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
 			this.mnuMain = new System.Windows.Forms.MenuStrip();
 			this.mnuMain_File = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,6 +94,9 @@
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.cmTaskTray_Close = new System.Windows.Forms.ToolStripMenuItem();
 			this.timerAutoScrape = new System.Windows.Forms.Timer(this.components);
+			this.strStatus = new System.Windows.Forms.StatusStrip();
+			this.strStatus_Status = new System.Windows.Forms.ToolStripStatusLabel();
+			this.strStatus_Progress = new System.Windows.Forms.ToolStripProgressBar();
 			this.mnuMain.SuspendLayout();
 			this.grpStatus.SuspendLayout();
 			this.pnlDetails.SuspendLayout();
@@ -101,6 +104,7 @@
 			((System.ComponentModel.ISupportInitialize) (this.picPostImg)).BeginInit();
 			this.grpDbStats.SuspendLayout();
 			this.cmTaskTray.SuspendLayout();
+			this.strStatus.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// mnuMain
@@ -135,6 +139,7 @@
 			this.mnuMain_FileNew.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
 			this.mnuMain_FileNew.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileNew.Text = "New Database";
+			this.mnuMain_FileNew.Click += new System.EventHandler(this.mnuMain_FileNew_Click);
 			// 
 			// toolStripSeparator2
 			// 
@@ -147,6 +152,7 @@
 			this.mnuMain_FileLoad.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
 			this.mnuMain_FileLoad.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileLoad.Text = "Load Database";
+			this.mnuMain_FileLoad.Click += new System.EventHandler(this.mnuMain_FileLoad_Click);
 			// 
 			// mnuMain_FileSave
 			// 
@@ -154,6 +160,7 @@
 			this.mnuMain_FileSave.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
 			this.mnuMain_FileSave.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileSave.Text = "Save Database";
+			this.mnuMain_FileSave.Click += new System.EventHandler(this.mnuMain_FileSave_Click);
 			// 
 			// toolStripSeparator3
 			// 
@@ -261,21 +268,21 @@
 			// 
 			this.treePostWindow.Location = new System.Drawing.Point(12, 27);
 			this.treePostWindow.Name = "treePostWindow";
-			treeNode7.Name = "Node1";
-			treeNode7.Text = "Node1";
-			treeNode8.Name = "Node2";
-			treeNode8.Text = "Node2";
-			treeNode9.Name = "Node3";
-			treeNode9.Text = "Node3";
-			treeNode10.Name = "Node0";
-			treeNode10.Text = "Node0";
-			treeNode11.Name = "Node5";
-			treeNode11.Text = "Node5";
-			treeNode12.Name = "Node4";
-			treeNode12.Text = "Node4";
+			treeNode43.Name = "Node1";
+			treeNode43.Text = "Node1";
+			treeNode44.Name = "Node2";
+			treeNode44.Text = "Node2";
+			treeNode45.Name = "Node3";
+			treeNode45.Text = "Node3";
+			treeNode46.Name = "Node0";
+			treeNode46.Text = "Node0";
+			treeNode47.Name = "Node5";
+			treeNode47.Text = "Node5";
+			treeNode48.Name = "Node4";
+			treeNode48.Text = "Node4";
 			this.treePostWindow.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode12});
+            treeNode46,
+            treeNode48});
 			this.treePostWindow.Size = new System.Drawing.Size(227, 352);
 			this.treePostWindow.TabIndex = 1;
 			// 
@@ -592,14 +599,42 @@
 			// 
 			this.timerAutoScrape.Interval = 120000;
 			// 
+			// strStatus
+			// 
+			this.strStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.strStatus_Status,
+            this.strStatus_Progress});
+			this.strStatus.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+			this.strStatus.Location = new System.Drawing.Point(0, 382);
+			this.strStatus.Name = "strStatus";
+			this.strStatus.Size = new System.Drawing.Size(580, 22);
+			this.strStatus.SizingGrip = false;
+			this.strStatus.TabIndex = 3;
+			// 
+			// strStatus_Status
+			// 
+			this.strStatus_Status.Name = "strStatus_Status";
+			this.strStatus_Status.Size = new System.Drawing.Size(42, 17);
+			this.strStatus_Status.Text = "Ready.";
+			// 
+			// strStatus_Progress
+			// 
+			this.strStatus_Progress.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+			this.strStatus_Progress.Name = "strStatus_Progress";
+			this.strStatus_Progress.Size = new System.Drawing.Size(100, 16);
+			this.strStatus_Progress.Value = 50;
+			this.strStatus_Progress.Visible = false;
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(580, 391);
+			this.ClientSize = new System.Drawing.Size(580, 404);
+			this.Controls.Add(this.strStatus);
 			this.Controls.Add(this.grpStatus);
 			this.Controls.Add(this.treePostWindow);
 			this.Controls.Add(this.mnuMain);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.mnuMain;
 			this.Name = "frmMain";
@@ -616,6 +651,8 @@
 			this.grpDbStats.ResumeLayout(false);
 			this.grpDbStats.PerformLayout();
 			this.cmTaskTray.ResumeLayout(false);
+			this.strStatus.ResumeLayout(false);
+			this.strStatus.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -677,6 +714,9 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_ScraperNow;
 		private System.Windows.Forms.Timer timerAutoScrape;
+		private System.Windows.Forms.StatusStrip strStatus;
+		private System.Windows.Forms.ToolStripStatusLabel strStatus_Status;
+		private System.Windows.Forms.ToolStripProgressBar strStatus_Progress;
 	}
 }
 

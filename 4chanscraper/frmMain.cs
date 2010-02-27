@@ -18,6 +18,7 @@ namespace Scraper
 	public partial class frmMain : Form
 	{
 		public delegate void __UpdateStatusText(string newtext);
+		public delegate void __UpdateProgessCallback(int percentage);
 		
 		private static Regex imgnameR = new Regex("[0-9]+\\.[a-z]{3,4}", RegexOptions.IgnoreCase);
 
@@ -26,6 +27,8 @@ namespace Scraper
 
 		private SysThread _threadParse;
 		private ImageDownloader _downloader;
+
+		private ThreadDatabase _db;
 
 		public bool EnableAutoScrape
 		{
@@ -72,10 +75,16 @@ namespace Scraper
 
 			if (this._downloader != null)
 				this._downloader.Dispose();
+
+			if (this._db != null)
+				try	{ this._db.Save(); this._db.Dispose(); }
+				catch { }
 		}
 
 		public void DrawDatabaseTree(ThreadDatabase db)
 		{
+			this.UpdateStatusText("Redrawing database tree...");
+
 			try
 			{
 				this.treePostWindow.SuspendLayout();
@@ -101,6 +110,52 @@ namespace Scraper
 			catch (InvalidOperationException) { }
 		}
 
+		public void LoadDatabase(string filename)
+		{
+			this.UpdateStatusText("Loading database...");
+			this._db = ThreadDatabase.LoadFromFile(filename);
+			DrawDatabaseTree(this._db);
+			this.UpdateStatusText("Ready.");
+		}
+
+		public void ScrapeBoard()
+		{
+			this._threadParse = new SysThread(new ThreadStart(delegate() {
+				BoardParser bp = new BoardParser(this._db.URL);
+
+				if (!this._db.CrawledAllPages)
+				{
+					int pages = bp.DetectPageCount();
+					string[] urls = new string[pages];
+					this.Invoke(new __UpdateStatusText(this.UpdateStatusText), "Grabbing metadata for " + pages + " pages...this may take a while.");
+
+					for (int i = 1; i <= pages; i++)
+					{
+						urls[pages - i] = this._db.URL.TrimEnd('/') + "/" + (i == 1 ? "" : i.ToString());
+					}
+					foreach (string s in urls)
+						this._db.AddThreads(new BoardParser(s).Parse());
+
+					this._db.CrawledAllPages = true;
+				}
+				else
+				{
+					this.Invoke(new __UpdateStatusText(this.UpdateStatusText), "Grabbing metadata...this may take a while.");
+					this._db.AddThreads(new BoardParser(this._db.URL).Parse());
+				}
+			}));
+			this._threadParse.Start();
+
+			while (this._threadParse.IsAlive)
+			{
+				Application.DoEvents();
+				SysThread.Sleep(50);
+			}
+
+			this.DrawDatabaseTree(this._db);
+			this._crawlDb(this._db);
+		}
+
 		public void UpdateStatusText(string newText)
 		{
 			try
@@ -108,14 +163,55 @@ namespace Scraper
 				this.lblStatus.Text = newText;
 			}
 			catch (InvalidOperationException) { }
+			Application.DoEvents();
+		}
+		public void UpdateStatusStripText(string newText)
+		{
+			try
+			{
+				this.strStatus_Status.Text = newText;
+			}
+			catch (InvalidOperationException) { }
+			Application.DoEvents();
+		}
+		public void UpdateStatusStripProgress(int percentage)
+		{
+			try
+			{
+				if (percentage > this.strStatus_Progress.Maximum) percentage = this.strStatus_Progress.Maximum;
+				if (percentage < this.strStatus_Progress.Minimum) percentage = this.strStatus_Progress.Minimum;
+				this.strStatus_Progress.Value = percentage;
+			}
+			catch (InvalidOperationException) { }
+			Application.DoEvents();
+		}
+		public void ShowProgress()
+		{
+			try
+			{
+				this.strStatus_Progress.Visible = true;
+			}
+			catch (InvalidOperationException) { }
+			Application.DoEvents();
+		}
+		public void HideProgress()
+		{
+			try
+			{
+				this.strStatus_Progress.Visible = false;
+			}
+			catch (InvalidOperationException) { }
+			Application.DoEvents();
 		}
 
 		private void _crawlDb(ThreadDatabase db)
 		{
+			__UpdateStatusText ust = new __UpdateStatusText(this.UpdateStatusText);
+
 			try
 			{
 				FileInfo fi = new FileInfo(db.Filename);
-				string foldername = fi.Name.Replace(fi.Extension, "");
+				string foldername = fi.DirectoryName + "\\" + fi.Name.Replace(fi.Extension, "");
 				if (!Directory.Exists(foldername))
 					Directory.CreateDirectory(foldername);
 
@@ -127,6 +223,11 @@ namespace Scraper
 							this._downloader.QueuePost(foldername + "\\" + imgnameR.Match(t[i].ImagePath).Value, t[i]);
 				}
 
+				while (this._downloader.QueueLength > 0)
+				{
+					this.Invoke(ust, "Waiting for " + this._downloader.QueueLength + " file downloads to complete (" + this._downloader.DownloadSpeed + ").");
+					SysThread.Sleep(500);
+				}
 			}
 			catch (IOException ioe)
 			{
@@ -141,6 +242,49 @@ namespace Scraper
 		#region Event Listeners
 		#region Menu Items
 		#region File
+		private void mnuMain_FileNew_Click(object sender, EventArgs e)
+		{
+			Dialogs.frmNewDatabaseDialog d = new Dialogs.frmNewDatabaseDialog();
+			d.ShowDialog();
+
+			ThreadDatabase db = new ThreadDatabase(d.DBName, d.DBLoc, d.DBUrl);
+			if (!d.ScrapeAll) db.CrawledAllPages = true;
+			db.Save(); db.Dispose();
+			this.LoadDatabase(d.DBLoc);
+
+			if (d.StartNow) new SysThread(new ThreadStart(delegate() { this.mnuMain_ScraperNow_Click(null, null); })).Start();
+		}
+		private void mnuMain_FileLoad_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.CheckFileExists = true;
+			ofd.CheckPathExists = true;
+			ofd.DefaultExt = ".db";
+			ofd.Filter = "Database files (*.db)|*.db|All files (*.*)|*.*";
+			ofd.FilterIndex = 0;
+			ofd.Multiselect = false;
+			ofd.RestoreDirectory = true;
+			ofd.Title = "Select Database File";
+
+			DialogResult dr = ofd.ShowDialog();
+			if (dr == DialogResult.OK)
+				this.LoadDatabase(ofd.FileName);
+		}
+		private void mnuMain_FileSave_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				if (this._db != null)
+					this._db.Save();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Error saving database: " + ex.GetType().Name + " " + ex.Message, "4chanscraper", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			MessageBox.Show("Database successfully saved!", "4chanscraper", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
 		private void mnuMain_FileMinimize_Click(object sender, EventArgs e)
 		{
 			this.mnuMain_FileMinimize.Checked = !this.mnuMain_FileMinimize.Checked;
@@ -184,13 +328,7 @@ namespace Scraper
 		}
 		private void mnuMain_ScraperNow_Click(object sender, EventArgs e)
 		{
-			ThreadDatabase db = new ThreadDatabase("/w/", "w.dat", "http://boards.4chan.org/w/");
-			this._threadParse = new SysThread(new ThreadStart(delegate() { db.AddThreads(new BoardParser(db.URL).Parse()); }));
-			this._threadParse.Start();
-			while (this._threadParse.IsAlive)
-				Application.DoEvents();
-			this.DrawDatabaseTree(db);
-			this._crawlDb(db);
+			this.ScrapeBoard();
 		}
 		#endregion
 		#region Help
@@ -243,7 +381,5 @@ namespace Scraper
 			this.TopMost = false;
 		}
 		#endregion
-
-		
 	}
 }

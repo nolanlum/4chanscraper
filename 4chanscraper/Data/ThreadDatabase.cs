@@ -21,10 +21,13 @@ namespace Scraper.Data
 		private static readonly long VERSION = -1L;
 
 		private string name, filename, url;
+		private bool crawledAll;
 		private Dictionary<int, Thread> threads;
 
 		[NonSerialized]
 		private FileStream fileHandle;
+		[NonSerialized]
+		private bool drawnTreeOnce;
 		#endregion
 
 		#region Public Properties
@@ -44,6 +47,16 @@ namespace Scraper.Data
 		public int PostCount
 		{
 			get { int c = 0; foreach (Thread t in this.threads.Values) c += t.Count; return c; }
+		}
+		public bool CrawledAllPages
+		{
+			get { return this.crawledAll; }
+			set { this.crawledAll = value; }
+		}
+		public bool FirstDraw
+		{
+			get { return this.drawnTreeOnce; }
+			set { this.drawnTreeOnce = value; }
 		}
 		public Thread this[int id]
 		{
