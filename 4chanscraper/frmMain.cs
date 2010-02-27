@@ -163,7 +163,6 @@ namespace Scraper
 				this.lblStatus.Text = newText;
 			}
 			catch (InvalidOperationException) { }
-			Application.DoEvents();
 		}
 		public void UpdateStatusStripText(string newText)
 		{
@@ -172,7 +171,6 @@ namespace Scraper
 				this.strStatus_Status.Text = newText;
 			}
 			catch (InvalidOperationException) { }
-			Application.DoEvents();
 		}
 		public void UpdateStatusStripProgress(int percentage)
 		{
@@ -183,7 +181,6 @@ namespace Scraper
 				this.strStatus_Progress.Value = percentage;
 			}
 			catch (InvalidOperationException) { }
-			Application.DoEvents();
 		}
 		public void ShowProgress()
 		{
@@ -192,7 +189,6 @@ namespace Scraper
 				this.strStatus_Progress.Visible = true;
 			}
 			catch (InvalidOperationException) { }
-			Application.DoEvents();
 		}
 		public void HideProgress()
 		{
@@ -201,7 +197,6 @@ namespace Scraper
 				this.strStatus_Progress.Visible = false;
 			}
 			catch (InvalidOperationException) { }
-			Application.DoEvents();
 		}
 
 		private void _crawlDb(ThreadDatabase db)
@@ -226,7 +221,8 @@ namespace Scraper
 				while (this._downloader.QueueLength > 0)
 				{
 					this.Invoke(ust, "Waiting for " + this._downloader.QueueLength + " file downloads to complete (" + this._downloader.DownloadSpeed + ").");
-					SysThread.Sleep(500);
+					Application.DoEvents();
+					SysThread.Sleep(50);
 				}
 			}
 			catch (IOException ioe)
@@ -245,14 +241,17 @@ namespace Scraper
 		private void mnuMain_FileNew_Click(object sender, EventArgs e)
 		{
 			Dialogs.frmNewDatabaseDialog d = new Dialogs.frmNewDatabaseDialog();
-			d.ShowDialog();
+			DialogResult dr = d.ShowDialog();
 
-			ThreadDatabase db = new ThreadDatabase(d.DBName, d.DBLoc, d.DBUrl);
-			if (!d.ScrapeAll) db.CrawledAllPages = true;
-			db.Save(); db.Dispose();
-			this.LoadDatabase(d.DBLoc);
+			if (dr == DialogResult.OK)
+			{
+				ThreadDatabase db = new ThreadDatabase(d.DBName, d.DBLoc, d.DBUrl);
+				if (!d.ScrapeAll) db.CrawledAllPages = true;
+				db.Save(); db.Dispose();
+				this.LoadDatabase(d.DBLoc);
 
-			if (d.StartNow) new SysThread(new ThreadStart(delegate() { this.mnuMain_ScraperNow_Click(null, null); })).Start();
+				if (d.StartNow) new SysThread(new ThreadStart(delegate() { this.mnuMain_ScraperNow_Click(null, null); })).Start();
+			}
 		}
 		private void mnuMain_FileLoad_Click(object sender, EventArgs e)
 		{

@@ -48,7 +48,7 @@ namespace Scraper
 
 		public int QueueLength
 		{
-			get { return this.work.Count; }
+			get { if (this.workers == null) throw new ObjectDisposedException("ImageDownloader"); return this.work.Count; }
 		}
 
 		public ImageDownloader(int size)
@@ -156,7 +156,6 @@ namespace Scraper
 								}
 							}
 						}
-						catch (Exception e) { System.Windows.Forms.MessageBox.Show(e.ToString()); }
 						finally
 						{
 							if (sResp != null) sResp.Close(); if (sLocal != null) sLocal.Close();

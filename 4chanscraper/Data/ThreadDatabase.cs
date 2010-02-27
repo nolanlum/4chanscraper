@@ -93,6 +93,11 @@ namespace Scraper.Data
 
 		public void AddThread(Thread thread)
 		{
+			if (this.threads.ContainsKey(thread.Id))
+				if (this.threads[thread.Id].Count == thread.Count)
+					return;
+				else
+					this.threads.Remove(thread.Id);
 			this.threads.Add(thread.Id, thread);
 
 			if (this.ThreadAdded != null)
@@ -161,6 +166,8 @@ namespace Scraper.Data
 			{
 				if (null != stream)
 					stream.Close();
+				if(null != db)
+					db.fileHandle = new FileStream(db.filename, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
 			}
 
 			return db;

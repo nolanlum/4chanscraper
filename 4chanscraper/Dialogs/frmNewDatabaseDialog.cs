@@ -122,6 +122,7 @@ namespace Scraper.Dialogs
 				return;
 			}
 
+			this.DialogResult = DialogResult.OK;
 			this.Close();
 		}
 	}
