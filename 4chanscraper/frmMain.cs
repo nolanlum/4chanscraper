@@ -23,13 +23,17 @@ namespace Scraper
 		private static Regex imgnameR = new Regex("[0-9]+\\.[a-z]{3,4}", RegexOptions.IgnoreCase);
 
 		private bool _running = true;
-		private bool _enableAutoScrape;
+		private bool _enableAutoScrape, _enableScrapeImages;
 		private int _downloaderThreads;
 
 		private SysThread _threadParse;
 		private ImageDownloader _downloader;
 
 		private ThreadDatabase _db;
+
+		private ContextMenuStrip cmTree;
+		private ToolStripMenuItem cmTree_Rename, cmTree_Delete, cmTree_Download, cmTree_OpenInExplorer;
+		private ToolStripSeparator cmTree_Sep1, cmTree_Sep2;
 
 		public bool EnableAutoScrape
 		{
@@ -39,6 +43,16 @@ namespace Scraper
 				this.cmTaskTray_Enabled.Checked = value;
 				this.mnuMain_ScraperEnabled.Checked = value;
 				this._enableAutoScrape = value;
+			}
+		}
+		public bool EnableScrapeImages
+		{
+			get { return this._enableScrapeImages; }
+			set
+			{
+				this.mnuMain_ScraperMode_Metadata.Checked = !value;
+				this.mnuMain_ScraperMode_MetadataAndImages.Checked = value;
+				this._enableScrapeImages = value;
 			}
 		}
 		public int DownloaderThreads
@@ -212,6 +226,7 @@ namespace Scraper
 		private void _crawlDb(ThreadDatabase db)
 		{
 			__UpdateStatusText ust = new __UpdateStatusText(this.UpdateStatusText);
+			if (!this._enableScrapeImages) return;
 
 			try
 			{
@@ -222,10 +237,7 @@ namespace Scraper
 
 				foreach (KeyValuePair<int, Thread> kvp in db)
 				{
-					Thread t = kvp.Value;
-					for (int i = 0; i < t.Count; i++)
-						if (t[i].ImagePath.Contains("http"))
-							this._downloader.QueuePost(foldername + "\\" + imgnameR.Match(t[i].ImagePath).Value, t[i]);
+					this._crawlThread(kvp.Value);
 				}
 
 				while (this._running && this._downloader.QueueLength > 0)
@@ -243,6 +255,14 @@ namespace Scraper
 			{
 				DebugConsole.ShowError("File permissions on image directory too restrictive, cannot write to directory. Aborting download.");
 			}
+		}
+		private void _crawlThread(Thread t)
+		{
+			if (!this._enableScrapeImages) return;
+
+			for (int i = 0; i < t.Count; i++)
+				if (t[i].ImagePath.Contains("http"))
+					this._downloader.QueuePost(foldername + "\\" + imgnameR.Match(t[i].ImagePath).Value, t[i]);
 		}
 
 		#region Event Listeners
@@ -338,6 +358,14 @@ namespace Scraper
 		private void mnuMain_ScraperNow_Click(object sender, EventArgs e)
 		{
 			this.ScrapeBoard();
+		}
+		private void mnuMain_ScraperMode_Metadata_Click(object sender, EventArgs e)
+		{
+			
+		}
+		private void mnuMain_ScraperMode_MetadataAndImages_Click(object sender, EventArgs e)
+		{
+
 		}
 		#endregion
 		#region Help
