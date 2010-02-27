@@ -67,6 +67,23 @@ namespace Scraper.Data
 				else
 					return threads[id];
 			}
+			set
+			{
+				this.threads[id] = value;
+			}
+		}
+		public Thread this[string name]
+		{
+			get
+			{
+				foreach (Thread t in this.threads.Values)
+					if (t.Name == name) return t;
+				return null;
+			}
+			set
+			{
+				this.threads[value.Id] = value;
+			}
 		}
 		#endregion
 
@@ -97,7 +114,10 @@ namespace Scraper.Data
 				if (this.threads[thread.Id].Count == thread.Count)
 					return;
 				else
+				{
+					thread = this.threads[thread.Id] + thread;
 					this.threads.Remove(thread.Id);
+				}
 			this.threads.Add(thread.Id, thread);
 
 			if (this.ThreadAdded != null)
@@ -107,6 +127,16 @@ namespace Scraper.Data
 		{
 			foreach (Thread t in threads)
 				AddThread(t);
+		}
+
+		public Post FindPost(int id)
+		{
+			foreach (Thread t in this.threads.Values)
+				for (int i = 0; i < t.Count; i++)
+					if (t[i].Id == id)
+						return t[i];
+
+			return null;
 		}
 
 		public void Save()

@@ -26,7 +26,7 @@ namespace Scraper.Data
 		}
 		public string Name
 		{
-			get { return this.Name; }
+			get { if (this.name == null) return this.id.ToString(); else  return this.name; }
 			set { this.Name = value; }
 		}
 
@@ -41,6 +41,39 @@ namespace Scraper.Data
 		public void AddPost(Post post)
 		{
 			this.posts.Add(post);
+		}
+
+		public static Thread operator +(Thread t1, Thread t2)
+		{
+			if (t1.id != t2.id) throw new InvalidOperationException("You cannot merge different threads.");
+
+			Thread newT = new Thread(t1.id);
+			// Even though posts don't re-order on 4chan, you can never be too careful.
+			for (int i = 0, j = 0; i < t1.Count || j < t2.Count; )
+			{
+				if (i == t1.Count) newT.AddPost(t2[j++]);
+				else if (j == t2.Count) newT.AddPost(t1[i++]);
+				else
+					if (t1[i] < t2[j]) // T1's post comes before (o.o) T2's post, merge in T1.
+						newT.AddPost(t1[i++]);
+					else if (t1[i] > t2[j]) // T2's post comes before (o.o) T1's post, merge in T2.
+						newT.AddPost(t2[j++]);
+					else // IDs match, check downloaded state.
+						if (t1[i].ImagePath == t2[j].ImagePath)
+						{
+							newT.AddPost(t1[i++]); j++;
+						}
+						else if (t1[i].ImagePath.Contains("http:"))
+						{
+							newT.AddPost(t2[j]); i++;
+						}
+						else
+						{
+							newT.AddPost(t1[i]); j++;
+						}
+			}
+
+			return newT;
 		}
 	}
 }

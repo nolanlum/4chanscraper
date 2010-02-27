@@ -68,5 +68,45 @@ namespace Scraper.Data
 		{
 			this.ImageBitmap.ToString();
 		}
+
+		#region Operator Overloads and Etc
+		public static bool operator ==(Post p1, Post p2)
+		{
+			if (Object.ReferenceEquals(p1, p2)) return true;
+			if (((object) p1 == null) || ((object) p2 == null)) return false;
+
+			return p1.id == p2.id;
+		}
+		public static bool operator !=(Post p1, Post p2)
+		{
+			return !(p1.id == p2.id);
+		}
+		public static bool operator <(Post p1, Post p2)
+		{
+			return p1.id < p2.id;
+		}
+		public static bool operator >(Post p1, Post p2)
+		{
+			return p1.id > p2.id;
+		}
+		public static bool operator <=(Post p1, Post p2)
+		{
+			return p1.id <= p2.id;
+		}
+		public static bool operator >=(Post p1, Post p2)
+		{
+			return p1.id >= p2.id;
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj == null || obj.GetType() != typeof(Post)) return false;
+			return this.id == ((Post) obj).id && this.imgName == ((Post) obj).imgName && this.time == ((Post) obj).time;
+		}
+		public override int GetHashCode()
+		{
+			return this.id.GetHashCode();
+		} 
+		#endregion
 	}
 }

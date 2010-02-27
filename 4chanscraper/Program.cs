@@ -30,5 +30,15 @@ namespace Scraper
 			}
 			catch (ObjectDisposedException) { }
 		}
+
+		public static string _humanReadableFileSize(long size)
+		{
+			if (size > 1048576L)
+				return Math.Round(size / 1048576.0, 2) + " MB";
+			else if (size > 1024L)
+				return Math.Round(size / 1024.0, 2) + " KB";
+			else
+				return size + " bytes";
+		}
 	}
 }

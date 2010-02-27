@@ -166,7 +166,7 @@ namespace Scraper
 							Program.mainForm.Invoke(new System.Windows.Forms.MethodInvoker(Program.mainForm.HideProgress));
 
 							if (File.Exists(p.Left))
-								DebugConsole.ShowInfo("Downloaded " + _humanReadableFileSize(new FileInfo(p.Left).Length) + " from " + p.Right.ImagePath + " in " + Math.Round((DateTime.Now - start).TotalMilliseconds / 1000.0, 2) + " seconds.");
+								DebugConsole.ShowInfo("Downloaded " + Program._humanReadableFileSize(new FileInfo(p.Left).Length) + " from " + p.Right.ImagePath + " in " + Math.Round((DateTime.Now - start).TotalMilliseconds / 1000.0, 2) + " seconds.");
 							else
 								DebugConsole.ShowWarning("Download of URL " + p.Right.ImagePath + " failed.");
 						}
@@ -214,16 +214,6 @@ namespace Scraper
 				}
 			} 
 			} catch(ThreadAbortException) { }
-		}
-
-		private string _humanReadableFileSize(long size)
-		{
-			if (size > 1048576L)
-				return Math.Round(size / 1048576.0, 2) + " MB";
-			else if (size > 1024L)
-				return Math.Round(size / 1024.0, 2) + " KB";
-			else
-				return size + " bytes";
 		}
 
 		public class Pair<T1, T2>

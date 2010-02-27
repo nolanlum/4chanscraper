@@ -289,6 +289,10 @@
             treeNode18});
 			this.treePostWindow.Size = new System.Drawing.Size(227, 352);
 			this.treePostWindow.TabIndex = 1;
+			this.treePostWindow.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treePostWindow_AfterLabelEdit);
+			this.treePostWindow.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treePostWindow_BeforeLabelEdit);
+			this.treePostWindow.KeyUp += new System.Windows.Forms.KeyEventHandler(this.treePostWindow_KeyUp);
+			this.treePostWindow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treePostWindow_MouseDown);
 			// 
 			// grpStatus
 			// 

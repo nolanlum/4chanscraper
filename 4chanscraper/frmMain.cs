@@ -19,10 +19,10 @@ namespace Scraper
 	{
 		public delegate void __UpdateStatusText(string newtext);
 		public delegate void __UpdateProgessCallback(int percentage);
-		
-		private static Regex imgnameR = new Regex("[0-9]+\\.[a-z]{3,4}", RegexOptions.IgnoreCase);
 
-		private bool _running = true;
+		private static Regex imgnameR = new Regex(@"[0-9]+\.[a-z]{3,4}", RegexOptions.IgnoreCase);
+
+		private bool _running = true, _updatingStatus = false;
 		private bool _enableAutoScrape, _enableScrapeImages;
 		private int _downloaderThreads;
 
@@ -31,9 +31,11 @@ namespace Scraper
 
 		private ThreadDatabase _db;
 
-		private ContextMenuStrip cmTree;
-		private ToolStripMenuItem cmTree_Rename, cmTree_Delete, cmTree_Download, cmTree_OpenInExplorer;
-		private ToolStripSeparator cmTree_Sep1, cmTree_Sep2;
+		private ContextMenu cmTree;
+		private MenuItem cmTree_Rename, cmTree_Delete, cmTree_Download, cmTree_OpenInExplorer, cmTree_Sep1, cmTree_Sep2;
+		private MenuItem[] cmTree__Thread, cmTree__Post;
+		private TreeNode treePostWindowMouseAt;
+		private string _tempNodeText;
 
 		public bool EnableAutoScrape
 		{
@@ -78,6 +80,32 @@ namespace Scraper
 			this.FormClosing += new FormClosingEventHandler(frmMain_FormClosing);
 
 			this._downloader = new ImageDownloader(1);
+
+			this.treePostWindow.TreeViewNodeSorter = new TreeViewComparer();
+			#region Tree View Context Menu Setup
+			this.cmTree = new ContextMenu();
+			this.cmTree.Name = "cmTree";
+			this.cmTree.Popup += new EventHandler(this.cmTree_Popup);
+			this.cmTree_Rename = new MenuItem("Rename Thread");
+			this.cmTree_Rename.Name = "cmTree_Rename";
+			this.cmTree_Rename.Click += new EventHandler(cmTree_Rename_Click);
+			this.cmTree_Delete = new MenuItem("Delete");
+			this.cmTree_Delete.Name = "cmTree_Delete";
+			this.cmTree_Delete.Click += new EventHandler(cmTree_Delete_Click);
+			this.cmTree_Download = new MenuItem("Download");
+			this.cmTree_Download.Name = "cmTree_Download";
+			this.cmTree_Download.Click += new EventHandler(cmTree_Download_Click);
+			this.cmTree_OpenInExplorer = new MenuItem("Show Image in Explorer");
+			this.cmTree_OpenInExplorer.Name = "cmTree_OpenInExplorer";
+			this.cmTree_OpenInExplorer.Click += new EventHandler(cmTree_OpenInExplorer_Click);
+			this.cmTree_Sep1 = new MenuItem("-");
+			this.cmTree_Sep1.Name = "cmTree_Sep1";
+			this.cmTree_Sep2 = new MenuItem("-");
+			this.cmTree_Sep2.Name = "cmTree_Sep2";
+			this.cmTree__Thread = new MenuItem[] { this.cmTree_Rename, this.cmTree_Delete, this.cmTree_Sep1, this.cmTree_Download };
+			this.cmTree__Post = new MenuItem[] { this.cmTree_Delete, this.cmTree_Sep1, this.cmTree_Download, this.cmTree_Sep2, this.cmTree_OpenInExplorer };
+			this.treePostWindow.ContextMenu = this.cmTree;
+			#endregion
 		}
 		private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -93,7 +121,7 @@ namespace Scraper
 				this._downloader.Dispose();
 
 			if (this._db != null)
-				try	{ this._db.Save(); this._db.Dispose(); }
+				try { this._db.Save(); this._db.Dispose(); }
 				catch { }
 		}
 
@@ -115,11 +143,12 @@ namespace Scraper
 						children[i] = new TreeNode(kvp.Value[i].Id + (i == 0 ? " (OP)" : ""));
 						children[i].Tag = "post";
 					}
-					tree[j] = new TreeNode(kvp.Value.Id.ToString(), children);
+					tree[j] = new TreeNode(kvp.Value.Name != null ? kvp.Value.Name : kvp.Value.Id.ToString(), children);
 					tree[j++].Tag = "thread";
 				}
 
 				this.treePostWindow.Nodes.AddRange(tree);
+				this.treePostWindow.Sort();
 				this.treePostWindow.ResumeLayout(false);
 				this.treePostWindow.PerformLayout();
 			}
@@ -137,14 +166,35 @@ namespace Scraper
 			else
 			{
 				DrawDatabaseTree(this._db);
+
+				this.grpPostStats.Hide();
+				this.pnlDetails.Show();
 			}
 
 			this.UpdateStatusText("Ready.");
 		}
+		public void UpdatePostDetails(Post p)
+		{
+			if (p == null) this.grpPostStats.Hide();
+			else this.grpPostStats.Show();
+
+			this.lblPostDate.Text = p.PostTime.ToString();
+			this.lblPostImgPath.Text = p.ImagePath;
+			if (p.ImagePath.Contains("http:"))
+			{
+				this.lblPostImgInfo.Text = "Unavailable.";
+			}
+			else
+			{
+				this.lblPostImgInfo.Text = string.Format("{0} ({1}x{2})", Program._humanReadableFileSize(new FileInfo(p.ImagePath).Length), p.ImageBitmap.Width, p.ImageBitmap.Height);
+				this.picPostImg.Image = this._resizeBitmapForPic(p.ImageBitmap);
+			}
+		}
 
 		public void ScrapeBoard()
 		{
-			this._threadParse = new SysThread(new ThreadStart(delegate() {
+			this._threadParse = new SysThread(new ThreadStart(delegate()
+			{
 				BoardParser bp = new BoardParser(this._db.URL);
 
 				if (!this._db.CrawledAllPages)
@@ -179,6 +229,43 @@ namespace Scraper
 			this.DrawDatabaseTree(this._db);
 			this._crawlDb(this._db);
 		}
+		private void _crawlDb(ThreadDatabase db, bool force)
+		{
+			if (!(this._enableScrapeImages || force)) return;
+
+			try
+			{
+				FileInfo fi = new FileInfo(db.Filename);
+				string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
+				if (!Directory.Exists(foldername))
+					Directory.CreateDirectory(foldername);
+
+				foreach (KeyValuePair<int, Thread> kvp in db)
+				{
+					this._crawlThread(kvp.Value, foldername);
+				}
+
+				this._statusLoopDownloading();
+			}
+			catch (IOException ioe)
+			{
+				DebugConsole.ShowError("IO error occurred while downloading images: " + ioe.GetType().Name + " " + ioe.Message);
+			}
+			catch (UnauthorizedAccessException)
+			{
+				DebugConsole.ShowError("File permissions on image directory too restrictive, cannot write to directory. Aborting download.");
+			}
+		}
+		private void _crawlDb(ThreadDatabase db) { _crawlDb(db, false); }
+		private void _crawlThread(Thread t, string foldername, bool force)
+		{
+			if (!(this._enableScrapeImages || force)) return;
+
+			for (int i = 0; i < t.Count; i++)
+				if (t[i].ImagePath.Contains("http:"))
+					this._downloader.QueuePost(foldername + @"\" + imgnameR.Match(t[i].ImagePath).Value, t[i]);
+		}
+		private void _crawlThread(Thread t, string foldername) { _crawlThread(t, foldername, false); }
 
 		public void UpdateStatusText(string newText)
 		{
@@ -223,46 +310,23 @@ namespace Scraper
 			catch (InvalidOperationException) { }
 		}
 
-		private void _crawlDb(ThreadDatabase db)
+		private void _statusLoopDownloading()
 		{
 			__UpdateStatusText ust = new __UpdateStatusText(this.UpdateStatusText);
-			if (!this._enableScrapeImages) return;
+			if (this._updatingStatus) return;
 
 			try
 			{
-				FileInfo fi = new FileInfo(db.Filename);
-				string foldername = fi.DirectoryName + "\\" + fi.Name.Replace(fi.Extension, "");
-				if (!Directory.Exists(foldername))
-					Directory.CreateDirectory(foldername);
-
-				foreach (KeyValuePair<int, Thread> kvp in db)
-				{
-					this._crawlThread(kvp.Value);
-				}
-
 				while (this._running && this._downloader.QueueLength > 0)
 				{
-					this.Invoke(ust, "Waiting for " + this._downloader.QueueLength + " file downloads to complete (" + this._downloader.DownloadSpeed + ").");
+					this.Invoke(ust, "Waiting for background tasks: " + this._downloader.QueueLength + " downloads; " + this._downloader.DownloadSpeed + ".");
 					Application.DoEvents();
 					SysThread.Sleep(50);
 				}
-			}
-			catch (IOException ioe)
-			{
-				DebugConsole.ShowError("IO error occurred while downloading images: " + ioe.GetType().Name + " " + ioe.Message);
-			}
-			catch (UnauthorizedAccessException)
-			{
-				DebugConsole.ShowError("File permissions on image directory too restrictive, cannot write to directory. Aborting download.");
-			}
-		}
-		private void _crawlThread(Thread t)
-		{
-			if (!this._enableScrapeImages) return;
 
-			for (int i = 0; i < t.Count; i++)
-				if (t[i].ImagePath.Contains("http"))
-					this._downloader.QueuePost(foldername + "\\" + imgnameR.Match(t[i].ImagePath).Value, t[i]);
+				this.Invoke(ust, "Ready.");
+			}
+			finally { this._updatingStatus = false; }
 		}
 
 		#region Event Listeners
@@ -328,7 +392,7 @@ namespace Scraper
 		{
 			Dialogs.frmInputDialog input = new Scraper.Dialogs.frmInputDialog("Enter the amount of time between automatic scrapes, with a time unit following the number. (h=hour,m=minute,s=second)\nYou may choose any combination of the units.\nEx: 30s = 30 seconds; 5m30s = 5 minutes, 30 seconds");
 			TimeSpan sp = new TimeSpan(this.timerAutoScrape.Interval * 10000);
-			input.InputText = string.Format("{0}h{1}m{2}s", sp.Hours, sp.Minutes, sp.Seconds).Replace("0h", "").Replace("0m","").Replace("0s","");
+			input.InputText = string.Format("{0}h{1}m{2}s", sp.Hours, sp.Minutes, sp.Seconds).Replace("0h", "").Replace("0m", "").Replace("0s", "");
 			input.ShowDialog();
 
 			string timestring = input.InputText.Trim();
@@ -339,9 +403,9 @@ namespace Scraper
 			Match hm = h.Match(timestring), mm = m.Match(timestring), sm = s.Match(timestring);
 			int newInterval = 0;
 
-			if(hm.Success)
+			if (hm.Success)
 				newInterval += int.Parse(hm.Groups[1].Value) * 3600000;
-			if(mm.Success)
+			if (mm.Success)
 				newInterval += int.Parse(mm.Groups[1].Value) * 60000;
 			if (sm.Success)
 				newInterval += int.Parse(sm.Groups[1].Value) * 1000;
@@ -361,11 +425,11 @@ namespace Scraper
 		}
 		private void mnuMain_ScraperMode_Metadata_Click(object sender, EventArgs e)
 		{
-			
+			this.EnableScrapeImages = false;
 		}
 		private void mnuMain_ScraperMode_MetadataAndImages_Click(object sender, EventArgs e)
 		{
-
+			this.EnableScrapeImages = true;
 		}
 		#endregion
 		#region Help
@@ -390,7 +454,7 @@ namespace Scraper
 		{
 			this.taskTrayIcon_DoubleClick(sender, e);
 		}
-		
+
 		private void cmTaskTray_Enabled_Click(object sender, EventArgs e)
 		{
 			this.EnableAutoScrape = !this.EnableAutoScrape;
@@ -399,6 +463,128 @@ namespace Scraper
 		private void cmTaskTray_Close_Click(object sender, EventArgs e)
 		{
 			Application.Exit();
+		}
+		#endregion
+		#region Tree Context Menu
+		void cmTree_Popup(object sender, EventArgs e)
+		{
+			if (this.treePostWindowMouseAt == null) return;
+			if ((string) this.treePostWindowMouseAt.Tag == "thread")
+			{
+				this.cmTree.MenuItems.Clear();
+				this.cmTree.MenuItems.AddRange(this.cmTree__Thread);
+
+				this.cmTree_Delete.Text = "Delete Entire Thread (May be recrawled)";
+				this.cmTree_Download.Text = "Download Thread Images";
+			}
+			else if ((string) this.treePostWindowMouseAt.Tag == "post")
+			{
+				this.cmTree.MenuItems.Clear();
+				this.cmTree.MenuItems.AddRange(this.cmTree__Post);
+
+				this.cmTree_Delete.Text = "Delete Post (May be recrawled)";
+				this.cmTree_Download.Text = "Download Post Image";
+			}
+			else
+			{ // Bug?
+				this.cmTree.MenuItems.Clear();
+			}
+		}
+		void cmTree_Rename_Click(object sender, EventArgs e)
+		{
+			if (this.treePostWindowMouseAt == null) return;
+
+			this.treePostWindow.LabelEdit = true;
+			if (!this.treePostWindowMouseAt.IsEditing)
+				this.treePostWindowMouseAt.BeginEdit();
+		}
+		void cmTree_Delete_Click(object sender, EventArgs e)
+		{
+			if (this.treePostWindowMouseAt == null) return;
+
+			throw new NotImplementedException();
+		}
+		void cmTree_Download_Click(object sender, EventArgs e)
+		{
+			if (this.treePostWindowMouseAt == null) return;
+
+			if (this.treePostWindowMouseAt.Tag.Equals("post"))
+			{
+				Post p = this._db.FindPost(int.Parse(this.treePostWindowMouseAt.Text.Replace(" (OP)", "")));
+				if (p == null && !p.ImagePath.Contains("http:")) return;
+
+				FileInfo fi = new FileInfo(this._db.Filename);
+				string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
+				this._downloader.QueuePost(foldername + @"\" + imgnameR.Match(p.ImagePath).Value, p);
+				_statusLoopDownloading();
+			}
+			else if (this.treePostWindowMouseAt.Tag.Equals("thread"))
+			{
+				Thread t = this._db[this.treePostWindowMouseAt.Text];
+				if (t == null) return;
+
+				FileInfo fi = new FileInfo(this._db.Filename);
+				string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
+				this._crawlThread(t, foldername, true);
+				_statusLoopDownloading();
+			}
+		}
+		void cmTree_OpenInExplorer_Click(object sender, EventArgs e)
+		{
+			if (this.treePostWindowMouseAt == null) return;
+
+			Post p = this._db.FindPost(int.Parse(this.treePostWindowMouseAt.Text.Replace(" (OP)", "")));
+			if (p == null || p.ImagePath.Contains("http:")) return;
+
+			System.Diagnostics.Process.Start("explorer.exe", "/select," + p.ImagePath);
+		}
+		#endregion
+
+		#region Tree View Events
+		private void treePostWindow_MouseDown(object sender, MouseEventArgs e)
+		{
+			this.treePostWindowMouseAt = treePostWindow.GetNodeAt(e.X, e.Y);
+
+			if (e.Button == MouseButtons.Left)
+				if (this.treePostWindowMouseAt.Tag.Equals("post"))
+					this.UpdatePostDetails(this._db.FindPost(int.Parse(this.treePostWindowMouseAt.Text.Replace(" (OP)", ""))));
+				else
+					this.grpPostStats.Hide();
+			
+		}
+		private void treePostWindow_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
+		{
+			this._tempNodeText = e.Node.Text;
+		}
+		private void treePostWindow_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+		{
+			if (e.Label == null || e.Label.Length < 1)
+				e.Node.Text = this._tempNodeText;
+
+			this._db[this._tempNodeText].Name = e.Node.Text;
+			this._tempNodeText = null;
+			this.DrawDatabaseTree(this._db);
+		}
+		private void treePostWindow_KeyUp(object sender, KeyEventArgs e)
+		{
+			if (this._tempNodeText != null && e.KeyCode == Keys.Escape)
+			{
+				this.treePostWindow.SelectedNode.Text = this._tempNodeText;
+			}
+			else if (this._tempNodeText == null && e.KeyCode == Keys.F2 && this.treePostWindow.SelectedNode != null && !this.treePostWindow.SelectedNode.Tag.Equals("post"))
+			{
+				this.treePostWindow.LabelEdit = true;
+				if (!this.treePostWindow.SelectedNode.IsEditing)
+					this.treePostWindow.SelectedNode.BeginEdit();
+			}
+
+			if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
+			{
+				if (this.treePostWindow.SelectedNode.Tag.Equals("post"))
+					this.UpdatePostDetails(this._db.FindPost(int.Parse(this.treePostWindow.SelectedNode.Text.Replace(" (OP)", ""))));
+				else
+					this.grpPostStats.Hide();
+			}
 		}
 		#endregion
 
@@ -418,5 +604,37 @@ namespace Scraper
 			this.TopMost = false;
 		}
 		#endregion
+
+		private Bitmap _resizeBitmapForPic(Bitmap o)
+		{
+			int wo = o.Width, ho = o.Height, wd = this.picPostImg.Width, hd = this.picPostImg.Height, wn, hn;
+			if (wo > ho)
+			{
+				wn = wd;
+				hn = (int) Math.Round((double) hd * wn / wd);
+			}
+			else
+			{
+				hn = hd;
+				wn = (int) Math.Round((double) wd * hn / hd);
+			}
+
+			return new Bitmap(o, new Size(wn, hn));
+		}
+
+		private class TreeViewComparer : System.Collections.IComparer
+		{
+			public int Compare(object x, object y)
+			{
+				if (x.GetType() != typeof(TreeNode) || y.GetType() != typeof(TreeNode))
+					throw new ArgumentException();
+
+				TreeNode xx = (TreeNode) x, yy = (TreeNode) y;
+				if("thread".Equals(xx.Tag) && "thread".Equals(yy.Tag))
+					return -xx.Text.CompareTo(yy.Text);
+				else
+					return xx.Text.CompareTo(yy.Text);
+			}
+		}
 	}
 }
