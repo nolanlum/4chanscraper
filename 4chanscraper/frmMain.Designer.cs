@@ -29,16 +29,16 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Node1");
-			System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Node2");
-			System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Node3");
-			System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14,
-            treeNode15});
-			System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Node5");
-			System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
-            treeNode17});
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node1");
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node2");
+			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node3");
+			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
+			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
+			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
+            treeNode5});
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
 			this.mnuMain = new System.Windows.Forms.MenuStrip();
 			this.mnuMain_File = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +54,9 @@
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuMain_ScraperConf = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_ScraperThreads = new System.Windows.Forms.ToolStripComboBox();
+			this.mnuMain_ScraperMode = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuMain_ScraperMode_Metadata = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuMain_ScraperMode_MetadataAndImages = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuMain_ScraperNow = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_Help = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,9 +100,7 @@
 			this.strStatus = new System.Windows.Forms.StatusStrip();
 			this.strStatus_Status = new System.Windows.Forms.ToolStripStatusLabel();
 			this.strStatus_Progress = new System.Windows.Forms.ToolStripProgressBar();
-			this.mnuMain_ScraperMode = new System.Windows.Forms.ToolStripMenuItem();
-			this.mnuMain_ScraperMode_Metadata = new System.Windows.Forms.ToolStripMenuItem();
-			this.mnuMain_ScraperMode_MetadataAndImages = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuMain_ScraperAll = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain.SuspendLayout();
 			this.grpStatus.SuspendLayout();
 			this.pnlDetails.SuspendLayout();
@@ -191,10 +192,11 @@
 			// 
 			this.mnuMain_Scraper.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuMain_ScraperEnabled,
-            this.toolStripSeparator4,
             this.mnuMain_ScraperConf,
+            this.toolStripSeparator4,
             this.mnuMain_ScraperThreads,
             this.mnuMain_ScraperMode,
+            this.mnuMain_ScraperAll,
             this.toolStripSeparator6,
             this.mnuMain_ScraperNow});
 			this.mnuMain_Scraper.Name = "mnuMain_Scraper";
@@ -232,6 +234,31 @@
 			this.mnuMain_ScraperThreads.Name = "mnuMain_ScraperThreads";
 			this.mnuMain_ScraperThreads.Size = new System.Drawing.Size(150, 23);
 			this.mnuMain_ScraperThreads.SelectedIndexChanged += new System.EventHandler(this.mnuMain_ScraperThreads_SelectedIndexChanged);
+			// 
+			// mnuMain_ScraperMode
+			// 
+			this.mnuMain_ScraperMode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuMain_ScraperMode_Metadata,
+            this.mnuMain_ScraperMode_MetadataAndImages});
+			this.mnuMain_ScraperMode.Name = "mnuMain_ScraperMode";
+			this.mnuMain_ScraperMode.Size = new System.Drawing.Size(210, 22);
+			this.mnuMain_ScraperMode.Text = "Scrape Mode";
+			// 
+			// mnuMain_ScraperMode_Metadata
+			// 
+			this.mnuMain_ScraperMode_Metadata.Name = "mnuMain_ScraperMode_Metadata";
+			this.mnuMain_ScraperMode_Metadata.Size = new System.Drawing.Size(188, 22);
+			this.mnuMain_ScraperMode_Metadata.Text = "Metadata only";
+			this.mnuMain_ScraperMode_Metadata.Click += new System.EventHandler(this.mnuMain_ScraperMode_Metadata_Click);
+			// 
+			// mnuMain_ScraperMode_MetadataAndImages
+			// 
+			this.mnuMain_ScraperMode_MetadataAndImages.Checked = true;
+			this.mnuMain_ScraperMode_MetadataAndImages.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.mnuMain_ScraperMode_MetadataAndImages.Name = "mnuMain_ScraperMode_MetadataAndImages";
+			this.mnuMain_ScraperMode_MetadataAndImages.Size = new System.Drawing.Size(188, 22);
+			this.mnuMain_ScraperMode_MetadataAndImages.Text = "Metadata and Images";
+			this.mnuMain_ScraperMode_MetadataAndImages.Click += new System.EventHandler(this.mnuMain_ScraperMode_MetadataAndImages_Click);
 			// 
 			// toolStripSeparator6
 			// 
@@ -272,27 +299,27 @@
 			// 
 			this.treePostWindow.Location = new System.Drawing.Point(12, 27);
 			this.treePostWindow.Name = "treePostWindow";
-			treeNode13.Name = "Node1";
-			treeNode13.Text = "Node1";
-			treeNode14.Name = "Node2";
-			treeNode14.Text = "Node2";
-			treeNode15.Name = "Node3";
-			treeNode15.Text = "Node3";
-			treeNode16.Name = "Node0";
-			treeNode16.Text = "Node0";
-			treeNode17.Name = "Node5";
-			treeNode17.Text = "Node5";
-			treeNode18.Name = "Node4";
-			treeNode18.Text = "Node4";
+			treeNode1.Name = "Node1";
+			treeNode1.Text = "Node1";
+			treeNode2.Name = "Node2";
+			treeNode2.Text = "Node2";
+			treeNode3.Name = "Node3";
+			treeNode3.Text = "Node3";
+			treeNode4.Name = "Node0";
+			treeNode4.Text = "Node0";
+			treeNode5.Name = "Node5";
+			treeNode5.Text = "Node5";
+			treeNode6.Name = "Node4";
+			treeNode6.Text = "Node4";
 			this.treePostWindow.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode16,
-            treeNode18});
+            treeNode4,
+            treeNode6});
 			this.treePostWindow.Size = new System.Drawing.Size(227, 352);
 			this.treePostWindow.TabIndex = 1;
 			this.treePostWindow.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treePostWindow_AfterLabelEdit);
-			this.treePostWindow.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treePostWindow_BeforeLabelEdit);
-			this.treePostWindow.KeyUp += new System.Windows.Forms.KeyEventHandler(this.treePostWindow_KeyUp);
 			this.treePostWindow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treePostWindow_MouseDown);
+			this.treePostWindow.KeyUp += new System.Windows.Forms.KeyEventHandler(this.treePostWindow_KeyUp);
+			this.treePostWindow.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treePostWindow_BeforeLabelEdit);
 			// 
 			// grpStatus
 			// 
@@ -633,30 +660,12 @@
 			this.strStatus_Progress.Value = 50;
 			this.strStatus_Progress.Visible = false;
 			// 
-			// mnuMain_ScraperMode
+			// mnuMain_ScraperAll
 			// 
-			this.mnuMain_ScraperMode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuMain_ScraperMode_Metadata,
-            this.mnuMain_ScraperMode_MetadataAndImages});
-			this.mnuMain_ScraperMode.Name = "mnuMain_ScraperMode";
-			this.mnuMain_ScraperMode.Size = new System.Drawing.Size(210, 22);
-			this.mnuMain_ScraperMode.Text = "Scrape Mode";
-			// 
-			// mnuMain_ScraperMode_Metadata
-			// 
-			this.mnuMain_ScraperMode_Metadata.Name = "mnuMain_ScraperMode_Metadata";
-			this.mnuMain_ScraperMode_Metadata.Size = new System.Drawing.Size(188, 22);
-			this.mnuMain_ScraperMode_Metadata.Text = "Metadata only";
-			this.mnuMain_ScraperMode_Metadata.Click += new System.EventHandler(this.mnuMain_ScraperMode_Metadata_Click);
-			// 
-			// mnuMain_ScraperMode_MetadataAndImages
-			// 
-			this.mnuMain_ScraperMode_MetadataAndImages.Checked = true;
-			this.mnuMain_ScraperMode_MetadataAndImages.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.mnuMain_ScraperMode_MetadataAndImages.Name = "mnuMain_ScraperMode_MetadataAndImages";
-			this.mnuMain_ScraperMode_MetadataAndImages.Size = new System.Drawing.Size(188, 22);
-			this.mnuMain_ScraperMode_MetadataAndImages.Text = "Metadata and Images";
-			this.mnuMain_ScraperMode_MetadataAndImages.Click += new System.EventHandler(this.mnuMain_ScraperMode_MetadataAndImages_Click);
+			this.mnuMain_ScraperAll.Name = "mnuMain_ScraperAll";
+			this.mnuMain_ScraperAll.Size = new System.Drawing.Size(210, 22);
+			this.mnuMain_ScraperAll.Text = "Scrape All Pages";
+			this.mnuMain_ScraperAll.Click += new System.EventHandler(this.mnuMain_ScraperAll_Click);
 			// 
 			// frmMain
 			// 
@@ -753,6 +762,7 @@
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_ScraperMode;
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_ScraperMode_Metadata;
 		private System.Windows.Forms.ToolStripMenuItem mnuMain_ScraperMode_MetadataAndImages;
+		private System.Windows.Forms.ToolStripMenuItem mnuMain_ScraperAll;
 	}
 }
 

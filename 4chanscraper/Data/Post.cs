@@ -15,7 +15,6 @@ namespace Scraper.Data
 		private string body;
 		private string imgName;
 		private DateTime time;
-		[NonSerialized] private Bitmap imgBmap;
 		#endregion
 
 		#region Public Properties
@@ -36,24 +35,6 @@ namespace Scraper.Data
 		{
 			get { return this.time; }
 		}
-		public Bitmap ImageBitmap
-		{
-			get
-			{
-				try
-				{
-					if (this.imgBmap == null)
-						this.imgBmap = new Bitmap(this.imgName);
-
-					return this.imgBmap;
-				}
-				catch (Exception e)
-				{
-					DebugConsole.ShowWarning("Error loading image for post ID " + this.id + ": " + e.GetType().Name + " " + e.Message);
-					return null;
-				}
-			}
-		}
 		#endregion
 
 		public Post(int id, string body, string imgPath, DateTime time)
@@ -62,11 +43,6 @@ namespace Scraper.Data
 			this.body = body;
 			this.imgName = imgPath;
 			this.time = time;
-		}
-
-		public void PreloadBitmap()
-		{
-			this.ImageBitmap.ToString();
 		}
 
 		#region Operator Overloads and Etc

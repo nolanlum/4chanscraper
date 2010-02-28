@@ -23,8 +23,8 @@ namespace Scraper
 		private static Regex imgnameR = new Regex(@"[0-9]+\.[a-z]{3,4}", RegexOptions.IgnoreCase);
 
 		private bool _running = true, _updatingStatus = false;
-		private bool _enableAutoScrape, _enableScrapeImages;
-		private int _downloaderThreads;
+		private bool _enableAutoScrape = false, _enableScrapeImages = true;
+		private int _downloaderThreads = 1;
 
 		private SysThread _threadParse;
 		private ImageDownloader _downloader;
@@ -32,7 +32,7 @@ namespace Scraper
 		private ThreadDatabase _db;
 
 		private ContextMenu cmTree;
-		private MenuItem cmTree_Rename, cmTree_Delete, cmTree_Download, cmTree_OpenInExplorer, cmTree_Sep1, cmTree_Sep2;
+		private MenuItem cmTree_Rename, cmTree_Delete, cmTree_Rescrape, cmTree_Download, cmTree_OpenInExplorer, cmTree_Sep1, cmTree_Sep2;
 		private MenuItem[] cmTree__Thread, cmTree__Post;
 		private TreeNode treePostWindowMouseAt;
 		private string _tempNodeText;
@@ -42,8 +42,11 @@ namespace Scraper
 			get { return this._enableAutoScrape; }
 			set
 			{
-				this.cmTaskTray_Enabled.Checked = value;
-				this.mnuMain_ScraperEnabled.Checked = value;
+				this.Invoke(new MethodInvoker(delegate()
+				{
+					this.cmTaskTray_Enabled.Checked = value;
+					this.mnuMain_ScraperEnabled.Checked = value;
+				}));
 				this._enableAutoScrape = value;
 			}
 		}
@@ -52,10 +55,18 @@ namespace Scraper
 			get { return this._enableScrapeImages; }
 			set
 			{
-				this.mnuMain_ScraperMode_Metadata.Checked = !value;
-				this.mnuMain_ScraperMode_MetadataAndImages.Checked = value;
+				this.Invoke(new MethodInvoker(delegate()
+				{
+					this.mnuMain_ScraperMode_Metadata.Checked = !value;
+					this.mnuMain_ScraperMode_MetadataAndImages.Checked = value;
+				}));
 				this._enableScrapeImages = value;
 			}
+		}
+		public bool EnableScrapeAll
+		{
+			get { if (this._db == null) return false; else return !this._db.CrawledAllPages; }
+			set { if (this._db == null) return; this._db.CrawledAllPages = !value; this.Invoke(new MethodInvoker(delegate() { this.mnuMain_ScraperAll.Checked = value; })); }
 		}
 		public int DownloaderThreads
 		{
@@ -63,7 +74,7 @@ namespace Scraper
 			set
 			{
 				if (!(value >= 1 && value <= 4)) return;
-				this.mnuMain_ScraperThreads.SelectedIndex = value - 1;
+				this.Invoke(new MethodInvoker(delegate() { this.mnuMain_ScraperThreads.SelectedIndex = value - 1; }));
 
 				this._downloaderThreads = value;
 				this._downloader.DownloadThreads = value;
@@ -92,6 +103,9 @@ namespace Scraper
 			this.cmTree_Delete = new MenuItem("Delete");
 			this.cmTree_Delete.Name = "cmTree_Delete";
 			this.cmTree_Delete.Click += new EventHandler(cmTree_Delete_Click);
+			this.cmTree_Rescrape = new MenuItem("Rescrape Thread");
+			this.cmTree_Rescrape.Name = "cmTree_Rescrape";
+			this.cmTree_Rescrape.Click += new EventHandler(cmTree_Rescrape_Click);
 			this.cmTree_Download = new MenuItem("Download");
 			this.cmTree_Download.Name = "cmTree_Download";
 			this.cmTree_Download.Click += new EventHandler(cmTree_Download_Click);
@@ -102,8 +116,8 @@ namespace Scraper
 			this.cmTree_Sep1.Name = "cmTree_Sep1";
 			this.cmTree_Sep2 = new MenuItem("-");
 			this.cmTree_Sep2.Name = "cmTree_Sep2";
-			this.cmTree__Thread = new MenuItem[] { this.cmTree_Rename, this.cmTree_Delete, this.cmTree_Sep1, this.cmTree_Download };
-			this.cmTree__Post = new MenuItem[] { this.cmTree_Delete, this.cmTree_Sep1, this.cmTree_Download, this.cmTree_Sep2, this.cmTree_OpenInExplorer };
+			this.cmTree__Thread = new MenuItem[] { this.cmTree_Rescrape, this.cmTree_Download, this.cmTree_Sep1, this.cmTree_Rename, this.cmTree_Delete };
+			this.cmTree__Post = new MenuItem[] { this.cmTree_Download, this.cmTree_Sep1, this.cmTree_Delete, this.cmTree_Sep2, this.cmTree_OpenInExplorer };
 			this.treePostWindow.ContextMenu = this.cmTree;
 			#endregion
 		}
@@ -154,6 +168,7 @@ namespace Scraper
 			}
 			catch (InvalidOperationException) { }
 
+			this.UpdateStatusText("Ready.");
 			Application.DoEvents();
 		}
 
@@ -178,16 +193,24 @@ namespace Scraper
 			if (p == null) this.grpPostStats.Hide();
 			else this.grpPostStats.Show();
 
+			if (this.picPostImg.Image == null)
+				this.picPostImg.Image = new Bitmap(this.picPostImg.Width, this.picPostImg.Height);
+
 			this.lblPostDate.Text = p.PostTime.ToString();
 			this.lblPostImgPath.Text = p.ImagePath;
 			if (p.ImagePath.Contains("http:"))
 			{
 				this.lblPostImgInfo.Text = "Unavailable.";
+				this.picPostImg.Visible = false;
 			}
 			else
 			{
-				this.lblPostImgInfo.Text = string.Format("{0} ({1}x{2})", Program._humanReadableFileSize(new FileInfo(p.ImagePath).Length), p.ImageBitmap.Width, p.ImageBitmap.Height);
-				this.picPostImg.Image = this._resizeBitmapForPic(p.ImageBitmap);
+				using (Bitmap b = new Bitmap(p.ImagePath))
+				{
+					this.lblPostImgInfo.Text = string.Format("{0} ({1}x{2})", Program._humanReadableFileSize(new FileInfo(p.ImagePath).Length), b.Width, b.Height);
+					this._resizeBitmapForPic(this.picPostImg.Image, b);
+					this.picPostImg.Visible = true;
+				}
 			}
 		}
 
@@ -197,7 +220,7 @@ namespace Scraper
 			{
 				BoardParser bp = new BoardParser(this._db.URL);
 
-				if (!this._db.CrawledAllPages)
+				if (this.EnableScrapeAll)
 				{
 					int pages = bp.DetectPageCount();
 					string[] urls = new string[pages];
@@ -210,7 +233,7 @@ namespace Scraper
 					foreach (string s in urls)
 						this._db.AddThreads(new BoardParser(s).Parse());
 
-					this._db.CrawledAllPages = true;
+					this.EnableScrapeAll = false;
 				}
 				else
 				{
@@ -419,10 +442,6 @@ namespace Scraper
 		{
 			this._downloaderThreads = this.mnuMain_ScraperThreads.SelectedIndex - 1;
 		}
-		private void mnuMain_ScraperNow_Click(object sender, EventArgs e)
-		{
-			this.ScrapeBoard();
-		}
 		private void mnuMain_ScraperMode_Metadata_Click(object sender, EventArgs e)
 		{
 			this.EnableScrapeImages = false;
@@ -430,6 +449,14 @@ namespace Scraper
 		private void mnuMain_ScraperMode_MetadataAndImages_Click(object sender, EventArgs e)
 		{
 			this.EnableScrapeImages = true;
+		}
+		private void mnuMain_ScraperNow_Click(object sender, EventArgs e)
+		{
+			this.ScrapeBoard();
+		}
+		private void mnuMain_ScraperAll_Click(object sender, EventArgs e)
+		{
+			this.EnableScrapeAll = !this.EnableScrapeAll;
 		}
 		#endregion
 		#region Help
@@ -504,6 +531,38 @@ namespace Scraper
 
 			throw new NotImplementedException();
 		}
+		void cmTree_Rescrape_Click(object sender, EventArgs e)
+		{
+			if (this.treePostWindowMouseAt == null) return;
+
+			if (this.treePostWindowMouseAt.Tag.Equals("thread"))
+			{
+				Thread t = this._db[this.treePostWindowMouseAt.Text];
+				if (t == null) return;
+
+				this.Invoke(new __UpdateStatusText(this.UpdateStatusText), "Grabbing metadata for 1 thread...");
+				try
+				{
+					using (BoardParser bp = new BoardParser(this._db.URL))
+					{
+						Thread tt = new Thread(t.Id);
+						bp.CrawlThread(tt);
+						t += tt;
+					}
+				}
+				catch
+				{
+					MessageBox.Show("Crawling the thread failed. It may have been 404'd.", "4chanscraper", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				}
+				this._db[this.treePostWindowMouseAt.Text] = t;
+				this.DrawDatabaseTree(this._db);
+
+				FileInfo fi = new FileInfo(this._db.Filename);
+				string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
+				this._crawlThread(t, foldername);
+				_statusLoopDownloading();
+			}
+		}
 		void cmTree_Download_Click(object sender, EventArgs e)
 		{
 			if (this.treePostWindowMouseAt == null) return;
@@ -550,19 +609,25 @@ namespace Scraper
 					this.UpdatePostDetails(this._db.FindPost(int.Parse(this.treePostWindowMouseAt.Text.Replace(" (OP)", ""))));
 				else
 					this.grpPostStats.Hide();
-			
+
 		}
 		private void treePostWindow_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
 		{
-			this._tempNodeText = e.Node.Text;
+			if (this._tempNodeText == null)
+				this._tempNodeText = e.Node.Text;
 		}
 		private void treePostWindow_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
 		{
-			if (e.Label == null || e.Label.Length < 1)
+			if (e.Label == null || e.Label.Length < 1 || e.CancelEdit)
+			{
 				e.Node.Text = this._tempNodeText;
+				e.CancelEdit = true;
+				return;
+			}
 
-			this._db[this._tempNodeText].Name = e.Node.Text;
+			this._db[this._tempNodeText].Name = e.Label;
 			this._tempNodeText = null;
+			this.treePostWindow.LabelEdit = false;
 			this.DrawDatabaseTree(this._db);
 		}
 		private void treePostWindow_KeyUp(object sender, KeyEventArgs e)
@@ -605,21 +670,19 @@ namespace Scraper
 		}
 		#endregion
 
-		private Bitmap _resizeBitmapForPic(Bitmap o)
+		private void _resizeBitmapForPic(Image target, Image o)
 		{
-			int wo = o.Width, ho = o.Height, wd = this.picPostImg.Width, hd = this.picPostImg.Height, wn, hn;
-			if (wo > ho)
-			{
-				wn = wd;
-				hn = (int) Math.Round((double) hd * wn / wd);
-			}
-			else
-			{
-				hn = hd;
-				wn = (int) Math.Round((double) wd * hn / hd);
-			}
+			int wd = target.Width, hd = target.Height;
+			double wo = o.Width, ho = o.Height, scaleFactor = (wo > ho) ? (hd / ho) : (wd / wo);
+			int wn = (int) (wo * scaleFactor), hn = (int) (ho * scaleFactor);
 
-			return new Bitmap(o, new Size(wn, hn));
+			using (Graphics g = Graphics.FromImage(target))
+			{
+				using (Bitmap bb = new Bitmap(o, new Size(wn, hn)))
+				{
+					g.DrawImage(bb, new Point((wd - wn) / 2, (hd - hn) / 2));
+				}
+			}
 		}
 
 		private class TreeViewComparer : System.Collections.IComparer
@@ -630,7 +693,7 @@ namespace Scraper
 					throw new ArgumentException();
 
 				TreeNode xx = (TreeNode) x, yy = (TreeNode) y;
-				if("thread".Equals(xx.Tag) && "thread".Equals(yy.Tag))
+				if ("thread".Equals(xx.Tag) && "thread".Equals(yy.Tag))
 					return -xx.Text.CompareTo(yy.Text);
 				else
 					return xx.Text.CompareTo(yy.Text);

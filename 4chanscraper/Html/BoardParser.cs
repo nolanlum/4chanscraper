@@ -97,18 +97,18 @@ namespace Scraper.Html
 			// Now crawl each individual thread for images.
 			foreach (Thread t in threads)
 				//System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(this.crawlThread), t);
-				this.crawlThread(t);
+				this.CrawlThread(t);
 
 			Thread[] ta = new Thread[threads.Count];
 			threads.CopyTo(ta);
 			return ta;
 		}
 
-		private void crawlThread(object t)
+		public void CrawlThread(object t)
 		{
-			if (t.GetType() == typeof(Thread)) crawlThread((Thread) t);
+			if (t.GetType() == typeof(Thread)) CrawlThread((Thread) t);
 		}
-		private void crawlThread(Thread t)
+		public void CrawlThread(Thread t)
 		{
 			if (this.disposing) throw new ObjectDisposedException("BoardParser");
 			string page = null, url = this.url.TrimEnd("1234567890".ToCharArray()) + "res/" + t.Id;

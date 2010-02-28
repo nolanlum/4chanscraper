@@ -27,7 +27,7 @@ namespace Scraper.Data
 		public string Name
 		{
 			get { if (this.name == null) return this.id.ToString(); else  return this.name; }
-			set { this.Name = value; }
+			set { this.name = value; }
 		}
 
 		public Thread(int id, string name)
@@ -48,6 +48,7 @@ namespace Scraper.Data
 			if (t1.id != t2.id) throw new InvalidOperationException("You cannot merge different threads.");
 
 			Thread newT = new Thread(t1.id);
+			newT.name = t1.name;
 			// Even though posts don't re-order on 4chan, you can never be too careful.
 			for (int i = 0, j = 0; i < t1.Count || j < t2.Count; )
 			{
@@ -65,11 +66,11 @@ namespace Scraper.Data
 						}
 						else if (t1[i].ImagePath.Contains("http:"))
 						{
-							newT.AddPost(t2[j]); i++;
+							newT.AddPost(t2[j++]); i++;
 						}
 						else
 						{
-							newT.AddPost(t1[i]); j++;
+							newT.AddPost(t1[i++]); j++;
 						}
 			}
 
