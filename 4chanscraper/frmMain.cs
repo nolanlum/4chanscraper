@@ -28,6 +28,7 @@ namespace Scraper
 
 		private SysThread _threadParse;
 		private ImageDownloader _downloader;
+		private GenericCache<string, Image> _imageCache;
 
 		private ThreadDatabase _db;
 
@@ -91,6 +92,7 @@ namespace Scraper
 			this.FormClosing += new FormClosingEventHandler(frmMain_FormClosing);
 
 			this._downloader = new ImageDownloader(1);
+			this._imageCache = new GenericCache<string, Image>(5);
 
 			this.treePostWindow.TreeViewNodeSorter = new TreeViewComparer();
 			#region Tree View Context Menu Setup
@@ -193,9 +195,6 @@ namespace Scraper
 			if (p == null) this.grpPostStats.Hide();
 			else this.grpPostStats.Show();
 
-			if (this.picPostImg.Image == null)
-				this.picPostImg.Image = new Bitmap(this.picPostImg.Width, this.picPostImg.Height);
-
 			this.lblPostDate.Text = p.PostTime.ToString();
 			this.lblPostImgPath.Text = p.ImagePath;
 			if (p.ImagePath.Contains("http:"))
@@ -205,17 +204,30 @@ namespace Scraper
 			}
 			else
 			{
-				using (Bitmap b = new Bitmap(p.ImagePath))
-				{
-					this.lblPostImgInfo.Text = string.Format("{0} ({1}x{2})", Program._humanReadableFileSize(new FileInfo(p.ImagePath).Length), b.Width, b.Height);
-					this._resizeBitmapForPic(this.picPostImg.Image, b);
-					this.picPostImg.Visible = true;
-				}
+				// Blank the picturebox.
+				if (this.picPostImg.Image != null)
+					this.picPostImg.Image.Dispose();
+				this.picPostImg.Image = new Bitmap(this.picPostImg.Width, this.picPostImg.Height);
+
+				// Add to cache if it's not there already.
+				if (!this._imageCache.ContainsKey(p.ImagePath))
+					this._imageCache.Add(p.ImagePath, new Bitmap(p.ImagePath));
+
+				// Blt the image.
+				Image i = this._imageCache[p.ImagePath];
+				this.lblPostImgInfo.Text = string.Format("{0} ({1}x{2})", Program._humanReadableFileSize(new FileInfo(p.ImagePath).Length), i.Width, i.Height);
+				this._resizeImage(this.picPostImg.Image, i);
+				this.picPostImg.Visible = true;
 			}
 		}
 
 		public void ScrapeBoard()
 		{
+			if (this._threadParse != null && this._threadParse.IsAlive)
+			{
+				MessageBox.Show("A metadata scrape is already in progress. Please wait until the current metadata scrape is complete.", "4chanscraper", MessageBoxButtons.OK, MessageBoxIcon.Warning); return;
+			}
+
 			this._threadParse = new SysThread(new ThreadStart(delegate()
 			{
 				BoardParser bp = new BoardParser(this._db.URL);
@@ -537,26 +549,41 @@ namespace Scraper
 
 			if (this.treePostWindowMouseAt.Tag.Equals("thread"))
 			{
+				if (this._threadParse != null && this._threadParse.IsAlive)
+				{
+					MessageBox.Show("A metadata scrape is already in progress. Please wait until the current metadata scrape is complete.", "4chanscraper", MessageBoxButtons.OK, MessageBoxIcon.Warning); return;
+				}
+
 				Thread t = this._db[this.treePostWindowMouseAt.Text];
 				if (t == null) return;
 
-				this.Invoke(new __UpdateStatusText(this.UpdateStatusText), "Grabbing metadata for 1 thread...");
-				try
+				this._threadParse = new SysThread(new ThreadStart(delegate()
 				{
-					using (BoardParser bp = new BoardParser(this._db.URL))
+					this.Invoke(new __UpdateStatusText(this.UpdateStatusText), "Grabbing metadata for 1 thread...");
+					try
 					{
-						Thread tt = new Thread(t.Id);
-						bp.CrawlThread(tt);
-						t += tt;
+						using (BoardParser bp = new BoardParser(this._db.URL))
+						{
+							Thread tt = new Thread(t.Id);
+							bp.CrawlThread(tt);
+							t += tt;
+						}
 					}
-				}
-				catch
-				{
-					MessageBox.Show("Crawling the thread failed. It may have been 404'd.", "4chanscraper", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				}
-				this._db[this.treePostWindowMouseAt.Text] = t;
-				this.DrawDatabaseTree(this._db);
+					catch
+					{
+						MessageBox.Show("Crawling the thread failed. It may have been 404'd.", "4chanscraper", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					}
+					this._db[this.treePostWindowMouseAt.Text] = t;
+				}));
 
+				this._threadParse.Start();
+				while (this._running && this._threadParse.IsAlive)
+				{
+					Application.DoEvents();
+					SysThread.Sleep(50);
+				}
+
+				this.DrawDatabaseTree(this._db);
 				FileInfo fi = new FileInfo(this._db.Filename);
 				string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
 				this._crawlThread(t, foldername);
@@ -670,7 +697,7 @@ namespace Scraper
 		}
 		#endregion
 
-		private void _resizeBitmapForPic(Image target, Image o)
+		private void _resizeImage(Image target, Image o)
 		{
 			int wd = target.Width, hd = target.Height;
 			double wo = o.Width, ho = o.Height, scaleFactor = (wo > ho) ? (hd / ho) : (wd / wo);

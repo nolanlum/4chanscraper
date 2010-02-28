@@ -16,6 +16,7 @@ namespace Scraper
 		private ManualResetEvent mre = new ManualResetEvent(false);
 		private DateTime start;
 		private long bytesDownloaded;
+		private int jobsQueued, jobsFinished;
 
 		private bool disposing = false;
 
@@ -48,7 +49,7 @@ namespace Scraper
 
 		public int QueueLength
 		{
-			get { if (this.workers == null) throw new ObjectDisposedException("ImageDownloader"); return this.work.Count; }
+			get { if (this.workers == null) throw new ObjectDisposedException("ImageDownloader"); if (this.jobsQueued == this.jobsFinished) this.jobsFinished = this.jobsQueued = 0; return this.jobsQueued - this.jobsFinished; }
 		}
 
 		public ImageDownloader(int size)
@@ -62,6 +63,7 @@ namespace Scraper
 
 			this.start = DateTime.Now;
 			this.bytesDownloaded = 0;
+			this.jobsFinished = this.jobsQueued = 0;
 		}
 
 		public void QueuePost(string name, Data.Post p)
@@ -74,8 +76,8 @@ namespace Scraper
 
 			lock (this.work)
 			{
-				if(this.work.Count == 0) this.start = DateTime.Now;
 				this.work.Enqueue(pair);
+				this.jobsQueued++;
 			}
 
 			this.mre.Set();
@@ -134,6 +136,7 @@ namespace Scraper
 							HttpWebResponse resp = (HttpWebResponse) req.GetResponse();
 							long fileSize = resp.ContentLength;
 							resp.Close();
+
 							Program.mainForm.Invoke(ust, "Downloading file: 0/" + fileSize + " bytes downloaded");
 							DebugConsole.ShowDebug("Download start: URL " + p.Right.ImagePath + " to " + p.Left);
 
@@ -169,6 +172,8 @@ namespace Scraper
 								DebugConsole.ShowInfo("Downloaded " + Program._humanReadableFileSize(new FileInfo(p.Left).Length) + " from " + p.Right.ImagePath + " in " + Math.Round((DateTime.Now - start).TotalMilliseconds / 1000.0, 2) + " seconds.");
 							else
 								DebugConsole.ShowWarning("Download of URL " + p.Right.ImagePath + " failed.");
+
+							this.jobsFinished++;
 						}
 					}
 					p.Right.ImagePath = p.Left;

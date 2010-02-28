@@ -111,6 +111,7 @@
     </Compile>
     <Compile Include="Html\BoardListParser.cs" />
     <Compile Include="Html\BoardParser.cs" />
+    <Compile Include="GenericCache.cs" />
     <Compile Include="ImageDownloader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
