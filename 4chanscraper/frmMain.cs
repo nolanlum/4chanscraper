@@ -708,7 +708,7 @@ namespace Scraper
 					this.treePostWindow.SelectedNode.BeginEdit();
 			}
 
-			if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
+			if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
 			{
 				if (this.treePostWindow.SelectedNode.Tag.Equals("post"))
 					this.UpdatePostDetails(this._db.FindPost(int.Parse(this.treePostWindow.SelectedNode.Text.Replace(" (OP)", ""))));

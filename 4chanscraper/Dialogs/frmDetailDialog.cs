@@ -49,7 +49,7 @@ namespace Scraper.Dialogs
 
 		public void ResizeImageBestFit()
 		{
-			Size max = SystemInformation.PrimaryMonitorSize;
+			Size max = SystemInformation.PrimaryMonitorSize - new Size(50, 100);
 			Size twenty = new Size((int) (this.PostImage.Width * .2), (int) (this.PostImage.Height * .2));
 			Image newI = (Image) this.PostImage.Clone();
 
@@ -64,7 +64,7 @@ namespace Scraper.Dialogs
 			this.Close();
 		}
 
-		protected override void WndProc(ref Message m)
+		/*protected override void WndProc(ref Message m)
 		{
 			if (m.Msg == WM_SIZING)
 			{
@@ -94,6 +94,6 @@ namespace Scraper.Dialogs
 			}
 
 			base.WndProc(ref m);
-		}
+		}*/
 	}
 }
