@@ -224,7 +224,7 @@ namespace Scraper
 		}
 		public void UpdatePostDetails()
 		{
-			if (this.picPostImg.Tag.GetType() == typeof(Post)) this.UpdatePostDetails(this.picPostImg.Tag as Post);
+			if (this.picPostImg.Tag != null && this.picPostImg.Tag.GetType() == typeof(Post)) this.UpdatePostDetails(this.picPostImg.Tag as Post);
 		}
 
 		public void ScrapeBoard()
