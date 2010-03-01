@@ -68,6 +68,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -85,6 +86,12 @@
     <Compile Include="Data\Thread.cs" />
     <Compile Include="Data\ThreadDatabase.cs" />
     <Compile Include="DebugConsole.cs" />
+    <Compile Include="Dialogs\frmDetailDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmDetailDialog.Designer.cs">
+      <DependentUpon>frmDetailDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\frmInputDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +122,10 @@
     <Compile Include="ImageDownloader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialogs\frmDetailDialog.resx">
+      <DependentUpon>frmDetailDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmInputDialog.resx">
       <DependentUpon>frmInputDialog.cs</DependentUpon>
       <SubType>Designer</SubType>

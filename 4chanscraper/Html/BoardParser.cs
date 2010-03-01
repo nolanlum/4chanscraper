@@ -7,6 +7,7 @@ using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using System.Web;
 
 namespace Scraper.Html
 {
@@ -21,6 +22,8 @@ namespace Scraper.Html
 		private static Regex threadID = new Regex("<span id=\"nothread([0-9]*)\">", RegexOptions.IgnoreCase);
 		private static Regex postOP = new Regex("File .*<a href=\"(?<url>.*)\" t.*-\\((?<size>[0-9. KMB]*), (?<res>[0-9]*x[0-9]*).*\\).*</span> (?<date>.*)<span id=\"nothread(?<id>[0-9]*).*<blockquote>(?<text>.*)</blockquote>");
 		private static Regex postRE = new Regex("<span class=\"commentpostername\".*</span> (?<date>.*) <span id=\"norep(?<id>[0-9]*).*File.*<a href=\"(?<url>.*)\" t.*-\\(([?<size>0-9. KMB]*), (?<res>[0-9]*x[0-9]*).*\\).*<blockquote>(?<text>.*)</blockquote>");
+		private static Regex html = new Regex("<[^>]+>", RegexOptions.IgnoreCase);
+		private static Regex br = new Regex("<br */?>", RegexOptions.IgnoreCase);
 		#endregion
 
 		#region Public Properties
@@ -149,7 +152,7 @@ namespace Scraper.Html
 				Match m = (i == 0 ? postOP : postRE).Match(parts[i]);
 				if (m.Success)
 				{
-					t.AddPost(new Post(int.Parse(m.Groups["id"].Value), m.Groups["text"].Value, m.Groups["url"].Value, this.parse4chanDate(m.Groups["date"].Value.Trim())));
+					t.AddPost(new Post(int.Parse(m.Groups["id"].Value), stripHTML(m.Groups["text"].Value), m.Groups["url"].Value, this.parse4chanDate(m.Groups["date"].Value.Trim())));
 				}
 			}
 			DebugConsole.WriteParseANSI("found " + t.Count + " images/posts.\n");
@@ -188,6 +191,10 @@ namespace Scraper.Html
 		private DateTime parse4chanDate(string date)
 		{
 			return DateTime.ParseExact(date, "MM/dd/yy(ddd)HH:mm", CultureInfo.InvariantCulture);
+		}
+		private string stripHTML(string html)
+		{
+			return HttpUtility.HtmlDecode(BoardParser.html.Replace(br.Replace(html, "\n"), ""));
 		}
 	}
 }

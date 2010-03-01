@@ -171,11 +171,10 @@ namespace Scraper
 							if (File.Exists(p.Left))
 								DebugConsole.ShowInfo("Downloaded " + Program._humanReadableFileSize(new FileInfo(p.Left).Length) + " from " + p.Right.ImagePath + " in " + Math.Round((DateTime.Now - start).TotalMilliseconds / 1000.0, 2) + " seconds.");
 							else
-								DebugConsole.ShowWarning("Download of URL " + p.Right.ImagePath + " failed.");
-
-							this.jobsFinished++;
+								DebugConsole.ShowWarning("Download of URL " + p.Right.ImagePath + " failed (" + p.Left + " does not exist.)");
 						}
 					}
+					this.jobsFinished++;
 					p.Right.ImagePath = p.Left;
 				}
 			}

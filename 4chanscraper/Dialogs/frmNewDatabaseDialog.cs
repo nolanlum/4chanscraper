@@ -85,7 +85,7 @@ namespace Scraper.Dialogs
 			this.cbBoardURL.SelectedIndex = 0;
 
 			this.lblStatus.Text = "Done!";
-			MessageBox.Show("Found " + this.cbBoardURL.Items.Count + " boards.", "4chanscraper", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			Program._genericMessageBox("Found " + this.cbBoardURL.Items.Count + " boards.", MessageBoxIcon.Information);
 			this.lblStatus.Text = "Waiting for user input...";
 		}
 		#endregion
@@ -105,7 +105,7 @@ namespace Scraper.Dialogs
 			}
 			catch
 			{
-				MessageBox.Show("An error occurred creating the database file; ensure you have permissions to the directory in which you are creating it.", "4chanscraper", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Program._genericMessageBox("An error occurred creating the database file; ensure you have permissions to the directory in which you are creating it.", MessageBoxIcon.Error);
 				return;
 			}
 
@@ -118,7 +118,7 @@ namespace Scraper.Dialogs
 			}
 			catch
 			{
-				MessageBox.Show("An error occured parsing your board URL; ensure the URL is a valid 4chan board.", "4chanscraper", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Program._genericMessageBox("An error occured parsing your board URL; ensure the URL is a valid 4chan board.", MessageBoxIcon.Error);
 				return;
 			}
 

@@ -40,5 +40,14 @@ namespace Scraper
 			else
 				return size + " bytes";
 		}
+
+		public static void _genericMessageBox(string message, MessageBoxIcon i)
+		{
+			MessageBox.Show(message, "4chanscraper", MessageBoxButtons.OK, i);
+		}
+		public static bool _genericConfimBox(string message, MessageBoxIcon i)
+		{
+			return DialogResult.OK == MessageBox.Show(message, "4chanscraper", MessageBoxButtons.OKCancel, i);
+		}
 	}
 }

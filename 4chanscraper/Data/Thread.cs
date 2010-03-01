@@ -29,6 +29,10 @@ namespace Scraper.Data
 			get { if (this.name == null) return this.id.ToString(); else  return this.name; }
 			set { this.name = value; }
 		}
+		public bool FullyDownloaded
+		{
+			get { foreach (Post p in this.posts) if (p.ImagePath.Contains("http:")) return false; return true; }
+		}
 
 		public Thread(int id, string name)
 		{
@@ -41,6 +45,15 @@ namespace Scraper.Data
 		public void AddPost(Post post)
 		{
 			this.posts.Add(post);
+		}
+		public void RemovePost(Post p)
+		{
+			this.posts.Remove(p);
+		}
+
+		public IEnumerator<Post> GetEnumerator()
+		{
+			return this.posts.GetEnumerator();
 		}
 
 		public static Thread operator +(Thread t1, Thread t2)

@@ -46,6 +46,9 @@ namespace Scraper
 		{
 			if (this.ContainsKey(k))
 			{
+				if (typeof(IDisposable).IsAssignableFrom(typeof(V)))
+					(this.cacheStore[k] as IDisposable).Dispose();
+
 				this.removeKeyFromQueue(k);
 				this.cacheStore.Remove(k);
 			}

@@ -11,7 +11,7 @@ using System.Collections;
 namespace Scraper.Data
 {
 	[Serializable]
-	public class ThreadDatabase : IDisposable, IEnumerable<KeyValuePair<int, Thread>>
+	public class ThreadDatabase : IDisposable//, IEnumerable<KeyValuePair<int, Thread>>
 	{
 		public delegate void __ThreadAdd(Thread newThread);
 		public event __ThreadAdd ThreadAdded;
@@ -47,6 +47,10 @@ namespace Scraper.Data
 		public int PostCount
 		{
 			get { int c = 0; foreach (Thread t in this.threads.Values) c += t.Count; return c; }
+		}
+		public long SerializedSize
+		{
+			get { return this.fileHandle.Length; }
 		}
 		public bool CrawledAllPages
 		{
@@ -123,10 +127,15 @@ namespace Scraper.Data
 			if (this.ThreadAdded != null)
 				this.ThreadAdded(thread);
 		}
-		public void AddThreads(Thread[] threads)
+		public void AddThreads(IEnumerable<Thread> threads)
 		{
 			foreach (Thread t in threads)
 				AddThread(t);
+		}
+
+		public void RemoveThread(Thread thread)
+		{
+			this.threads.Remove(thread.Id);
 		}
 
 		public Post FindPost(int id)
@@ -164,10 +173,6 @@ namespace Scraper.Data
 
 		#region Enumerator Methods
 		public IEnumerator<KeyValuePair<int, Thread>> GetEnumerator()
-		{
-			return this.threads.GetEnumerator();
-		}
-		IEnumerator IEnumerable.GetEnumerator()
 		{
 			return this.threads.GetEnumerator();
 		}
