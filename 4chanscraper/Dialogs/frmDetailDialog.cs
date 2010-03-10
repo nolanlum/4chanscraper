@@ -32,7 +32,7 @@ namespace Scraper.Dialogs
 		public Image PostImage
 		{
 			get { return this.picPicture.Tag as Image; }
-			set { this.picPicture.Tag = value; this.widthRatio = value.Width; this.heightRatio = value.Height; this.ResizeImageBestFit(); }
+			set { this.picPicture.Tag = value; this.ResizeImageBestFit(); }
 		}
 		public string PostString
 		{
@@ -51,12 +51,29 @@ namespace Scraper.Dialogs
 		{
 			Size max = SystemInformation.PrimaryMonitorSize - new Size(50, 100);
 			Size twenty = new Size((int) (this.PostImage.Width * .2), (int) (this.PostImage.Height * .2));
+			Size form;
 			Image newI = (Image) this.PostImage.Clone();
 
 			while(newI.Width >= max.Width || newI.Height >= max.Height)
 				newI = new Bitmap(newI, newI.Size - twenty);
 
+			// Set autosizing to true.
+			this.AutoSize = true;
+			this.picPicture.SizeMode = PictureBoxSizeMode.AutoSize;
+
+			// Set image and then save size.
 			this.picPicture.Image = newI;
+			form = this.Size;
+
+			// Un-autosize and reset size.
+			this.AutoSize = false;
+			this.picPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+			this.Size = form;
+			this.picPicture.Size = newI.Size;
+
+			// Set scaling factors.
+			this.widthRatio = this.Size.Width;
+			this.heightRatio = this.Size.Height; 
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)
@@ -64,7 +81,7 @@ namespace Scraper.Dialogs
 			this.Close();
 		}
 
-		/*protected override void WndProc(ref Message m)
+		protected override void WndProc(ref Message m)
 		{
 			if (m.Msg == WM_SIZING)
 			{
@@ -94,6 +111,6 @@ namespace Scraper.Dialogs
 			}
 
 			base.WndProc(ref m);
-		}*/
+		}
 	}
 }

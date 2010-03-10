@@ -55,7 +55,7 @@
 			this.picPicture.Location = new System.Drawing.Point(12, 12);
 			this.picPicture.Name = "picPicture";
 			this.picPicture.Size = new System.Drawing.Size(215, 215);
-			this.picPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.picPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.picPicture.TabIndex = 1;
 			this.picPicture.TabStop = false;
 			// 
@@ -87,7 +87,6 @@
 			this.Text = "Post Detail View";
 			((System.ComponentModel.ISupportInitialize) (this.picPicture)).EndInit();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 

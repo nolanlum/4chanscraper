@@ -21,6 +21,7 @@ namespace Scraper
 		public delegate void __UpdateProgessCallback(int percentage);
 
 		private static Regex imgnameR = new Regex(@"[0-9]+\.[a-z]{3,4}", RegexOptions.IgnoreCase);
+		private static Regex boardnameR = new Regex(@"http://.*?/([0-9a-z]){1,4}/", RegexOptions.IgnoreCase);
 
 		private bool _running = true, _updatingStatus = false;
 		private bool _enableAutoScrape = false, _enableScrapeImages = true;
@@ -33,7 +34,7 @@ namespace Scraper
 		private ThreadDatabase _db;
 
 		private ContextMenu cmTree;
-		private MenuItem cmTree_Rename, cmTree_Delete, cmTree_Rescrape, cmTree_Download, cmTree_OpenInExplorer, cmTree_Sep1, cmTree_Sep2;
+		private MenuItem cmTree_Rename, cmTree_Delete, cmTree_Rescrape, cmTree_Download, cmTree_OpenInExplorer, cmTree_GenerateImgUrl, cmTree_Sep1, cmTree_Sep2;
 		private MenuItem[] cmTree__Thread, cmTree__Post;
 		private TreeNode treePostWindowMouseAt;
 		private string _tempNodeText;
@@ -117,16 +118,20 @@ namespace Scraper
 			this.cmTree_OpenInExplorer = new MenuItem("Show Image in Explorer");
 			this.cmTree_OpenInExplorer.Name = "cmTree_OpenInExplorer";
 			this.cmTree_OpenInExplorer.Click += new EventHandler(cmTree_OpenInExplorer_Click);
+			this.cmTree_GenerateImgUrl = new MenuItem("Copy 4chan Image URL");
+			this.cmTree_GenerateImgUrl.Name = "cmTree_GenerateImgUrl";
+			this.cmTree_GenerateImgUrl.Click += new EventHandler(cmTree_GenerateImgUrl_Click);
 			this.cmTree_Sep1 = new MenuItem("-");
 			this.cmTree_Sep1.Name = "cmTree_Sep1";
 			this.cmTree_Sep2 = new MenuItem("-");
 			this.cmTree_Sep2.Name = "cmTree_Sep2";
 			this.cmTree__Thread = new MenuItem[] { this.cmTree_Rescrape, this.cmTree_Download, this.cmTree_Sep1, this.cmTree_Rename, this.cmTree_Delete };
-			this.cmTree__Post = new MenuItem[] { this.cmTree_Download, this.cmTree_Sep1, this.cmTree_Delete, this.cmTree_Sep2, this.cmTree_OpenInExplorer };
+			this.cmTree__Post = new MenuItem[] { this.cmTree_Download, this.cmTree_Sep1, this.cmTree_Delete, this.cmTree_Sep2, this.cmTree_OpenInExplorer, this.cmTree_GenerateImgUrl };
 			this.cmTree.MenuItems.AddRange(this.cmTree__Thread);
 			this.treePostWindow.ContextMenu = this.cmTree;
 			#endregion
 		}
+
 		private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			// Put stuff to interrupt downloads, save databases, etc.
@@ -661,6 +666,21 @@ namespace Scraper
 
 			System.Diagnostics.Process.Start("explorer.exe", "/select," + p.ImagePath);
 		}
+		void cmTree_GenerateImgUrl_Click(object sender, EventArgs e)
+		{
+			if (this.treePostWindowMouseAt == null) return;
+
+			Post p = this._db.FindPost(int.Parse(this.treePostWindowMouseAt.Text.Replace(" (OP)", "")));
+			if (p == null) return;
+
+			if (p.ImagePath.Contains("http:"))
+				Clipboard.SetText(p.ImagePath);
+			else
+			{
+				Match m = boardnameR.Match(this._db.URL);
+				Clipboard.SetText("http://images.4chan.org/" + m.Groups[1].Value + "/src/" + new FileInfo(p.ImagePath).Name);
+			}
+		}
 		#endregion
 
 		#region Tree View Events
@@ -673,8 +693,7 @@ namespace Scraper
 				if (this.treePostWindowMouseAt.Tag.Equals("post"))
 					this.UpdatePostDetails(this._db.FindPost(int.Parse(this.treePostWindowMouseAt.Text.Replace(" (OP)", ""))));
 				else
-					this.grpPostStats.Hide();
-
+					this.UpdatePostDetails(this._db.FindPost(int.Parse(this.treePostWindowMouseAt.Nodes[0].Text.Replace(" (OP)", ""))));
 		}
 		private void treePostWindow_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
 		{
@@ -713,7 +732,7 @@ namespace Scraper
 				if (this.treePostWindow.SelectedNode.Tag.Equals("post"))
 					this.UpdatePostDetails(this._db.FindPost(int.Parse(this.treePostWindow.SelectedNode.Text.Replace(" (OP)", ""))));
 				else
-					this.grpPostStats.Hide();
+					this.UpdatePostDetails(this._db.FindPost(int.Parse(this.treePostWindow.SelectedNode.Nodes[0].Text.Replace(" (OP)", ""))));
 			}
 		}
 		private void treePostWindow_NodeMouseDoubleClick(object sender, System.Windows.Forms.TreeNodeMouseClickEventArgs e)
