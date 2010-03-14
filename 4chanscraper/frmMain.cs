@@ -173,7 +173,7 @@ namespace Scraper
 							kvp.Value[i].IsNewPost = false;
 						}
 
-						children[i].Tag = "post";						
+						children[i].Tag = "post";
 					}
 
 					tree[j] = new TreeNode(kvp.Value.Name != null ? kvp.Value.Name : kvp.Value.Id.ToString(), children);
@@ -507,14 +507,50 @@ namespace Scraper
 
 			System.Net.HttpWebRequest req = System.Net.WebRequest.Create(this._db.URL + (this._db.URL.EndsWith("/") ? "" : "/") + "res/" + id) as System.Net.HttpWebRequest;
 			req.Credentials = System.Net.CredentialCache.DefaultCredentials;
+			req.Method = "HEAD";
 			System.Net.HttpWebResponse resp = req.GetResponse() as System.Net.HttpWebResponse;
 			if (resp.StatusCode != System.Net.HttpStatusCode.OK)
-				Program._genericMessageBox("The thread you specified was not found. Please check your input.", MessageBoxIcon.Exclamation);
-			else
-				this._db.AddThread(new Thread(id));
-
-			this.DrawDatabaseTree(this._db);
+			{
+				Program._genericMessageBox("The thread you specified was not found. Please check your input.", MessageBoxIcon.Exclamation); return;
+			}
 			resp.Close();
+
+			if (this._threadParse != null && this._threadParse.IsAlive)
+			{
+				Program._genericMessageBox("A metadata scrape is already in progress. Please wait until the current metadata scrape is complete.", MessageBoxIcon.Warning); return;
+			}
+
+			Thread t = new Thread(id);
+			this._threadParse = new SysThread(new ThreadStart(delegate()
+			{
+				this.Invoke(new __UpdateStatusText(this.UpdateStatusText), "Grabbing metadata for 1 thread...");
+				try
+				{
+					using (BoardParser bp = new BoardParser(this._db.URL))
+					{
+						bp.CrawlThread(t);
+					}
+				}
+				catch
+				{
+					Program._genericMessageBox("Crawling the thread failed. It may have been 404'd.", MessageBoxIcon.Error);
+				}
+			}));
+
+			this._threadParse.Start();
+			while (this._running && this._threadParse.IsAlive)
+			{
+				Application.DoEvents();
+				SysThread.Sleep(50);
+			}
+
+			this._db.AddThread(t);
+			this.DrawDatabaseTree(this._db);
+			
+			FileInfo fi = new FileInfo(this._db.Filename);
+			string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
+			this._crawlThread(t, foldername);
+			_statusLoopDownloading();
 		}
 		private void mnuMain_ScraperNow_Click(object sender, EventArgs e)
 		{

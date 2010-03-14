@@ -12,15 +12,25 @@ namespace Scraper.Dialogs
 {
 	public partial class frmDetailDialog : Form
 	{
+		const int WM_NCLBUTTONDOWN = 0x0A1;
 		const int WM_KEYDOWN = 0x100;
 		const int WM_KEYUP = 0x101;
 		const int WM_SYSKEYDOWN = 0x104;
 		const int WM_SYSKEYUP = 0x105;
 		const int WM_SIZING = 0x214;
+
 		const int WMSZ_LEFT = 1;
 		const int WMSZ_RIGHT = 2;
 		const int WMSZ_TOP = 3;
 		const int WMSZ_BOTTOM = 6;
+
+		const int HT_CAPTION = 0x2;
+
+		[DllImportAttribute("user32.dll")]
+		private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+		[DllImportAttribute("user32.dll")]
+		private static extern bool ReleaseCapture();
+
 		[StructLayout(LayoutKind.Sequential)]
 		public struct RECT
 		{
@@ -49,6 +59,9 @@ namespace Scraper.Dialogs
 			InitializeComponent();
 
 			this.picPicture.Tag = new Bitmap(640, 480);
+
+			this.MouseDown += new MouseEventHandler(this.frmDetailDialog_MouseDown);
+			this.picPicture.MouseDown += new MouseEventHandler(this.frmDetailDialog_MouseDown);
 		}
 
 		public void ResizeImageBestFit()
@@ -85,6 +98,15 @@ namespace Scraper.Dialogs
 		private void btnClose_Click(object sender, EventArgs e)
 		{
 			this.Close();
+		}
+
+		private void frmDetailDialog_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left)
+			{
+				ReleaseCapture();
+				SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+			}
 		}
 
 		protected override void WndProc(ref Message m)

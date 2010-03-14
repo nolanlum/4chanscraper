@@ -133,6 +133,7 @@ namespace Scraper
 						{
 							HttpWebRequest req = (HttpWebRequest) WebRequest.Create(p.Right.ImagePath);
 							req.Credentials = CredentialCache.DefaultCredentials;
+							req.Method = "HEAD";
 							HttpWebResponse resp = (HttpWebResponse) req.GetResponse();
 							long fileSize = resp.ContentLength;
 							resp.Close();
