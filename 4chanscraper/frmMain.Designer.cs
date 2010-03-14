@@ -49,6 +49,7 @@
 			this.mnuMain_ScraperMode_MetadataAndImages = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_ScraperAll = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+			this.mnuMain_ScraperManAdd = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_ScraperNow = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_Help = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain_HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,7 +93,6 @@
 			this.strStatus_Status = new System.Windows.Forms.ToolStripStatusLabel();
 			this.strStatus_Progress = new System.Windows.Forms.ToolStripProgressBar();
 			this.frmMain_ToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.mnuMain_ScraperManAdd = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain.SuspendLayout();
 			this.grpStatus.SuspendLayout();
 			this.pnlDetails.SuspendLayout();
@@ -265,6 +265,13 @@
 			// 
 			this.toolStripSeparator6.Name = "toolStripSeparator6";
 			this.toolStripSeparator6.Size = new System.Drawing.Size(207, 6);
+			// 
+			// mnuMain_ScraperManAdd
+			// 
+			this.mnuMain_ScraperManAdd.Name = "mnuMain_ScraperManAdd";
+			this.mnuMain_ScraperManAdd.Size = new System.Drawing.Size(210, 22);
+			this.mnuMain_ScraperManAdd.Text = "Manual Thread Add";
+			this.mnuMain_ScraperManAdd.Click += new System.EventHandler(this.mnuMain_ScraperManAdd_Click);
 			// 
 			// mnuMain_ScraperNow
 			// 
@@ -666,12 +673,6 @@
 			this.strStatus_Progress.Size = new System.Drawing.Size(100, 16);
 			this.strStatus_Progress.Value = 50;
 			this.strStatus_Progress.Visible = false;
-			// 
-			// mnuMain_ScraperManAdd
-			// 
-			this.mnuMain_ScraperManAdd.Name = "mnuMain_ScraperManAdd";
-			this.mnuMain_ScraperManAdd.Size = new System.Drawing.Size(210, 22);
-			this.mnuMain_ScraperManAdd.Text = "Manual Thread Add";
 			// 
 			// frmMain
 			// 

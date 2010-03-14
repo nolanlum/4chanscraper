@@ -15,6 +15,9 @@ namespace Scraper.Data
 		private string body;
 		private string imgName;
 		private DateTime time;
+
+		[NonSerialized]
+		private bool isNew = false;
 		#endregion
 
 		#region Public Properties
@@ -34,6 +37,12 @@ namespace Scraper.Data
 		public DateTime PostTime
 		{
 			get { return this.time; }
+		}
+
+		public bool IsNewPost
+		{
+			get { return this.isNew; }
+			set { this.isNew = value; }
 		}
 		#endregion
 

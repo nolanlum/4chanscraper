@@ -122,6 +122,8 @@ namespace Scraper.Data
 					thread = this.threads[thread.Id] + thread;
 					this.threads.Remove(thread.Id);
 				}
+
+			thread.IsNewThread = true;
 			this.threads.Add(thread.Id, thread);
 
 			if (this.ThreadAdded != null)

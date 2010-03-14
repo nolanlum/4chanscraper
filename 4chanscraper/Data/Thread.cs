@@ -12,6 +12,9 @@ namespace Scraper.Data
 		private string name;
 		private List<Post> posts;
 
+		[NonSerialized]
+		private bool isNew;
+
 		public int Id
 		{
 			get { return this.id; }
@@ -33,6 +36,11 @@ namespace Scraper.Data
 		{
 			get { foreach (Post p in this.posts) if (p.ImagePath.Contains("http:")) return false; return true; }
 		}
+		public bool IsNewThread
+		{
+			get { return this.isNew; }
+			set { this.isNew = value; }
+		}
 
 		public Thread(int id, string name)
 		{
@@ -44,6 +52,7 @@ namespace Scraper.Data
 
 		public void AddPost(Post post)
 		{
+			post.IsNewPost = true;
 			this.posts.Add(post);
 		}
 		public void RemovePost(Post p)

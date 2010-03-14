@@ -22,6 +22,7 @@ namespace Scraper
 
 		private static Regex imgnameR = new Regex(@"[0-9]+\.[a-z]{3,4}", RegexOptions.IgnoreCase);
 		private static Regex boardnameR = new Regex(@"http://.*?/([0-9a-z]){1,4}/", RegexOptions.IgnoreCase);
+		private static Regex threadIdR = new Regex(@"http://.*?/res/([0-9]*)", RegexOptions.IgnoreCase);
 
 		private bool _running = true, _updatingStatus = false;
 		private bool _enableAutoScrape = false, _enableScrapeImages = true;
@@ -166,9 +167,22 @@ namespace Scraper
 					for (int i = 0; i < kvp.Value.Count; i++)
 					{
 						children[i] = new TreeNode(kvp.Value[i].Id + (i == 0 ? " (OP)" : ""));
-						children[i].Tag = "post";
+						if (kvp.Value[i].IsNewPost)
+						{
+							children[i].ForeColor = Color.LimeGreen;
+							kvp.Value[i].IsNewPost = false;
+						}
+
+						children[i].Tag = "post";						
 					}
+
 					tree[j] = new TreeNode(kvp.Value.Name != null ? kvp.Value.Name : kvp.Value.Id.ToString(), children);
+					if (kvp.Value.IsNewThread)
+					{
+						tree[j].ForeColor = Color.LimeGreen;
+						kvp.Value.IsNewThread = false;
+					}
+
 					tree[j++].Tag = "thread";
 				}
 
@@ -355,11 +369,16 @@ namespace Scraper
 
 			try
 			{
+				int oldLength = this._downloader.QueueLength;
 				while (this._running && this._downloader.QueueLength > 0)
 				{
 					this.Invoke(ust, "Waiting for background tasks: " + this._downloader.QueueLength + " downloads; " + this._downloader.DownloadSpeed + ".");
 					Application.DoEvents();
 					SysThread.Sleep(50);
+
+					if (oldLength > this._downloader.QueueLength)
+						this.Invoke(new MethodInvoker(this.UpdatePostDetails));
+					oldLength = this._downloader.QueueLength;
 				}
 
 				this.Invoke(ust, "Ready.");
@@ -466,6 +485,37 @@ namespace Scraper
 		{
 			this.EnableScrapeImages = true;
 		}
+		private void mnuMain_ScraperManAdd_Click(object sender, EventArgs e)
+		{
+			Dialogs.frmInputDialog input = new Scraper.Dialogs.frmInputDialog("Enter the URL or thread ID of a thread in the board.");
+			input.ShowDialog();
+
+			string str = input.InputText.Trim();
+			if (str == "")
+				return;
+
+			int id = 0;
+			if (!int.TryParse(str, out id))
+			{
+				Match m = frmMain.threadIdR.Match(str);
+				if (m.Success)
+					id = int.Parse(m.Groups[1].Value);
+			}
+
+			if (id == 0)
+				return;
+
+			System.Net.HttpWebRequest req = System.Net.WebRequest.Create(this._db.URL + (this._db.URL.EndsWith("/") ? "" : "/") + "res/" + id) as System.Net.HttpWebRequest;
+			req.Credentials = System.Net.CredentialCache.DefaultCredentials;
+			System.Net.HttpWebResponse resp = req.GetResponse() as System.Net.HttpWebResponse;
+			if (resp.StatusCode != System.Net.HttpStatusCode.OK)
+				Program._genericMessageBox("The thread you specified was not found. Please check your input.", MessageBoxIcon.Exclamation);
+			else
+				this._db.AddThread(new Thread(id));
+
+			this.DrawDatabaseTree(this._db);
+			resp.Close();
+		}
 		private void mnuMain_ScraperNow_Click(object sender, EventArgs e)
 		{
 			this.ScrapeBoard();
@@ -508,6 +558,7 @@ namespace Scraper
 			Application.Exit();
 		}
 		#endregion
+
 		#region Tree Context Menu
 		void cmTree_Popup(object sender, EventArgs e)
 		{
@@ -682,7 +733,6 @@ namespace Scraper
 			}
 		}
 		#endregion
-
 		#region Tree View Events
 		private void treePostWindow_MouseDown(object sender, MouseEventArgs e)
 		{
