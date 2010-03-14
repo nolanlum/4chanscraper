@@ -12,6 +12,10 @@ namespace Scraper.Dialogs
 {
 	public partial class frmDetailDialog : Form
 	{
+		const int WM_KEYDOWN = 0x100;
+		const int WM_KEYUP = 0x101;
+		const int WM_SYSKEYDOWN = 0x104;
+		const int WM_SYSKEYUP = 0x105;
 		const int WM_SIZING = 0x214;
 		const int WMSZ_LEFT = 1;
 		const int WMSZ_RIGHT = 2;
@@ -26,8 +30,8 @@ namespace Scraper.Dialogs
 			public int Bottom;
 		}
 
-		private double widthRatio = 4;
-		private double heightRatio = 3;
+		private double widthRatio = 4, heightRatio = 3;
+		private int widthOverhead = 0, heightOverhead = 0;
 
 		public Image PostImage
 		{
@@ -36,8 +40,8 @@ namespace Scraper.Dialogs
 		}
 		public string PostString
 		{
-			get { return this.lblPost.Text; }
-			set { this.lblPost.Text = value; }
+			get { return this.txtPost.Text; }
+			set { this.txtPost.Text = value; }
 		}
 
 		public frmDetailDialog()
@@ -71,9 +75,11 @@ namespace Scraper.Dialogs
 			this.Size = form;
 			this.picPicture.Size = newI.Size;
 
-			// Set scaling factors.
-			this.widthRatio = this.Size.Width;
-			this.heightRatio = this.Size.Height; 
+			// Set scaling information.
+			this.widthRatio = newI.Width;
+			this.heightRatio = newI.Height;
+			this.widthOverhead = (form - newI.Size).Width;
+			this.heightOverhead = (form - newI.Size).Height;
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)
@@ -83,29 +89,29 @@ namespace Scraper.Dialogs
 
 		protected override void WndProc(ref Message m)
 		{
-			if (m.Msg == WM_SIZING)
+			if (m.Msg == WM_SIZING && (Control.ModifierKeys & Keys.Shift) == Keys.Shift)
 			{
 				RECT rc = (RECT) Marshal.PtrToStructure(m.LParam, typeof(RECT));
 				int res = m.WParam.ToInt32();
+
 				if (res == WMSZ_LEFT || res == WMSZ_RIGHT)
 				{
-					//Left or right resize -> adjust height (bottom)
-					rc.Bottom = rc.Top + (int) (heightRatio * this.Width / widthRatio);
+					rc.Bottom = rc.Top + (int) (this.heightRatio * this.picPicture.Width / this.widthRatio) + this.heightOverhead;
 				}
 				else if (res == WMSZ_TOP || res == WMSZ_BOTTOM)
 				{
 					//Up or down resize -> adjust width (right)
-					rc.Right = rc.Left + (int) (widthRatio * this.Height / heightRatio);
+					rc.Right = rc.Left + (int) (this.widthRatio * this.picPicture.Height / this.heightRatio) + this.widthOverhead;
 				}
 				else if (res == WMSZ_RIGHT + WMSZ_BOTTOM)
 				{
 					//Lower-right corner resize -> adjust height (could have been width)
-					rc.Bottom = rc.Top + (int) (heightRatio * this.Width / widthRatio);
+					rc.Bottom = rc.Top + (int) (this.heightRatio * this.picPicture.Width / this.widthRatio) + this.heightOverhead;
 				}
 				else if (res == WMSZ_LEFT + WMSZ_TOP)
 				{
 					//Upper-left corner -> adjust width (could have been height)
-					rc.Left = rc.Right - (int) (widthRatio * this.Height / heightRatio);
+					rc.Left = rc.Right - (int) (this.widthRatio * this.picPicture.Height / this.heightRatio) + this.widthOverhead;
 				}
 				Marshal.StructureToPtr(rc, m.LParam, true);
 			}

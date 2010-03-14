@@ -41,6 +41,10 @@ namespace Scraper.Data
 			get { return this.isNew; }
 			set { this.isNew = value; }
 		}
+		public bool HasNewPosts
+		{
+			get { foreach (Post p in this.posts) if (p.IsNewPost) return true; return false; }
+		}
 
 		public Thread(int id, string name)
 		{
@@ -84,15 +88,15 @@ namespace Scraper.Data
 					else // IDs match, check downloaded state.
 						if (t1[i].ImagePath == t2[j].ImagePath)
 						{
-							newT.AddPost(t1[i++]); j++;
+							newT.AddPost(t1[i]); t1[i++].IsNewPost = false; j++;
 						}
 						else if (t1[i].ImagePath.Contains("http:"))
 						{
-							newT.AddPost(t2[j++]); i++;
+							newT.AddPost(t2[j]); t2[j++].IsNewPost = false; i++;
 						}
 						else
 						{
-							newT.AddPost(t1[i++]); j++;
+							newT.AddPost(t1[i]); t1[i++].IsNewPost = false; j++;
 						}
 			}
 

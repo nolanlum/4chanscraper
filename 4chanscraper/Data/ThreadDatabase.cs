@@ -123,7 +123,7 @@ namespace Scraper.Data
 					this.threads.Remove(thread.Id);
 				}
 
-			thread.IsNewThread = true;
+			thread.IsNewThread = thread.HasNewPosts;
 			this.threads.Add(thread.Id, thread);
 
 			if (this.ThreadAdded != null)
