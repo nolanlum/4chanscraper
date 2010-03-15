@@ -209,6 +209,7 @@ namespace Scraper
 
 				this.grpPostStats.Hide();
 				this.pnlDetails.Show();
+				this.mnuMain_Scraper.Enabled = true;
 			}
 
 			this.UpdateStatusText("Ready.");

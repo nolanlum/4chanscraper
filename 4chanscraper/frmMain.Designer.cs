@@ -192,6 +192,7 @@
             this.toolStripSeparator6,
             this.mnuMain_ScraperManAdd,
             this.mnuMain_ScraperNow});
+			this.mnuMain_Scraper.Enabled = false;
 			this.mnuMain_Scraper.Name = "mnuMain_Scraper";
 			this.mnuMain_Scraper.Size = new System.Drawing.Size(101, 20);
 			this.mnuMain_Scraper.Text = "Scraper Control";
