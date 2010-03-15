@@ -37,6 +37,8 @@ namespace Scraper
 
 		public static void HideConsole()
 		{
+			if (console == IntPtr.Zero)
+				console = FindWindow(null, "4chanscraper - Console");
 			if (console != IntPtr.Zero)
 				ShowWindow(DebugConsole.console, 0);
 		}

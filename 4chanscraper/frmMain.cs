@@ -215,8 +215,9 @@ namespace Scraper
 		}
 		public void UpdatePostDetails(Post p)
 		{
-			if (p == null) this.grpPostStats.Hide();
-			else this.grpPostStats.Show();
+			if (p == null) { this.grpPostStats.Hide(); return; }
+			
+			this.grpPostStats.Show();
 
 			this.lblPostDate.Text = p.PostTime.ToString("MM/dd/yy(ddd)HH:mm");
 			this.lblPostImgPath.Text = p.ImagePath;
@@ -231,7 +232,7 @@ namespace Scraper
 				// Blank the picturebox.
 				if (this.picPostImg.Image != null)
 					this.picPostImg.Image.Dispose();
-				this.picPostImg.Image = new Bitmap(this.picPostImg.Width, this.picPostImg.Height);
+				this.picPostImg.Image = new Bitmap(Math.Max(1, this.picPostImg.Width), Math.Max(1, this.picPostImg.Height));
 
 				// Blt the image.
 				Image i = this._getImage(p.ImagePath);
@@ -246,6 +247,7 @@ namespace Scraper
 			if (this.picPostImg.Tag != null && this.picPostImg.Tag.GetType() == typeof(Post)) this.UpdatePostDetails(this.picPostImg.Tag as Post);
 		}
 
+		#region Crawling logic and helpers
 		public void ScrapeBoard()
 		{
 			if (this._threadParse != null && this._threadParse.IsAlive)
@@ -316,6 +318,7 @@ namespace Scraper
 					this._downloader.QueuePost(foldername + @"\" + imgnameR.Match(t[i].ImagePath).Value, t[i]);
 		}
 		private void _crawlThread(Thread t, string foldername) { _crawlThread(t, foldername, false); }
+		#endregion
 
 		#region Methods written to be called via delegate.
 		public void UpdateStatusText(string newText)
@@ -549,7 +552,7 @@ namespace Scraper
 			
 			FileInfo fi = new FileInfo(this._db.Filename);
 			string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
-			this._crawlThread(t, foldername);
+			this._crawlThread(this._db[id], foldername);
 			_statusLoopDownloading();
 		}
 		private void mnuMain_ScraperNow_Click(object sender, EventArgs e)
@@ -632,7 +635,7 @@ namespace Scraper
 		{
 			if (this.treePostWindowMouseAt == null) return;
 
-			if (!Program._genericConfimBox("Are you sure you want to delete this " + this.treePostWindowMouseAt.Tag + "?", MessageBoxIcon.Question)) return;
+			if (!Program._genericConfimBox("Are you sure you want to delete " + this.treePostWindowMouseAt.Tag + " '" + this.treePostWindowMouseAt.Text + "'?", MessageBoxIcon.Question)) return;
 
 			if (this.treePostWindowMouseAt.Tag.Equals("thread"))
 			{
@@ -651,14 +654,9 @@ namespace Scraper
 			}
 			else if (this.treePostWindowMouseAt.Tag.Equals("post"))
 			{
-				Thread t = this._db[this.treePostWindowMouseAt.Parent.Text];
-				int postid = int.Parse(this.treePostWindowMouseAt.Text.Replace(" (OP)", ""));
-				Post p = null;
-
-				foreach (Post pp in t)
-					if (pp.Id == postid) { p = pp; break; }
-
-				if (p == null) return; // Bug?
+				Thread t = this._nodeToThread(this.treePostWindowMouseAt.Parent);
+				Post p = this._nodeToPost(this.treePostWindowMouseAt);
+				if (p == null || t == null) return; // Bug?
 
 				if (!p.ImagePath.Contains("http:"))
 				{
@@ -670,7 +668,9 @@ namespace Scraper
 				t.RemovePost(p);
 			}
 
-			this.DrawDatabaseTree(this._db);
+			//this.DrawDatabaseTree(this._db);
+			this.UpdatePostDetails(null);
+			this.treePostWindow.Nodes.Remove(this.treePostWindowMouseAt);
 		}
 		void cmTree_Rescrape_Click(object sender, EventArgs e)
 		{
@@ -725,7 +725,7 @@ namespace Scraper
 
 			if (this.treePostWindowMouseAt.Tag.Equals("post"))
 			{
-				Post p = this._db.FindPost(int.Parse(this.treePostWindowMouseAt.Text.Replace(" (OP)", "")));
+				Post p = this._nodeToPost(this.treePostWindowMouseAt);
 				if (p == null && !p.ImagePath.Contains("http:")) return;
 
 				FileInfo fi = new FileInfo(this._db.Filename);
@@ -735,7 +735,7 @@ namespace Scraper
 			}
 			else if (this.treePostWindowMouseAt.Tag.Equals("thread"))
 			{
-				Thread t = this._db[this.treePostWindowMouseAt.Text];
+				Thread t = this._nodeToThread(this.treePostWindowMouseAt);
 				if (t == null) return;
 
 				FileInfo fi = new FileInfo(this._db.Filename);
@@ -748,7 +748,7 @@ namespace Scraper
 		{
 			if (this.treePostWindowMouseAt == null) return;
 
-			Post p = this._db.FindPost(int.Parse(this.treePostWindowMouseAt.Text.Replace(" (OP)", "")));
+			Post p = this._nodeToPost(this.treePostWindowMouseAt);
 			if (p == null || p.ImagePath.Contains("http:")) return;
 
 			System.Diagnostics.Process.Start("explorer.exe", "/select," + p.ImagePath);
@@ -757,7 +757,7 @@ namespace Scraper
 		{
 			if (this.treePostWindowMouseAt == null) return;
 
-			Post p = this._db.FindPost(int.Parse(this.treePostWindowMouseAt.Text.Replace(" (OP)", "")));
+			Post p = this._nodeToPost(this.treePostWindowMouseAt);
 			if (p == null) return;
 
 			if (p.ImagePath.Contains("http:"))
@@ -776,10 +776,14 @@ namespace Scraper
 			if (this.treePostWindowMouseAt == null) return;
 
 			if (e.Button == MouseButtons.Left)
+			{
 				if (this.treePostWindowMouseAt.Tag.Equals("post"))
-					this.UpdatePostDetails(this._db.FindPost(int.Parse(this.treePostWindowMouseAt.Text.Replace(" (OP)", ""))));
+					this.UpdatePostDetails(this._nodeToPost(this.treePostWindowMouseAt));
 				else
-					this.UpdatePostDetails(this._db.FindPost(int.Parse(this.treePostWindowMouseAt.Nodes[0].Text.Replace(" (OP)", ""))));
+					this.UpdatePostDetails(this._nodeToPost(this.treePostWindowMouseAt.Nodes[0]));
+
+				this.treePostWindow.SelectedNode = this.treePostWindowMouseAt;
+			}
 		}
 		private void treePostWindow_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
 		{
@@ -790,7 +794,15 @@ namespace Scraper
 		{
 			if (e.Label == null || e.Label.Length < 1 || e.CancelEdit)
 			{
-				e.Node.Text = this._tempNodeText;
+				e.Node.Text = this._tempNodeText; this._tempNodeText = null;
+				e.CancelEdit = true;
+				return;
+			}
+			if (this._db[e.Label] != null)
+			{
+				Program._genericMessageBox("A thread with that name already exists. Please choose another name.", MessageBoxIcon.Exclamation);
+
+				e.Node.Text = this._tempNodeText; this._tempNodeText = null;
 				e.CancelEdit = true;
 				return;
 			}
@@ -815,17 +827,31 @@ namespace Scraper
 
 			if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
 			{
+				this.treePostWindowMouseAt = this.treePostWindow.SelectedNode;
+
 				if (this.treePostWindow.SelectedNode.Tag.Equals("post"))
-					this.UpdatePostDetails(this._db.FindPost(int.Parse(this.treePostWindow.SelectedNode.Text.Replace(" (OP)", ""))));
+					this.UpdatePostDetails(this._nodeToPost(this.treePostWindow.SelectedNode));
 				else
-					this.UpdatePostDetails(this._db.FindPost(int.Parse(this.treePostWindow.SelectedNode.Nodes[0].Text.Replace(" (OP)", ""))));
+					this.UpdatePostDetails(this._nodeToPost(this.treePostWindow.SelectedNode.Nodes[0]));
+			}
+			else if (e.KeyCode == Keys.Enter && this.treePostWindow.SelectedNode != null && "post".Equals(this.treePostWindow.SelectedNode.Tag))
+			{
+				Post p = this._nodeToPost(this.treePostWindow.SelectedNode);
+				if (p.ImagePath.Contains("http:")) return;
+
+				using (Dialogs.frmDetailDialog d = new Scraper.Dialogs.frmDetailDialog())
+				{
+					d.PostImage = this._getImage(p.ImagePath);
+					d.PostString = p.PostBody;
+					d.ShowDialog();
+				}
 			}
 		}
 		private void treePostWindow_NodeMouseDoubleClick(object sender, System.Windows.Forms.TreeNodeMouseClickEventArgs e)
 		{
 			if (e.Node.Tag.Equals("post"))
 			{
-				Post p = this._db.FindPost(int.Parse(this.treePostWindowMouseAt.Text.Replace(" (OP)", "")));
+				Post p = this._nodeToPost(this.treePostWindowMouseAt);
 				if (p.ImagePath.Contains("http:")) return;
 
 				using (Dialogs.frmDetailDialog d = new Scraper.Dialogs.frmDetailDialog())
@@ -882,6 +908,15 @@ namespace Scraper
 			}
 		}
 
+		private Post _nodeToPost(TreeNode n)
+		{
+			return this._db.FindPost(int.Parse(n.Text.Replace(" (OP)", "")));
+		}
+		private Thread _nodeToThread(TreeNode n)
+		{
+			return this._db[n.Text];
+		}
+
 		private class TreeViewComparer : System.Collections.IComparer
 		{
 			public int Compare(object x, object y)
@@ -891,7 +926,10 @@ namespace Scraper
 
 				TreeNode xx = (TreeNode) x, yy = (TreeNode) y;
 				if ("thread".Equals(xx.Tag) && "thread".Equals(yy.Tag))
-					return -xx.Text.CompareTo(yy.Text);
+					if (char.IsLetter(xx.Text[0]) && char.IsLetter(yy.Text[0]))
+						return xx.Text.CompareTo(yy.Text);
+					else
+						return -xx.Text.CompareTo(yy.Text);
 				else
 					return xx.Text.CompareTo(yy.Text);
 			}
