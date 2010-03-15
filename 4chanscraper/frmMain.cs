@@ -402,6 +402,11 @@ namespace Scraper
 			if (dr == DialogResult.OK)
 			{
 				ThreadDatabase db = new ThreadDatabase(d.DBName, d.DBLoc, d.DBUrl);
+				FileInfo fi = new FileInfo(db.Filename);
+				string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
+				if (!Directory.Exists(foldername))
+					Directory.CreateDirectory(foldername);
+
 				if (!d.ScrapeAll) db.CrawledAllPages = true;
 				db.Save(); db.Dispose();
 				this.LoadDatabase(d.DBLoc);
