@@ -17,11 +17,23 @@ namespace Scraper
 		[STAThread]
 		static void Main()
 		{
-#if DEBUG
 			DebugConsole.ShowConsole();
-#endif
+			Version v = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+
+			DebugConsole.ShowInfo("4Chanscraper -- by Yuki`N (nol888@gmail.com)");
+#if DEBUG
+			DebugConsole.ShowInfo("             -- Version " + v + "-DEBUG");
+#else
+			DebugConsole.ShowInfo("             -- Version " + v + "-RELEASE");
+#endif	
+			DebugConsole.ShowInfo("             -- Build Date " + new DateTime(v.Build * TimeSpan.TicksPerDay + v.Revision * TimeSpan.TicksPerSecond * 2).AddYears(1999).AddDays(-1).AddHours(DateTime.Now.IsDaylightSavingTime() ? 1 : 0));
 
 			DebugConsole.ShowStatus("Program startup...showing main form.");
+#if !DEBUG
+			System.Threading.Thread.Sleep(500);
+			DebugConsole.HideConsole();
+#endif
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			try

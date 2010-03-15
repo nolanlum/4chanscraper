@@ -29,7 +29,7 @@ namespace Scraper
 				AllocConsole();
 				Console.Title = "4chanscraper - Console";
 
-				console = FindWindow(null, "4chanscraper - Console");
+				while((console = FindWindow(null, "4chanscraper - Console")) == IntPtr.Zero) ;
 			}
 
 			ShowWindow(DebugConsole.console, 1);
@@ -37,8 +37,6 @@ namespace Scraper
 
 		public static void HideConsole()
 		{
-			if (console == IntPtr.Zero)
-				console = FindWindow(null, "4chanscraper - Console");
 			if (console != IntPtr.Zero)
 				ShowWindow(DebugConsole.console, 0);
 		}
@@ -102,6 +100,8 @@ namespace Scraper
 
 		public static void WriteParseANSI(string Text)
 		{
+			if (console == IntPtr.Zero) return;
+
 			lock (System.Console.Out)
 			{
 				char[] Characters = Text.ToCharArray();
@@ -137,25 +137,6 @@ namespace Scraper
 			}
 		}
 
-		public static void WriteEventLog(string Text)
-		{
-			WriteEventLog(Text, EventLogEntryType.Information);
-		}
-		public static void WriteEventLog(string Text, EventLogEntryType type)
-		{
-			try
-			{
-				if (EventLog.SourceExists("DWM"))
-				{
-					DebugConsole.ShowDebug("Event log write [" + type.ToString() + "]: " + Text);
-					DebugConsole.Pause();
-					EventLog log = new EventLog("Desktop Window Manager", ".", "DWM");
-					log.WriteEntry(Text, type);
-				}
-			}
-			catch (Exception) { }
-		}
-		
 		public static void ClearLine()
 		{
 			int Width = System.Console.WindowWidth - 1;
