@@ -28,6 +28,8 @@ namespace Scraper.Data
 		private FileStream fileHandle;
 		[NonSerialized]
 		private bool drawnTreeOnce;
+		[NonSerialized]
+		private string imagedir;
 		#endregion
 
 		#region Public Properties
@@ -39,6 +41,10 @@ namespace Scraper.Data
 		public string Filename
 		{
 			get { return this.filename; }
+		}
+		public string ImageDir
+		{
+			get { if (this.imagedir != null) return this.imagedir; FileInfo fi = new FileInfo(this.filename); return this.imagedir = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, ""); }
 		}
 		public int ThreadCount
 		{
@@ -204,7 +210,16 @@ namespace Scraper.Data
 				if (null != stream)
 					stream.Close();
 				if (null != db)
+				{
+					db.filename = new FileInfo(filename).FullName;
 					db.fileHandle = new FileStream(db.filename, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+
+					// Convert path to absolute.
+					foreach (KeyValuePair<int, Thread> kvp in db.threads)
+						foreach (Post p in kvp.Value)
+							if (!p.ImagePath.Contains("http:"))
+								p.ImagePath = db.ImageDir + @"\" + p.ImagePath;
+				}
 			}
 
 			return db;

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Runtime.Serialization;
 
 namespace Scraper.Data
 {
@@ -18,6 +19,8 @@ namespace Scraper.Data
 
 		[NonSerialized]
 		private bool isNew = false;
+		[NonSerialized]
+		private string imgNameT = "";
 		#endregion
 
 		#region Public Properties
@@ -32,7 +35,7 @@ namespace Scraper.Data
 		public string ImagePath
 		{
 			get { return this.imgName; }
-			set { if (File.Exists(value)) this.imgName = value; }
+			set { this.imgName = value; }
 		}
 		public DateTime PostTime
 		{
@@ -52,6 +55,22 @@ namespace Scraper.Data
 			this.body = body;
 			this.imgName = imgPath;
 			this.time = time;
+		}
+
+		[OnSerializing]
+		private void _beforeSerialize(StreamingContext c)
+		{
+			if (!this.imgName.Contains("http:"))
+			{
+				this.imgNameT = this.imgName;
+				this.imgName = Path.GetFileName(this.imgName);
+			}
+		}
+		[OnSerialized]
+		private void _afterSerialize(StreamingContext c)
+		{
+			if (!this.imgName.Contains("http:"))
+				this.imgName = this.imgNameT;
 		}
 
 		#region Operator Overloads and Etc

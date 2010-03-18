@@ -96,6 +96,15 @@ namespace Scraper
 			this._downloader = new ImageDownloader(1);
 			this._imageCache = new GenericCache<string, Image>(5);
 
+			// Windows XP visuals fix.
+			if (Environment.OSVersion.Version.Major == 5)
+			{
+				this.grpStatus.Location = new Point(247, 27);
+				this.grpStatus.Size -= new Size(0, 6);
+				this.grpPostStats.Location = new Point(0, 76);
+				this.grpPostStats.Size -= new Size(0, 13);
+			}
+
 			this.treePostWindow.TreeViewNodeSorter = new TreeViewComparer();
 			#region Tree View Context Menu Setup
 			this.cmTree = new ContextMenu();
@@ -200,6 +209,10 @@ namespace Scraper
 		public void LoadDatabase(string filename)
 		{
 			this.UpdateStatusText("Loading database...");
+
+			if (this._db != null)
+				this._db.Dispose();
+
 			this._db = ThreadDatabase.LoadFromFile(filename);
 			if (this._db == null)
 				Program._genericMessageBox("An error occurred loading the database. Ensure you have specified a valid database. Check the Debug Console for more information.", MessageBoxIcon.Error);
@@ -293,11 +306,9 @@ namespace Scraper
 			this._db.AddThreads(newThreads);
 			this.DrawDatabaseTree(this._db);
 
-			FileInfo fi = new FileInfo(this._db.Filename);
-			string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
-			if (!Directory.Exists(foldername))
-				Directory.CreateDirectory(foldername);
-			this._crawlThreads(newThreads, foldername);
+			if (!Directory.Exists(this._db.ImageDir))
+				Directory.CreateDirectory(this._db.ImageDir);
+			this._crawlThreads(newThreads, this._db.ImageDir);
 			this._statusLoopDownloading();
 		}
 
@@ -387,7 +398,9 @@ namespace Scraper
 
 				this.Invoke(ust, "Ready.");
 			}
+#if !DEBUG
 			catch { }
+#endif
 			finally { this._updatingStatus = false; }
 		}
 
@@ -402,10 +415,9 @@ namespace Scraper
 			if (dr == DialogResult.OK)
 			{
 				ThreadDatabase db = new ThreadDatabase(d.DBName, d.DBLoc, d.DBUrl);
-				FileInfo fi = new FileInfo(db.Filename);
-				string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
-				if (!Directory.Exists(foldername))
-					Directory.CreateDirectory(foldername);
+
+				if (!Directory.Exists(db.ImageDir))
+					Directory.CreateDirectory(db.ImageDir);
 
 				if (!d.ScrapeAll) db.CrawledAllPages = true;
 				db.Save(); db.Dispose();
@@ -556,9 +568,7 @@ namespace Scraper
 			this._db.AddThread(t);
 			this.DrawDatabaseTree(this._db);
 			
-			FileInfo fi = new FileInfo(this._db.Filename);
-			string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
-			this._crawlThread(this._db[id], foldername);
+			this._crawlThread(this._db[id], this._db.ImageDir);
 			_statusLoopDownloading();
 		}
 		private void mnuMain_ScraperNow_Click(object sender, EventArgs e)
@@ -719,9 +729,7 @@ namespace Scraper
 				}
 
 				this.DrawDatabaseTree(this._db);
-				FileInfo fi = new FileInfo(this._db.Filename);
-				string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
-				this._crawlThread(t, foldername);
+				this._crawlThread(t, this._db.ImageDir);
 				_statusLoopDownloading();
 			}
 		}
@@ -734,9 +742,7 @@ namespace Scraper
 				Post p = this._nodeToPost(this.treePostWindowMouseAt);
 				if (p == null && !p.ImagePath.Contains("http:")) return;
 
-				FileInfo fi = new FileInfo(this._db.Filename);
-				string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
-				this._downloader.QueuePost(foldername + @"\" + imgnameR.Match(p.ImagePath).Value, p);
+				this._downloader.QueuePost(this._db.ImageDir + @"\" + imgnameR.Match(p.ImagePath).Value, p);
 				_statusLoopDownloading();
 			}
 			else if (this.treePostWindowMouseAt.Tag.Equals("thread"))
@@ -744,9 +750,7 @@ namespace Scraper
 				Thread t = this._nodeToThread(this.treePostWindowMouseAt);
 				if (t == null) return;
 
-				FileInfo fi = new FileInfo(this._db.Filename);
-				string foldername = fi.DirectoryName + @"\" + fi.Name.Replace(fi.Extension, "");
-				this._crawlThread(t, foldername, true);
+				this._crawlThread(t, this._db.ImageDir, true);
 				_statusLoopDownloading();
 			}
 		}
@@ -885,6 +889,8 @@ namespace Scraper
 			this.Show();
 			this.WindowState = FormWindowState.Normal;
 
+			this.lblStatus.Text = "Ready.";
+
 			this.TopMost = true;
 			this.Focus();
 			this.BringToFront();
@@ -905,6 +911,7 @@ namespace Scraper
 			double wo = o.Width, ho = o.Height, t1 = wo / wd, t2 = ho / hd, scaleFactor = (t1 > 1 || t2 > 1) ? (1 / (t1 > t2 ? t1 : t2)) : 1;
 
 			int wn = (int) (wo * scaleFactor), hn = (int) (ho * scaleFactor);
+			if (wn < 1 || hn < 1) return;
 			using (Graphics g = Graphics.FromImage(target))
 			{
 				using (Bitmap bb = new Bitmap(o, new Size(wn, hn)))
