@@ -7,6 +7,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections;
+using Scraper.Archiving.BZip2;
 
 namespace Scraper.Data
 {
@@ -165,8 +166,15 @@ namespace Scraper.Data
 
 				this.fileHandle.SetLength(0);
 				this.fileHandle.Seek(0, SeekOrigin.Begin);
-				formatter.Serialize(this.fileHandle, ThreadDatabase.VERSION);
-				formatter.Serialize(this.fileHandle, this);
+				this.fileHandle.Write(new byte[] { (byte) 'D', (byte) 'B', (byte) '2' }, 0 , 3); 
+
+				using (BZip2OutputStream os = new BZip2OutputStream(this.fileHandle))
+				{
+					os.IsStreamOwner = false;
+
+					formatter.Serialize(os, ThreadDatabase.VERSION);
+					formatter.Serialize(os, this);
+				}
 			}
 			catch (Exception e)
 			{
@@ -196,6 +204,11 @@ namespace Scraper.Data
 			{
 				IFormatter formatter = new BinaryFormatter();
 				stream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.None);
+				if (stream.ReadByte() == (int) 'D' && stream.ReadByte() == (int) 'B' && stream.ReadByte() == (int) '2')
+					stream = new BZip2InputStream(stream);
+				else
+					stream.Seek(0, SeekOrigin.Begin);
+
 				long version = (long) formatter.Deserialize(stream);
 				Debug.Assert(version == VERSION, "Unable to load database, incompatible file version.", "The specified database was created with an incompatible version of this program.");
 

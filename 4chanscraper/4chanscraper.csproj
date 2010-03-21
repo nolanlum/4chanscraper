@@ -82,6 +82,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Archiving\BZip2\BZip2.cs" />
+    <Compile Include="Archiving\BZip2\BZip2Constants.cs" />
+    <Compile Include="Archiving\BZip2\BZip2Exception.cs" />
+    <Compile Include="Archiving\BZip2\BZip2InputStream.cs" />
+    <Compile Include="Archiving\BZip2\BZip2OutputStream.cs" />
     <Compile Include="Archiving\Checksums\Adler32.cs" />
     <Compile Include="Archiving\Checksums\CRC32.cs" />
     <Compile Include="Archiving\Checksums\IChecksum.cs" />
