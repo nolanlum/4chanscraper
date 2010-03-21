@@ -12,6 +12,7 @@ using Scraper.Data;
 using Scraper.Html;
 using SysThread = System.Threading.Thread;
 using ThreadStart = System.Threading.ThreadStart;
+using Scraper.Archiving.Zip;
 
 namespace Scraper
 {
@@ -35,7 +36,7 @@ namespace Scraper
 		private ThreadDatabase _db;
 
 		private ContextMenu cmTree;
-		private MenuItem cmTree_Rename, cmTree_Delete, cmTree_Rescrape, cmTree_Download, cmTree_OpenInExplorer, cmTree_GenerateImgUrl, cmTree_Sep1, cmTree_Sep2;
+		private MenuItem cmTree_Rename, cmTree_Delete, cmTree_Rescrape, cmTree_Download, cmTree_OpenInExplorer, cmTree_GenerateImgUrl, cmTree_GenerateThreadArchive, cmTree_Sep1, cmTree_Sep2;
 		private MenuItem[] cmTree__Thread, cmTree__Post;
 		private TreeNode treePostWindowMouseAt;
 		private string _tempNodeText;
@@ -131,11 +132,14 @@ namespace Scraper
 			this.cmTree_GenerateImgUrl = new MenuItem("Copy 4chan Image URL");
 			this.cmTree_GenerateImgUrl.Name = "cmTree_GenerateImgUrl";
 			this.cmTree_GenerateImgUrl.Click += new EventHandler(cmTree_GenerateImgUrl_Click);
+			this.cmTree_GenerateThreadArchive = new MenuItem("Create Thread Archive");
+			this.cmTree_GenerateThreadArchive.Name = "cmTree_GenerateThreadArchive";
+			this.cmTree_GenerateThreadArchive.Click += new EventHandler(cmTree_GenerateThreadArchive_Click);
 			this.cmTree_Sep1 = new MenuItem("-");
 			this.cmTree_Sep1.Name = "cmTree_Sep1";
 			this.cmTree_Sep2 = new MenuItem("-");
 			this.cmTree_Sep2.Name = "cmTree_Sep2";
-			this.cmTree__Thread = new MenuItem[] { this.cmTree_Rescrape, this.cmTree_Download, this.cmTree_Sep1, this.cmTree_Rename, this.cmTree_Delete };
+			this.cmTree__Thread = new MenuItem[] { this.cmTree_Rescrape, this.cmTree_Download, this.cmTree_Sep1, this.cmTree_Rename, this.cmTree_Delete, this.cmTree_Sep2, this.cmTree_GenerateThreadArchive };
 			this.cmTree__Post = new MenuItem[] { this.cmTree_Download, this.cmTree_Sep1, this.cmTree_Delete, this.cmTree_Sep2, this.cmTree_OpenInExplorer, this.cmTree_GenerateImgUrl };
 			this.cmTree.MenuItems.AddRange(this.cmTree__Thread);
 			this.treePostWindow.ContextMenu = this.cmTree;
@@ -230,6 +234,7 @@ namespace Scraper
 		public void UpdatePostDetails(Post p)
 		{
 			if (p == null) { this.grpPostStats.Hide(); return; }
+			if (this.WindowState == FormWindowState.Minimized) return; // Prevent invalid stuff when form is minimized.
 			
 			this.grpPostStats.Show();
 
@@ -249,7 +254,7 @@ namespace Scraper
 				this.picPostImg.Image = new Bitmap(Math.Max(1, this.picPostImg.Width), Math.Max(1, this.picPostImg.Height));
 
 				// Blt the image.
-				Image i = this._getImage(p.ImagePath);
+				Image i = this._getImage(p.ImagePath); if (i == null) return;
 				this.lblPostImgInfo.Text = string.Format("{0} ({1}x{2})", Program._humanReadableFileSize(new FileInfo(p.ImagePath).Length), i.Width, i.Height);
 				this._resizeImage(this.picPostImg.Image, i);
 				this.picPostImg.Visible = true;
@@ -339,7 +344,7 @@ namespace Scraper
 			{
 				this.lblStatus.Text = newText;
 			}
-			catch (InvalidOperationException) { }
+			catch (Exception) { }
 		}
 		public void UpdateStatusStripText(string newText)
 		{
@@ -347,7 +352,7 @@ namespace Scraper
 			{
 				this.strStatus_Status.Text = newText;
 			}
-			catch (InvalidOperationException) { }
+			catch (Exception) { }
 		}
 		public void UpdateStatusStripProgress(int percentage)
 		{
@@ -357,7 +362,7 @@ namespace Scraper
 				if (percentage < this.strStatus_Progress.Minimum) percentage = this.strStatus_Progress.Minimum;
 				this.strStatus_Progress.Value = percentage;
 			}
-			catch (InvalidOperationException) { }
+			catch (Exception) { }
 		}
 		public void ShowProgress()
 		{
@@ -365,7 +370,7 @@ namespace Scraper
 			{
 				this.strStatus_Progress.Visible = true;
 			}
-			catch (InvalidOperationException) { }
+			catch (Exception) { }
 		}
 		public void HideProgress()
 		{
@@ -373,7 +378,7 @@ namespace Scraper
 			{
 				this.strStatus_Progress.Visible = false;
 			}
-			catch (InvalidOperationException) { }
+			catch (Exception) { }
 		}
 		#endregion
 
@@ -385,6 +390,8 @@ namespace Scraper
 			try
 			{
 				int oldLength = this._downloader.QueueLength;
+				this._updatingStatus = true;
+
 				while (this._running && this._downloader.QueueLength > 0)
 				{
 					this.Invoke(ust, "Waiting for background tasks: " + this._downloader.QueueLength + " downloads; " + this._downloader.DownloadSpeed + ".");
@@ -398,9 +405,6 @@ namespace Scraper
 
 				this.Invoke(ust, "Ready.");
 			}
-#if !DEBUG
-			catch { }
-#endif
 			finally { this._updatingStatus = false; }
 		}
 
@@ -470,7 +474,7 @@ namespace Scraper
 		private void mnuMain_ScraperConf_Click(object sender, EventArgs e)
 		{
 			Dialogs.frmInputDialog input = new Scraper.Dialogs.frmInputDialog("Enter the amount of time between automatic scrapes, with a time unit following the number. (h=hour,m=minute,s=second)\nYou may choose any combination of the units.\nEx: 30s = 30 seconds; 5m30s = 5 minutes, 30 seconds");
-			TimeSpan sp = new TimeSpan(this.timerAutoScrape.Interval * 10000);
+			TimeSpan sp = new TimeSpan(this.timerAutoScrape.Interval * TimeSpan.TicksPerMillisecond);
 			input.InputText = string.Format("{0}h{1}m{2}s", sp.Hours, sp.Minutes, sp.Seconds).Replace("0h", "").Replace("0m", "").Replace("0s", "");
 			input.ShowDialog();
 
@@ -778,6 +782,100 @@ namespace Scraper
 				Clipboard.SetText("http://images.4chan.org/" + m.Groups[1].Value + "/src/" + new FileInfo(p.ImagePath).Name);
 			}
 		}
+		void cmTree_GenerateThreadArchive_Click(object sender, EventArgs e)
+		{
+			if (this.treePostWindowMouseAt == null) return;
+			__UpdateStatusText ust = new __UpdateStatusText(this.UpdateStatusText);
+
+			Thread t = this._nodeToThread(this.treePostWindowMouseAt);
+			if (t == null || t.Count == 0) return;
+
+			// Gather filenames.
+			List<string> l = new List<string>();
+			string[] filenames;
+			foreach(Post p in t)
+				if(!p.ImagePath.Contains("http:"))
+					l.Add(p.ImagePath);
+			filenames = new string[l.Count];
+			l.CopyTo(filenames);
+
+			DebugConsole.ShowInfo("Creating archive from " + filenames.Length + " files.");
+
+			// Prompt for filename.
+			SaveFileDialog fd = new SaveFileDialog();
+			string filename = Path.GetDirectoryName(this._db.Filename) + @"\" + t.Id + ".zip";
+			fd.AddExtension = true;
+			fd.CheckPathExists = true;
+			fd.DefaultExt = ".zip";
+			fd.Filter = "ZIP Archives (*.zip)|*.zip|All files (*.*)|*.*";
+			fd.FilterIndex = 0;
+			fd.OverwritePrompt = true;
+			fd.RestoreDirectory = true;
+			fd.Title = "Save Thread Archive";
+			fd.FileName = Path.GetDirectoryName(this._db.Filename) + @"\" + t.Id + ".zip";
+
+			if (fd.ShowDialog() == DialogResult.OK)
+				filename = fd.FileName;
+
+			// Epic totally thread-safe way to do stuff.
+			string current = "";
+			SysThread st = new SysThread(new ThreadStart(delegate()
+			{
+				try
+				{
+					using (ZipOutputStream s = new ZipOutputStream(File.Create(filename)))
+					{
+						s.SetLevel(9);
+						byte[] buffer = new byte[4096];
+
+						foreach (string file in filenames)
+						{
+							current = file;
+
+							ZipEntry entry = new ZipEntry(Path.GetFileName(file));
+							entry.DateTime = new FileInfo(file).LastWriteTime;
+							s.PutNextEntry(entry);
+
+							using (FileStream fs = File.OpenRead(file))
+							{
+								int sourceBytes;
+								do
+								{
+									sourceBytes = fs.Read(buffer, 0, buffer.Length);
+									s.Write(buffer, 0, sourceBytes);
+								} while (sourceBytes > 0);
+							}
+
+							s.CloseEntry();
+							DebugConsole.ShowDebug("Added " + file + " to archive, original/compressed " + entry.Size + "/" + entry.CompressedSize);
+						}
+					}
+				}
+				catch (Exception ex)
+				{
+					Program._genericMessageBox("Error creating archive: " + ex.Message, MessageBoxIcon.Error);
+				}
+			}));
+			st.Start();
+
+			if (this._updatingStatus) return;
+			try
+			{
+				this._updatingStatus = true;
+
+				while (st.IsAlive)
+				{
+					this.Invoke(ust, "Archiving: \"" + current + "\".");
+					Application.DoEvents();
+					SysThread.Sleep(50);
+				}
+
+				this.Invoke(ust, "Ready.");
+			}
+			finally { this._updatingStatus = false; }
+
+			System.Diagnostics.Process.Start("explorer.exe", "/select," + filename);
+		}
 		#endregion
 		#region Tree View Events
 		private void treePostWindow_MouseDown(object sender, MouseEventArgs e)
@@ -901,7 +999,11 @@ namespace Scraper
 		private Image _getImage(string path)
 		{
 			if (!this._imageCache.ContainsKey(path))
-				this._imageCache.Add(path, new Bitmap(path));
+				try
+				{
+					this._imageCache.Add(path, new Bitmap(path));
+				}
+				catch { }
 
 			return this._imageCache[path];
 		}

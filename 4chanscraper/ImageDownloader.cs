@@ -161,6 +161,8 @@ namespace Scraper
 									Program.mainForm.Invoke(upc, (int) ((double) sLocal.Length / fileSize * 100));
 									Program.mainForm.Invoke(ust, "Downloading file: " + sLocal.Length + "/" + fileSize + " bytes downloaded");
 								}
+
+								p.Right.ImagePath = p.Left;
 							}
 						}
 						catch (Exception e)
@@ -178,7 +180,6 @@ namespace Scraper
 						}
 					}
 					this.jobsFinished++;
-					p.Right.ImagePath = p.Left;
 				}
 			}
 			catch { }
