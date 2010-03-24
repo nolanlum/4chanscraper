@@ -201,6 +201,7 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.txtDbLoc);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
 			this.Name = "frmNewDatabaseDialog";
 			this.Text = "Create New Database";
 			this.statusStrip1.ResumeLayout(false);

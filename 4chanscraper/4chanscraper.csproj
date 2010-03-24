@@ -207,9 +207,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\4chan.ico" />
     <Content Include="Examples\957853.html.txt" />
     <Content Include="Examples\imgboard.html.txt" />
+    <None Include="Properties\4chan.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

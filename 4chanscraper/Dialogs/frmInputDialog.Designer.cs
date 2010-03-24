@@ -79,6 +79,7 @@
 			this.Controls.Add(this.btnOk);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.lblPrompt);
+			this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
 			this.Name = "frmInputDialog";
 			this.Text = "4chanscraper - Input";
 			this.ResumeLayout(false);

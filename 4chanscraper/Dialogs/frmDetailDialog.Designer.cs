@@ -113,7 +113,7 @@
 			this.Controls.Add(this.lblPost);
 			this.Controls.Add(this.picPicture);
 			this.Controls.Add(this.btnClose);
-			this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
+			this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
 			this.Name = "frmDetailDialog";
 			this.Text = "Post Detail View";
 			((System.ComponentModel.ISupportInitialize) (this.picPicture)).EndInit();

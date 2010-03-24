@@ -126,27 +126,27 @@
             this.mnuMain_FileMinimize,
             this.mnuMain_FileExit});
 			this.mnuMain_File.Name = "mnuMain_File";
-			this.mnuMain_File.Size = new System.Drawing.Size(35, 20);
+			this.mnuMain_File.Size = new System.Drawing.Size(37, 20);
 			this.mnuMain_File.Text = "File";
 			// 
 			// mnuMain_FileNew
 			// 
 			this.mnuMain_FileNew.Name = "mnuMain_FileNew";
 			this.mnuMain_FileNew.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-			this.mnuMain_FileNew.Size = new System.Drawing.Size(185, 22);
+			this.mnuMain_FileNew.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileNew.Text = "New Database";
 			this.mnuMain_FileNew.Click += new System.EventHandler(this.mnuMain_FileNew_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(182, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(189, 6);
 			// 
 			// mnuMain_FileLoad
 			// 
 			this.mnuMain_FileLoad.Name = "mnuMain_FileLoad";
 			this.mnuMain_FileLoad.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-			this.mnuMain_FileLoad.Size = new System.Drawing.Size(185, 22);
+			this.mnuMain_FileLoad.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileLoad.Text = "Load Database";
 			this.mnuMain_FileLoad.Click += new System.EventHandler(this.mnuMain_FileLoad_Click);
 			// 
@@ -154,21 +154,21 @@
 			// 
 			this.mnuMain_FileSave.Name = "mnuMain_FileSave";
 			this.mnuMain_FileSave.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.mnuMain_FileSave.Size = new System.Drawing.Size(185, 22);
+			this.mnuMain_FileSave.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileSave.Text = "Save Database";
 			this.mnuMain_FileSave.Click += new System.EventHandler(this.mnuMain_FileSave_Click);
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(182, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(189, 6);
 			// 
 			// mnuMain_FileMinimize
 			// 
 			this.mnuMain_FileMinimize.Checked = true;
 			this.mnuMain_FileMinimize.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.mnuMain_FileMinimize.Name = "mnuMain_FileMinimize";
-			this.mnuMain_FileMinimize.Size = new System.Drawing.Size(185, 22);
+			this.mnuMain_FileMinimize.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileMinimize.Text = "Minimize to Tray";
 			this.mnuMain_FileMinimize.Click += new System.EventHandler(this.mnuMain_FileMinimize_Click);
 			// 
@@ -176,7 +176,7 @@
 			// 
 			this.mnuMain_FileExit.Name = "mnuMain_FileExit";
 			this.mnuMain_FileExit.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-			this.mnuMain_FileExit.Size = new System.Drawing.Size(185, 22);
+			this.mnuMain_FileExit.Size = new System.Drawing.Size(192, 22);
 			this.mnuMain_FileExit.Text = "Exit";
 			this.mnuMain_FileExit.Click += new System.EventHandler(this.mnuMain_FileExit_Click);
 			// 
@@ -194,7 +194,7 @@
             this.mnuMain_ScraperNow});
 			this.mnuMain_Scraper.Enabled = false;
 			this.mnuMain_Scraper.Name = "mnuMain_Scraper";
-			this.mnuMain_Scraper.Size = new System.Drawing.Size(94, 20);
+			this.mnuMain_Scraper.Size = new System.Drawing.Size(101, 20);
 			this.mnuMain_Scraper.Text = "Scraper Control";
 			// 
 			// mnuMain_ScraperEnabled
@@ -226,7 +226,7 @@
             "Download Threads: 3",
             "Download Threads: 4"});
 			this.mnuMain_ScraperThreads.Name = "mnuMain_ScraperThreads";
-			this.mnuMain_ScraperThreads.Size = new System.Drawing.Size(150, 21);
+			this.mnuMain_ScraperThreads.Size = new System.Drawing.Size(150, 23);
 			this.mnuMain_ScraperThreads.Visible = false;
 			this.mnuMain_ScraperThreads.SelectedIndexChanged += new System.EventHandler(this.mnuMain_ScraperThreads_SelectedIndexChanged);
 			// 
@@ -242,7 +242,7 @@
 			// mnuMain_ScraperMode_Metadata
 			// 
 			this.mnuMain_ScraperMode_Metadata.Name = "mnuMain_ScraperMode_Metadata";
-			this.mnuMain_ScraperMode_Metadata.Size = new System.Drawing.Size(179, 22);
+			this.mnuMain_ScraperMode_Metadata.Size = new System.Drawing.Size(188, 22);
 			this.mnuMain_ScraperMode_Metadata.Text = "Metadata only";
 			this.mnuMain_ScraperMode_Metadata.Click += new System.EventHandler(this.mnuMain_ScraperMode_Metadata_Click);
 			// 
@@ -251,7 +251,7 @@
 			this.mnuMain_ScraperMode_MetadataAndImages.Checked = true;
 			this.mnuMain_ScraperMode_MetadataAndImages.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.mnuMain_ScraperMode_MetadataAndImages.Name = "mnuMain_ScraperMode_MetadataAndImages";
-			this.mnuMain_ScraperMode_MetadataAndImages.Size = new System.Drawing.Size(179, 22);
+			this.mnuMain_ScraperMode_MetadataAndImages.Size = new System.Drawing.Size(188, 22);
 			this.mnuMain_ScraperMode_MetadataAndImages.Text = "Metadata and Images";
 			this.mnuMain_ScraperMode_MetadataAndImages.Click += new System.EventHandler(this.mnuMain_ScraperMode_MetadataAndImages_Click);
 			// 
@@ -287,20 +287,20 @@
             this.mnuMain_HelpAbout,
             this.mnuMain_HelpDebug});
 			this.mnuMain_Help.Name = "mnuMain_Help";
-			this.mnuMain_Help.Size = new System.Drawing.Size(40, 20);
+			this.mnuMain_Help.Size = new System.Drawing.Size(44, 20);
 			this.mnuMain_Help.Text = "Help";
 			// 
 			// mnuMain_HelpAbout
 			// 
 			this.mnuMain_HelpAbout.Name = "mnuMain_HelpAbout";
-			this.mnuMain_HelpAbout.Size = new System.Drawing.Size(141, 22);
+			this.mnuMain_HelpAbout.Size = new System.Drawing.Size(149, 22);
 			this.mnuMain_HelpAbout.Text = "About";
 			this.mnuMain_HelpAbout.Click += new System.EventHandler(this.mnuMain_HelpAbout_Click);
 			// 
 			// mnuMain_HelpDebug
 			// 
 			this.mnuMain_HelpDebug.Name = "mnuMain_HelpDebug";
-			this.mnuMain_HelpDebug.Size = new System.Drawing.Size(141, 22);
+			this.mnuMain_HelpDebug.Size = new System.Drawing.Size(149, 22);
 			this.mnuMain_HelpDebug.Text = "Show Console";
 			this.mnuMain_HelpDebug.Click += new System.EventHandler(this.mnuMain_HelpDebug_Click);
 			// 
@@ -600,7 +600,7 @@
 			// taskTrayIcon
 			// 
 			this.taskTrayIcon.ContextMenuStrip = this.cmTaskTray;
-			this.taskTrayIcon.Icon = ((System.Drawing.Icon) (resources.GetObject("taskTrayIcon.Icon")));
+			this.taskTrayIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
 			this.taskTrayIcon.Text = "4chanscraper";
 			this.taskTrayIcon.Visible = true;
 			this.taskTrayIcon.DoubleClick += new System.EventHandler(this.taskTrayIcon_DoubleClick);
@@ -614,36 +614,36 @@
             this.toolStripSeparator5,
             this.cmTaskTray_Close});
 			this.cmTaskTray.Name = "cmTaskTray";
-			this.cmTaskTray.Size = new System.Drawing.Size(185, 82);
+			this.cmTaskTray.Size = new System.Drawing.Size(200, 82);
 			// 
 			// cmTaskTray_Show
 			// 
 			this.cmTaskTray_Show.Name = "cmTaskTray_Show";
-			this.cmTaskTray_Show.Size = new System.Drawing.Size(184, 22);
+			this.cmTaskTray_Show.Size = new System.Drawing.Size(199, 22);
 			this.cmTaskTray_Show.Text = "Show Program Window";
 			this.cmTaskTray_Show.Click += new System.EventHandler(this.cmTaskTray_Show_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(181, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(196, 6);
 			// 
 			// cmTaskTray_Enabled
 			// 
 			this.cmTaskTray_Enabled.Name = "cmTaskTray_Enabled";
-			this.cmTaskTray_Enabled.Size = new System.Drawing.Size(184, 22);
+			this.cmTaskTray_Enabled.Size = new System.Drawing.Size(199, 22);
 			this.cmTaskTray_Enabled.Text = "Enable Auto-Scrape";
 			this.cmTaskTray_Enabled.Click += new System.EventHandler(this.cmTaskTray_Enabled_Click);
 			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(181, 6);
+			this.toolStripSeparator5.Size = new System.Drawing.Size(196, 6);
 			// 
 			// cmTaskTray_Close
 			// 
 			this.cmTaskTray_Close.Name = "cmTaskTray_Close";
-			this.cmTaskTray_Close.Size = new System.Drawing.Size(184, 22);
+			this.cmTaskTray_Close.Size = new System.Drawing.Size(199, 22);
 			this.cmTaskTray_Close.Text = "Close 4chanscraper";
 			this.cmTaskTray_Close.Click += new System.EventHandler(this.cmTaskTray_Close_Click);
 			// 
@@ -685,7 +685,7 @@
 			this.Controls.Add(this.grpStatus);
 			this.Controls.Add(this.treePostWindow);
 			this.Controls.Add(this.mnuMain);
-			this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
+			this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
 			this.MainMenuStrip = this.mnuMain;
 			this.MinimumSize = new System.Drawing.Size(596, 442);
 			this.Name = "frmMain";
