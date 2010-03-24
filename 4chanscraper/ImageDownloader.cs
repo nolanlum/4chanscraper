@@ -121,6 +121,7 @@ namespace Scraper
 					if (File.Exists(p.Left))
 					{ // Assume already downloaded.
 						DebugConsole.ShowDebug("Download skipped: URL " + p.Right.ImagePath + ": file already exists.");
+						p.Right.ImagePath = p.Left;
 					}
 					else
 					{
@@ -141,29 +142,26 @@ namespace Scraper
 							Program.mainForm.Invoke(ust, "Downloading file: 0/" + fileSize + " bytes downloaded");
 							DebugConsole.ShowDebug("Download start: URL " + p.Right.ImagePath + " to " + p.Left);
 
-							if (File.Exists(p.Left))
-							{ // Assume already downloaded.
-								DebugConsole.ShowDebug("Download skipped: URL " + p.Right.ImagePath + ": file already exists.");
-							}
-							else
+							using (sResp = wc.OpenRead(p.Right.ImagePath))
 							{
-								sResp = wc.OpenRead(p.Right.ImagePath);
-								sLocal = new FileStream(p.Left, FileMode.Create, FileAccess.Write, FileShare.None);
-
-								int bytesSize = 0;
-								byte[] buffer = new byte[1024];
-
-								while ((bytesSize = sResp.Read(buffer, 0, buffer.Length)) > 0)
+								using (sLocal = new FileStream(p.Left + ".tmp", FileMode.Create, FileAccess.Write, FileShare.None))
 								{
-									sLocal.Write(buffer, 0, bytesSize);
-									this.bytesDownloaded += bytesSize;
+									int bytesSize = 0;
+									byte[] buffer = new byte[1024];
 
-									Program.mainForm.Invoke(upc, (int) ((double) sLocal.Length / fileSize * 100));
-									Program.mainForm.Invoke(ust, "Downloading file: " + sLocal.Length + "/" + fileSize + " bytes downloaded");
+									while ((bytesSize = sResp.Read(buffer, 0, buffer.Length)) > 0)
+									{
+										sLocal.Write(buffer, 0, bytesSize);
+										this.bytesDownloaded += bytesSize;
+
+										Program.mainForm.Invoke(upc, (int) ((double) sLocal.Length / fileSize * 100));
+										Program.mainForm.Invoke(ust, "Downloading file: " + sLocal.Length + "/" + fileSize + " bytes downloaded");
+									}
 								}
-
-								p.Right.ImagePath = p.Left;
 							}
+
+							File.Move(p.Left + ".tmp", p.Left);
+							p.Right.ImagePath = p.Left;
 						}
 						catch (Exception e)
 						{
@@ -171,7 +169,6 @@ namespace Scraper
 						}
 						finally
 						{
-							if (sResp != null) sResp.Close(); if (sLocal != null) sLocal.Close();
 							Program.mainForm.Invoke(ust, "Download complete.");
 							Program.mainForm.Invoke(new System.Windows.Forms.MethodInvoker(Program.mainForm.HideProgress));
 

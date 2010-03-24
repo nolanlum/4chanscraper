@@ -733,6 +733,8 @@ namespace Scraper
 				}
 
 				this.DrawDatabaseTree(this._db);
+				this.treePostWindow.SelectedNode = this.treePostWindowMouseAt;
+
 				this._crawlThread(t, this._db.ImageDir);
 				_statusLoopDownloading();
 			}
@@ -809,10 +811,11 @@ namespace Scraper
 			fd.DefaultExt = ".zip";
 			fd.Filter = "ZIP Archives (*.zip)|*.zip|All files (*.*)|*.*";
 			fd.FilterIndex = 0;
+			fd.InitialDirectory = Path.GetDirectoryName(this._db.Filename);
 			fd.OverwritePrompt = true;
 			fd.RestoreDirectory = true;
 			fd.Title = "Save Thread Archive";
-			fd.FileName = Path.GetDirectoryName(this._db.Filename) + @"\" + t.Id + ".zip";
+			fd.FileName = t.Id + ".zip";
 
 			if (fd.ShowDialog() == DialogResult.OK)
 				filename = fd.FileName;
@@ -920,6 +923,22 @@ namespace Scraper
 			this.treePostWindow.LabelEdit = false;
 			this.DrawDatabaseTree(this._db);
 		}
+		private void treePostWindow_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+		{
+			if (e.KeyChar == (char) Keys.Enter && this.treePostWindow.SelectedNode != null && "post".Equals(this.treePostWindow.SelectedNode.Tag))
+			{
+				Post p = this._nodeToPost(this.treePostWindow.SelectedNode);
+				if (p.ImagePath.Contains("http:")) return;
+				e.Handled = true;
+
+				using (Dialogs.frmDetailDialog d = new Scraper.Dialogs.frmDetailDialog())
+				{
+					d.PostImage = this._getImage(p.ImagePath);
+					d.PostString = p.PostBody;
+					d.ShowDialog();
+				}
+			}
+		}
 		private void treePostWindow_KeyUp(object sender, KeyEventArgs e)
 		{
 			if (this._tempNodeText != null && e.KeyCode == Keys.Escape)
@@ -941,18 +960,6 @@ namespace Scraper
 					this.UpdatePostDetails(this._nodeToPost(this.treePostWindow.SelectedNode));
 				else
 					this.UpdatePostDetails(this._nodeToPost(this.treePostWindow.SelectedNode.Nodes[0]));
-			}
-			else if (e.KeyCode == Keys.Enter && this.treePostWindow.SelectedNode != null && "post".Equals(this.treePostWindow.SelectedNode.Tag))
-			{
-				Post p = this._nodeToPost(this.treePostWindow.SelectedNode);
-				if (p.ImagePath.Contains("http:")) return;
-
-				using (Dialogs.frmDetailDialog d = new Scraper.Dialogs.frmDetailDialog())
-				{
-					d.PostImage = this._getImage(p.ImagePath);
-					d.PostString = p.PostBody;
-					d.ShowDialog();
-				}
 			}
 		}
 		private void treePostWindow_NodeMouseDoubleClick(object sender, System.Windows.Forms.TreeNodeMouseClickEventArgs e)

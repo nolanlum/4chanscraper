@@ -315,6 +315,7 @@
 			this.treePostWindow.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treePostWindow_NodeMouseDoubleClick);
 			this.treePostWindow.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treePostWindow_AfterLabelEdit);
 			this.treePostWindow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treePostWindow_MouseDown);
+			this.treePostWindow.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treePostWindow_KeyPress);
 			this.treePostWindow.KeyUp += new System.Windows.Forms.KeyEventHandler(this.treePostWindow_KeyUp);
 			this.treePostWindow.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treePostWindow_BeforeLabelEdit);
 			// 

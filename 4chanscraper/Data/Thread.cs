@@ -73,6 +73,9 @@ namespace Scraper.Data
 		{
 			if (t1.id != t2.id) throw new InvalidOperationException("You cannot merge different threads.");
 
+			if (t1.Count == 0 && t2.Count > 0) return t2; // T1 is empty.
+			if (t1.Count > 0 && t2.Count == 0) return t1; // T2 is empty.
+
 			Thread newT = new Thread(t1.id);
 			newT.name = t1.name;
 			// Even though posts don't re-order on 4chan, you can never be too careful.

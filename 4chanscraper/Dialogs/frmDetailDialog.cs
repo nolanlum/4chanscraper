@@ -51,7 +51,7 @@ namespace Scraper.Dialogs
 		public string PostString
 		{
 			get { return this.txtPost.Text; }
-			set { this.txtPost.Text = value; }
+			set { this.txtPost.Text = value.Replace("\n", Environment.NewLine); }
 		}
 
 		public frmDetailDialog()
