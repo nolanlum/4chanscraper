@@ -8,9 +8,10 @@ About
 -----
 
 4chanscraper features:
-* Automatic scraping of all boards on 4chan.
-* A easy-to-use database creator to simplify the process of beginning to scrape.
-* A simple GUI which also includes thread-view and fullview modes.
+
+*   Automatic scraping of all boards on 4chan.
+*   A easy-to-use database creator to simplify the process of beginning to scrape.
+*   A simple GUI which also includes thread-view and fullview modes.
 
 It is designed to simplify the process of /rar/ing individual threads, and even
 supports creating an archive from a thread once it has been fully downloaded.
